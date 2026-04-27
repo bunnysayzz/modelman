@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/router/app_router.dart';
 import 'core/storage/local_storage_service.dart';
 import 'core/theme/theme_provider.dart';
+import 'core/error/error_handler.dart';
 
 import 'core/theme/app_theme.dart';
 
@@ -13,20 +14,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // ── Global Error Handling ──────────────────────────────
-  // Catches all uncaught Flutter framework errors
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.presentError(details);
-    debugPrint('[FlutterError] ${details.exceptionAsString()}');
-    // In production: report to Sentry/Crashlytics
-  };
-
-  // Catches all uncaught async errors
-  PlatformDispatcher.instance.onError = (error, stack) {
-    debugPrint('[PlatformError] $error');
-    debugPrint(stack.toString());
-    // In production: report to Sentry/Crashlytics
-    return true; // Prevents app crash
-  };
+  // Initialize error handler with console reporting (in production, use Sentry/Crashlytics)
+  final errorHandler = ErrorHandler();
+  final reportingService = kDebugMode
+      ? ConsoleErrorReportingService()
+      : null; // Add Sentry/Crashlytics in production
+  errorHandler.initialize(reportingService: reportingService);
 
   // Initialize SharedPreferences before the app starts
   final prefs = await SharedPreferences.getInstance();
@@ -48,9 +41,7 @@ void main() async {
       );
     },
     (error, stack) {
-      debugPrint('[ZoneError] $error');
-      debugPrint(stack.toString());
-      // In production: report to Sentry/Crashlytics
+      errorHandler.error('Zone error caught', error: error, stackTrace: stack);
     },
   );
 }
