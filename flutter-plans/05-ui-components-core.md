@@ -1171,7 +1171,7 @@ class ServersPage extends StatelessWidget {
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/shared/widgets/json_editor.dart';
+import 'package:modelman_flutter/shared/widgets/json_editor.dart';
 
 void main() {
   testWidgets('JsonEditor validates JSON', (tester) async {

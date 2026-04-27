@@ -2,7 +2,7 @@
 
 ## Summary
 
-Successfully implemented anonymous session-based multi-tenancy for Hoot. Each browser now gets a persistent UUID stored in localStorage, enabling multiple users to use the same Hoot instance with isolated data.
+Successfully implemented anonymous session-based multi-tenancy for modelman. Each browser now gets a persistent UUID stored in localStorage, enabling multiple users to use the same modelman instance with isolated data.
 
 ## What Was Implemented
 
@@ -27,7 +27,7 @@ Successfully implemented anonymous session-based multi-tenancy for Hoot. Each br
 - Changed `/auth/token` endpoint from GET to POST
 - Validates userId format (UUID v4)
 - Uses frontend-provided userId in JWT `sub` claim
-- Returns unified JWT with both Hoot and Portkey claims
+- Returns unified JWT with both modelman and Portkey claims
 
 ### 4. Backend: Authentication Middleware ✅
 
@@ -119,7 +119,7 @@ npm run backend
 npm run dev
 
 # Open browser DevTools → Application → Local Storage
-# Should see: hoot_user_id = <uuid>
+# Should see: modelman_user_id = <uuid>
 
 # Refresh page
 # Same UUID should persist ✅
@@ -150,7 +150,7 @@ npm run dev
 
 ```bash
 # Check database
-sqlite3 ~/.hoot/hoot-mcp.db
+sqlite3 ~/.modelman/modelman-mcp.db
 
 SELECT user_id, server_id FROM oauth_tokens;
 # Should show different user_ids for different browsers ✅

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try in Hoot - Link Generator</title>
+    <title>Try in modelman - Link Generator</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
@@ -240,19 +240,19 @@
 
 <body>
     <div class="container">
-        <h1><span>🦉</span> Try in Hoot</h1>
+        <h1><span>🦉</span> Try in modelman</h1>
         <p class="subtitle">Generate shareable links - keep it simple or go detailed</p>
 
         <div
             style="background: rgba(92, 207, 230, 0.1); border: 1px solid rgba(92, 207, 230, 0.3); padding: 16px; border-radius: 6px; margin-bottom: 24px; font-size: 13px; line-height: 1.6;">
             <strong style="color: #5ccfe6;">💡 Pro tip:</strong> For the simplest sharing, just provide the URL!
-            Hoot will auto-detect transport type, server name, and OAuth requirements.
+            modelman will auto-detect transport type, server name, and OAuth requirements.
             Use the full form below if you want to specify everything manually.
         </div>
 
         <form id="generatorForm">
             <div class="form-group">
-                <label for="serverName">Server Name (optional - Hoot can auto-detect!)</label>
+                <label for="serverName">Server Name (optional - modelman can auto-detect!)</label>
                 <input type="text" id="serverName" placeholder="Weather MCP Server">
             </div>
 
@@ -310,7 +310,7 @@
 
             <div class="form-group">
                 <label for="baseUrl">Base URL (for testing)</label>
-                <input type="text" id="baseUrl" placeholder="https://hoot.app" value="https://hoot.app">
+                <input type="text" id="baseUrl" placeholder="https://modelman.app" value="https://modelman.app">
             </div>
 
             <button type="submit">Generate Link</button>
@@ -339,12 +339,12 @@
                 <div class="output-label">👀 Preview</div>
                 <a id="previewButton" class="preview-button" href="#" target="_blank">
                     <span>🦉</span>
-                    <span>Try in Hoot</span>
+                    <span>Try in modelman</span>
                 </a>
             </div>
 
             <div class="warning">
-                ⚠️ Keep it simple! Just the URL is usually enough. Hoot auto-detects the rest. Never include real
+                ⚠️ Keep it simple! Just the URL is usually enough. modelman auto-detects the rest. Never include real
                 credentials - use OAuth for production servers.
             </div>
         </div>
@@ -406,7 +406,7 @@
             const url = document.getElementById('serverUrl').value;
             const command = document.getElementById('serverCommand').value;
             const authType = document.querySelector('input[name="auth"]:checked').value;
-            const baseUrl = document.getElementById('baseUrl').value || 'https://hoot.app';
+            const baseUrl = document.getElementById('baseUrl').value || 'https://modelman.app';
 
             // Build config - simple mode if only URL provided
             const config = {};
@@ -443,12 +443,12 @@
             const link = `${baseUrl}/?try=${encoded}`;
 
             // Generate markdown
-            const markdown = `[![Try in Hoot](https://img.shields.io/badge/Try%20in-Hoot-5ccfe6?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGV4dCB4PSI4IiB5PSIxMiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiPvCfpok8L3RleHQ+PC9zdmc+)](${link})`;
+            const markdown = `[![Try in modelman](https://img.shields.io/badge/Try%20in-modelman-5ccfe6?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGV4dCB4PSI4IiB5PSIxMiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiPvCfpok8L3RleHQ+PC9zdmc+)](${link})`;
 
             // Generate HTML
             const html = `<a href="${link}" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; background: linear-gradient(135deg, #5ccfe6 0%, #73d0ff 100%); color: #1f2430; text-decoration: none; border-radius: 6px; font-weight: 700; font-family: 'JetBrains Mono', monospace; transition: all 0.15s; box-shadow: 0 2px 8px rgba(92, 207, 230, 0.2);">
   <span>🦉</span>
-  <span>Try in Hoot</span>
+  <span>Try in modelman</span>
 </a>`;
 
             // Display outputs

@@ -1,6 +1,6 @@
-# Hoot Server
+# modelman Server
 
-Multi-deployment server for Hoot MCP testing tool.
+Multi-deployment server for modelman MCP testing tool.
 
 ## 🚀 Deployment Options
 
@@ -13,7 +13,7 @@ npm install
 npm run server
 ```
 
-- **Database:** SQLite at `~/.hoot/hoot-mcp.db`
+- **Database:** SQLite at `~/.modelman/modelman-mcp.db`
 - **Port:** 8008 (configurable via `PORT` env var)
 - **Storage:** Local filesystem
 
@@ -125,7 +125,7 @@ const fs = require('fs');
 
 ### SQLite (Node.js)
 
-- **Location:** `~/.hoot/hoot-mcp.db`
+- **Location:** `~/.modelman/modelman-mcp.db`
 - **Mode:** WAL (Write-Ahead Logging)
 - **Schema:** Multi-tenant with `user_id` scoping
 - **Migration:** Automatic from old schema

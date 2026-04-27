@@ -13,8 +13,8 @@ interface LLMSettingsModalProps {
 
 // Cache models in memory for the entire session
 let cachedModels: string[] | null = null;
-const MODELS_STORAGE_KEY = 'hoot-available-models';
-const SELECTED_MODEL_KEY = 'hoot-selected-model';
+const MODELS_STORAGE_KEY = 'modelman-available-models';
+const SELECTED_MODEL_KEY = 'modelman-selected-model';
 const MODELS_CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 export function LLMSettingsModal({ onClose }: LLMSettingsModalProps) {

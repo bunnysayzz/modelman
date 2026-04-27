@@ -523,7 +523,7 @@ void main() {
     PerformanceMonitor.logMemoryUsage();
   }
   
-  runApp(const ProviderScope(child: HootApp()));
+  runApp(const ProviderScope(child: modelmanApp()));
 }
 ```
 
@@ -577,7 +577,7 @@ flutter pub global run devtools
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:hoot_flutter/shared/widgets/optimized_list_view.dart';
+import 'package:modelman_flutter/shared/widgets/optimized_list_view.dart';
 
 void main() {
   testWidgets('ListView scrolls smoothly', (tester) async {

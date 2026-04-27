@@ -61,7 +61,7 @@ Comprehensive styles that integrate with the existing theme system:
 - Respects CSS variables for colors and spacing
 - Theme-aware syntax highlighting
 - Responsive design for all markdown elements
-- Consistent with Hoot's design system
+- Consistent with modelman's design system
 
 ### Streaming Implementation
 

@@ -1,8 +1,8 @@
-# 💾 Persistent Storage in Hoot
+# 💾 Persistent Storage in modelman
 
 ## Overview
 
-Hoot uses **localStorage** with Zustand's persist middleware to provide a seamless experience across sessions.
+modelman uses **localStorage** with Zustand's persist middleware to provide a seamless experience across sessions.
 
 ## What's Persisted
 
@@ -47,13 +47,13 @@ Your settings are remembered:
 ## Storage Details
 
 ### Location
-- **Browser (Frontend)**: `localStorage['hoot-storage']`
+- **Browser (Frontend)**: `localStorage['modelman-storage']`
   - Server configurations
   - Tools cache
   - Execution history
   - User preferences
   
-- **Backend Database**: `~/.hoot/hoot-mcp.db`
+- **Backend Database**: `~/.modelman/modelman-mcp.db`
   - OAuth tokens (encrypted in transit)
   - OAuth client information
   - OAuth verifiers
@@ -94,7 +94,7 @@ On app load:
 
 Console message:
 ```
-🦉 Hoot: Auto-reconnecting to 2 server(s)...
+🦉 modelman: Auto-reconnecting to 2 server(s)...
 ```
 
 ## Privacy & Security
@@ -116,16 +116,16 @@ Console message:
 **Browser Storage (Frontend)**:
 ```javascript
 // In browser DevTools console:
-localStorage.removeItem('hoot-storage')
+localStorage.removeItem('modelman-storage')
 ```
 
 **Backend Database** (OAuth tokens):
 ```bash
 # Remove the entire database file
-rm ~/.hoot/hoot-mcp.db
+rm ~/.modelman/modelman-mcp.db
 
-# Or remove the entire .hoot directory
-rm -rf ~/.hoot
+# Or remove the entire .modelman directory
+rm -rf ~/.modelman
 ```
 
 **Or clear all site data** in browser settings (for frontend only).
@@ -170,5 +170,5 @@ rm -rf ~/.hoot
 
 ---
 
-**Storage is automatic and invisible** - Hoot just remembers what you need! 🦉✨
+**Storage is automatic and invisible** - modelman just remembers what you need! 🦉✨
 

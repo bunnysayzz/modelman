@@ -37,7 +37,7 @@ export function useAutoReconnect() {
         });
 
         if (serversToReconnect.length > 0) {
-            console.log(`🦉 Hoot: Auto-reconnecting to ${serversToReconnect.length} server(s)...`);
+            console.log(`🦉 modelman: Auto-reconnecting to ${serversToReconnect.length} server(s)...`);
 
             // Reconnect in the background (don't await)
             serversToReconnect.forEach((server) => {

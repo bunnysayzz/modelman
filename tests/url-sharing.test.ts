@@ -187,7 +187,7 @@ describe('URL Sharing - Integration', () => {
     const serverRef = createServerReference(serverName, serverUrl);
     const encodedArgs = encodeArgs(args);
 
-    const url = new URL('https://hoot.app/test');
+    const url = new URL('https://modelman.app/test');
     url.searchParams.set('s', serverRef);
     url.searchParams.set('tool', toolName);
     url.searchParams.set('args', encodedArgs);
@@ -205,7 +205,7 @@ describe('URL Sharing - Integration', () => {
   });
 
   it('should parse a shared URL correctly', () => {
-    const urlString = 'https://hoot.app/test?s=weather-api:https://api.weather.com/mcp&tool=get_forecast&args=eyJjaXR5IjoiU0YifQ==';
+    const urlString = 'https://modelman.app/test?s=weather-api:https://api.weather.com/mcp&tool=get_forecast&args=eyJjaXR5IjoiU0YifQ==';
     const url = new URL(urlString);
 
     const serverRef = url.searchParams.get('s');
@@ -233,7 +233,7 @@ describe('URL Sharing - Integration', () => {
     const serverRef = createServerReference(serverName, serverUrl);
 
     // Simulate browser URL encoding
-    const url = new URL('https://hoot.app/test');
+    const url = new URL('https://modelman.app/test');
     url.searchParams.set('s', serverRef);
     url.searchParams.set('tool', toolName);
 

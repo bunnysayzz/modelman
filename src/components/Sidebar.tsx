@@ -22,7 +22,7 @@ function SidebarHeader({ onAddServer }: { onAddServer: () => void }) {
         <div className="sidebar-header">
             <div className="logo">
                 <span className="logo-icon">🦉</span>
-                <h1>Hoot</h1>
+                <h1>modelman</h1>
             </div>
             <p className="tagline">MCP Testing Tool</p>
             <button className="add-server-btn" onClick={onAddServer}>

@@ -22,11 +22,11 @@ export function ThemeSwitcher() {
     };
 
     const [currentTheme, setCurrentTheme] = useState(() => {
-        return localStorage.getItem('hoot-theme') || getDefaultTheme();
+        return localStorage.getItem('modelman-theme') || getDefaultTheme();
     });
 
     const [isSystemDefault, setIsSystemDefault] = useState(() => {
-        return !localStorage.getItem('hoot-theme');
+        return !localStorage.getItem('modelman-theme');
     });
 
     const switchTheme = (themeId: string) => {
@@ -35,7 +35,7 @@ export function ThemeSwitcher() {
             (window as any).applyTheme(themeId);
         }
 
-        localStorage.setItem('hoot-theme', themeId);
+        localStorage.setItem('modelman-theme', themeId);
         setCurrentTheme(themeId);
         setIsSystemDefault(false);
 
@@ -49,7 +49,7 @@ export function ThemeSwitcher() {
 
     const resetToSystemDefault = () => {
         // Remove the saved theme preference
-        localStorage.removeItem('hoot-theme');
+        localStorage.removeItem('modelman-theme');
         
         // Apply the system default theme
         const systemTheme = getDefaultTheme();

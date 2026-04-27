@@ -52,24 +52,24 @@ describe('Theme System', () => {
 
   describe('Theme Storage', () => {
     it('should not have theme in localStorage initially', () => {
-      expect(localStorage.getItem('hoot-theme')).toBeNull();
+      expect(localStorage.getItem('modelman-theme')).toBeNull();
     });
 
     it('should store theme when explicitly selected', () => {
-      localStorage.setItem('hoot-theme', 'arctic-night');
-      expect(localStorage.getItem('hoot-theme')).toBe('arctic-night');
+      localStorage.setItem('modelman-theme', 'arctic-night');
+      expect(localStorage.getItem('modelman-theme')).toBe('arctic-night');
     });
 
     it('should clear theme when reset to system default', () => {
-      localStorage.setItem('hoot-theme', 'arctic-night');
-      localStorage.removeItem('hoot-theme');
-      expect(localStorage.getItem('hoot-theme')).toBeNull();
+      localStorage.setItem('modelman-theme', 'arctic-night');
+      localStorage.removeItem('modelman-theme');
+      expect(localStorage.getItem('modelman-theme')).toBeNull();
     });
   });
 
   describe('Theme Switching Logic', () => {
     it('should use system preference when no saved theme', () => {
-      expect(localStorage.getItem('hoot-theme')).toBeNull();
+      expect(localStorage.getItem('modelman-theme')).toBeNull();
       
       // Light mode
       matchMediaMock.matches = false;
@@ -79,8 +79,8 @@ describe('Theme System', () => {
     });
 
     it('should use saved theme over system preference', () => {
-      localStorage.setItem('hoot-theme', 'duotone-sea');
-      const savedTheme = localStorage.getItem('hoot-theme');
+      localStorage.setItem('modelman-theme', 'duotone-sea');
+      const savedTheme = localStorage.getItem('modelman-theme');
       expect(savedTheme).toBe('duotone-sea');
       
       // Even if system is in light mode
@@ -124,20 +124,20 @@ describe('Theme System', () => {
   describe('Theme Persistence', () => {
     it('should not persist theme if using system default', () => {
       // No theme saved
-      expect(localStorage.getItem('hoot-theme')).toBeNull();
+      expect(localStorage.getItem('modelman-theme')).toBeNull();
       
       // System changes should not save theme
       matchMediaMock.matches = true;
-      expect(localStorage.getItem('hoot-theme')).toBeNull();
+      expect(localStorage.getItem('modelman-theme')).toBeNull();
     });
 
     it('should persist theme only when explicitly selected', () => {
-      localStorage.setItem('hoot-theme', 'ayu-mirage');
-      expect(localStorage.getItem('hoot-theme')).toBe('ayu-mirage');
+      localStorage.setItem('modelman-theme', 'ayu-mirage');
+      expect(localStorage.getItem('modelman-theme')).toBe('ayu-mirage');
       
       // System changes should not affect saved theme
       matchMediaMock.matches = false;
-      expect(localStorage.getItem('hoot-theme')).toBe('ayu-mirage');
+      expect(localStorage.getItem('modelman-theme')).toBe('ayu-mirage');
     });
   });
 });

@@ -1,11 +1,11 @@
 import type { ServerConfig, ToolSchema } from '../types';
-import { HootOAuthProvider } from './oauthProvider';
+import { modelmanOAuthProvider } from './oauthProvider';
 import * as backendClient from './backendClient';
 
 // MCP Client Manager - now acts as a relay to the Node.js backend
 // The backend handles the actual MCP SDK connections, eliminating CORS issues
 class MCPClientManager {
-  private oauthProviders: Map<string, HootOAuthProvider> = new Map();
+  private oauthProviders: Map<string, modelmanOAuthProvider> = new Map();
   private connectedServers: Set<string> = new Set();
 
   /**
@@ -37,7 +37,7 @@ class MCPClientManager {
 
       // Setup OAuth provider if needed (for authorization URL generation)
       if (config.auth?.type === 'oauth' && config.url) {
-        const provider = new HootOAuthProvider(config.id, config.url);
+        const provider = new modelmanOAuthProvider(config.id, config.url);
         this.oauthProviders.set(config.id, provider);
       }
 
@@ -96,7 +96,7 @@ class MCPClientManager {
   /**
    * Get the OAuth provider for a server (if OAuth is being used)
    */
-  getOAuthProvider(serverId: string): HootOAuthProvider | undefined {
+  getOAuthProvider(serverId: string): modelmanOAuthProvider | undefined {
     return this.oauthProviders.get(serverId);
   }
 

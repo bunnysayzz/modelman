@@ -20,7 +20,7 @@ export function useInputMode() {
   // Listen for storage events (sync across tabs)
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'hoot-input-mode' && e.newValue) {
+      if (e.key === 'modelman-input-mode' && e.newValue) {
         try {
           const newMode = JSON.parse(e.newValue) as InputMode;
           setInputModeState(newMode);

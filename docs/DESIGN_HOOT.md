@@ -1,8 +1,8 @@
-# 🦉 Hoot Design System - Ayu Mirage Edition
+# 🦉 modelman Design System - Ayu Mirage Edition
 
 ## 🦉 Brand Identity
 
-### Name: Hoot
+### Name: modelman
 **Meaning**: The sound an owl makes - wise, observant, and focused. Perfect for a tool that helps developers test and observe MCP servers.
 
 **Mascot**: 🦉 Owl
@@ -61,7 +61,7 @@ Based on the beautiful Ayu Mirage theme, optimized for developer tools.
 
 ### 1. Logo & Branding
 ```
-🦉 Hoot
+🦉 modelman
 MCP TESTING TOOL
 ```
 - Owl emoji (wise and observant)

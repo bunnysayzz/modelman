@@ -1,20 +1,20 @@
-# Hoot Documentation
+# modelman Documentation
 
-Welcome to Hoot! A powerful MCP (Model Context Protocol) testing tool for developers.
+Welcome to modelman! A powerful MCP (Model Context Protocol) testing tool for developers.
 
 ## Getting Started
 
-**New to Hoot?** Start here:
+**New to modelman?** Start here:
 
 - [Quick Start Guide](QUICKSTART.md) - Get up and running in 5 minutes
 - [Examples](EXAMPLES.md) - Common workflows and usage patterns
-- [Troubleshooting](TROUBLESHOOTING.md) - Common issues and solutions
+- [Troublesmodelmaning](TROUBLESmodelmanING.md) - Common issues and solutions
 
 ## User Guides
 
 ### Features
 
-- [Try in Hoot](TRY_IN_HOOT.md) - Share servers with a single-click link
+- [Try in modelman](TRY_IN_modelman.md) - Share servers with a single-click link
 - [Auto-Detection](AUTO_DETECTION.md) - Automatically detect server configuration
 - [Authentication](AUTHENTICATION.md) - OAuth, API keys, and auth methods
 - [Themes](THEMES.md) - Customizing the visual appearance
@@ -72,49 +72,49 @@ Welcome to Hoot! A powerful MCP (Model Context Protocol) testing tool for develo
 
 ### For Users
 
-Looking to use Hoot? Start with:
+Looking to use modelman? Start with:
 1. [Quick Start Guide](QUICKSTART.md)
-2. [Try in Hoot](TRY_IN_HOOT.md) - Add servers easily
+2. [Try in modelman](TRY_IN_modelman.md) - Add servers easily
 3. [Authentication](AUTHENTICATION.md) - Connect to secure servers
 
 ### For MCP Server Authors
 
 Want users to easily add your server? See:
-1. [Try in Hoot](TRY_IN_HOOT.md) - Create shareable links
+1. [Try in modelman](TRY_IN_modelman.md) - Create shareable links
 2. [Auto-Detection](AUTO_DETECTION.md) - Make your server auto-detectable
 3. [Authentication Detection](AUTH_DETECTION.md) - Auth best practices
 
 ### For Contributors
 
-Want to contribute to Hoot? Start with:
+Want to contribute to modelman? Start with:
 1. [Architecture Overview](ARCHITECTURE.md)
 2. [Server Development Guide](../server/DEVELOPMENT_GUIDE.md)
 3. [Contributing Guide](../CONTRIBUTING.md)
 
 ### For Deployers
 
-Want to self-host Hoot? See:
+Want to self-host modelman? See:
 1. [Server README](../server/README.md) - Deployment options
 2. [Cloudflare Deployment](CLOUDFLARE_DEPLOYMENT.md) - Edge deployment
 3. [Security](SECURITY.md) - Security considerations
 
 ## Need Help?
 
-- Open an [issue on GitHub](https://github.com/Portkey-AI/hoot/issues)
-- Check the [Troubleshooting Guide](TROUBLESHOOTING.md)
+- Open an [issue on GitHub](https://github.com/Portkey-AI/modelman/issues)
+- Check the [Troublesmodelmaning Guide](TROUBLESmodelmanING.md)
 - Read through [Examples](EXAMPLES.md)
 
 ## Documentation Standards
 
-Hoot docs follow these principles:
+modelman docs follow these principles:
 - **Concise** - Get to the point quickly
 - **Modular** - Link to related docs instead of duplicating
 - **Up-to-date** - Verified against actual code
 - **Practical** - Include examples and code snippets
 
-Found an error? Please [open an issue](https://github.com/Portkey-AI/hoot/issues) or submit a pull request!
+Found an error? Please [open an issue](https://github.com/Portkey-AI/modelman/issues) or submit a pull request!
 
 ---
 
 **Last updated:** November 2025  
-**Hoot Version:** 0.2.x (beta)
+**modelman Version:** 0.2.x (beta)

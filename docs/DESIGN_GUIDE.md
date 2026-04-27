@@ -1,11 +1,11 @@
-# Hoot Design Guide
+# modelman Design Guide
 
-A comprehensive guide to Hoot's design system, visual language, and UI patterns.
+A comprehensive guide to modelman's design system, visual language, and UI patterns.
 
 ## 🦉 Brand Identity
 
 ### Logo & Name
-- **Name**: Hoot (always capitalized)
+- **Name**: modelman (always capitalized)
 - **Emoji**: 🦉 (owl emoji) - use this for branding
 - **Tagline**: "MCP Testing Tool"
 
@@ -17,7 +17,7 @@ A comprehensive guide to Hoot's design system, visual language, and UI patterns.
 
 ## 🎨 Color Palette
 
-Hoot uses the **Ayu Mirage** color scheme - a sophisticated dark theme optimized for long coding sessions.
+modelman uses the **Ayu Mirage** color scheme - a sophisticated dark theme optimized for long coding sessions.
 
 ### Background Colors
 ```css
@@ -107,11 +107,11 @@ Uppercase Labels: 12px, weight: 600, letter-spacing: 0.5px, text-transform: uppe
 ```
 
 ### Capitalization
-- **Headings**: Title Case ("Add MCP Server", "Try in Hoot")
+- **Headings**: Title Case ("Add MCP Server", "Try in modelman")
 - **Labels**: Title Case ("Server Name", "Transport")
 - **Buttons**: Title Case ("Add Server", "Connect")
 - **Uppercase Labels**: ALL CAPS for section labels and categories
-- **NOT**: All lowercase (this isn't Hoot's style)
+- **NOT**: All lowercase (this isn't modelman's style)
 
 ## 📐 Spacing System
 
@@ -350,11 +350,11 @@ Small labels for categories/status:
 
 ## 🎭 Icons & Emojis
 
-Hoot uses emojis strategically for visual communication:
+modelman uses emojis strategically for visual communication:
 
 ### Brand & Identity
-- 🦉 - Hoot logo, branding
-- 🚀 - Actions, "Try in Hoot" (but prefer 🦉 for branding)
+- 🦉 - modelman logo, branding
+- 🚀 - Actions, "Try in modelman" (but prefer 🦉 for branding)
 
 ### Common Icons
 - 🏷️ - Labels, names
@@ -406,9 +406,9 @@ Hoot uses emojis strategically for visual communication:
 
 ## 🎨 Example Implementations
 
-### Try in Hoot Button (External)
+### Try in modelman Button (External)
 ```html
-<a href="https://hoot.app/?try=CONFIG" 
+<a href="https://modelman.app/?try=CONFIG" 
    style="display: inline-flex; align-items: center; gap: 8px; 
           padding: 11px 24px; 
           background: linear-gradient(135deg, #5ccfe6 0%, #73d0ff 100%);
@@ -416,7 +416,7 @@ Hoot uses emojis strategically for visual communication:
           font-weight: 700; font-family: 'JetBrains Mono', monospace;
           transition: all 0.15s; box-shadow: 0 2px 8px rgba(92, 207, 230, 0.2);">
   <span>🦉</span>
-  <span>Try in Hoot</span>
+  <span>Try in modelman</span>
 </a>
 ```
 
@@ -457,7 +457,7 @@ Hoot uses emojis strategically for visual communication:
 
 ## ✅ Dos
 
-- ✓ Use 🦉 for Hoot branding
+- ✓ Use 🦉 for modelman branding
 - ✓ Prefer JetBrains Mono for UI
 - ✓ Use consistent spacing (8px increments)
 - ✓ Add smooth transitions to interactive elements
@@ -470,7 +470,7 @@ Hoot uses emojis strategically for visual communication:
 - **Color Palette**: `src/index.css` (Ayu Mirage variables)
 - **Modal Styles**: `src/components/Modal.css`
 - **Example Components**: `src/components/`
-- **Try in Hoot Examples**: `examples/try-in-hoot-*.html`
+- **Try in modelman Examples**: `examples/try-in-modelman-*.html`
 
 ## 🤝 Contributing
 
@@ -484,5 +484,5 @@ When adding new features:
 
 ---
 
-Made with 🦉 by the Hoot team
+Made with 🦉 by the modelman team
 

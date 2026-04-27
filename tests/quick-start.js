@@ -6,14 +6,14 @@
  * This script demonstrates the test infrastructure by:
  * 1. Starting the test MCP server
  * 2. Running some basic tests
- * 3. Showing you how to use it in Hoot
+ * 3. Showing you how to use it in modelman
  */
 
 import { TestServerManager } from './helpers/server-manager.js';
 
 console.log(`
 ╔════════════════════════════════════════════════════════════════╗
-║           Hoot Test Infrastructure - Quick Start               ║
+║           modelman Test Infrastructure - Quick Start               ║
 ╚════════════════════════════════════════════════════════════════╝
 `);
 
@@ -192,14 +192,14 @@ async function quickStart() {
         console.log(`   ✓ Result: "${output.message}"`);
         console.log('');
 
-        // Step 7: Show how to use in Hoot
-        console.log('🎯 Step 7: How to use this in Hoot:\n');
-        console.log('   The test server is now running! To test Hoot against it:\n');
-        console.log('   1. Start Hoot backend (in another terminal):');
+        // Step 7: Show how to use in modelman
+        console.log('🎯 Step 7: How to use this in modelman:\n');
+        console.log('   The test server is now running! To test modelman against it:\n');
+        console.log('   1. Start modelman backend (in another terminal):');
         console.log('      npm run server\n');
-        console.log('   2. Start Hoot frontend (in another terminal):');
+        console.log('   2. Start modelman frontend (in another terminal):');
         console.log('      npm run dev\n');
-        console.log('   3. Open Hoot: http://localhost:8009\n');
+        console.log('   3. Open modelman: http://localhost:8009\n');
         console.log('   4. Add server with these settings:');
         console.log('      • Name: Test OAuth Server');
         console.log(`      • URL: ${server.mcpUrl}`);
@@ -227,7 +227,7 @@ async function quickStart() {
         // Success!
         console.log('✅ Quick start complete!\n');
         console.log('💡 The test server will keep running for 60 seconds.');
-        console.log('   Use this time to test Hoot against it, or press Ctrl+C to stop.\n');
+        console.log('   Use this time to test modelman against it, or press Ctrl+C to stop.\n');
         console.log('📚 For more information:');
         console.log('   - Read: tests/mock-servers/README.md');
         console.log('   - Example test: tests/example-mcp-lifecycle.test.js');

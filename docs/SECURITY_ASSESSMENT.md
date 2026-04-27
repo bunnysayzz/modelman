@@ -1,8 +1,8 @@
-# Hoot Security Assessment: CVE-2025-49596 Analysis
+# modelman Security Assessment: CVE-2025-49596 Analysis
 
 ## Executive Summary
 
-Hoot is **NOT directly vulnerable** to CVE-2025-49596 (the MCP Inspector drive-by localhost attack) but shares some architectural patterns that create similar attack surfaces with different exploitation requirements.
+modelman is **NOT directly vulnerable** to CVE-2025-49596 (the MCP Inspector drive-by localhost attack) but shares some architectural patterns that create similar attack surfaces with different exploitation requirements.
 
 **Risk Level: MEDIUM** ⚠️
 
@@ -10,16 +10,16 @@ Hoot is **NOT directly vulnerable** to CVE-2025-49596 (the MCP Inspector drive-b
 
 ## Key Differences from MCP Inspector
 
-### ✅ Hoot is Protected Against the Primary Attack Vector
+### ✅ modelman is Protected Against the Primary Attack Vector
 
-| Security Control | MCP Inspector (Vulnerable) | Hoot (Protected) |
+| Security Control | MCP Inspector (Vulnerable) | modelman (Protected) |
 |-----------------|---------------------------|------------------|
 | **Binding Address** | `0.0.0.0:6277` | `localhost:8008` |
 | **CORS Policy** | None (accepts any origin) | Allowlist (`localhost:3000`, `localhost:8009`) |
 | **Endpoint Type** | Unauthenticated `/sse` with stdio command execution | REST API for MCP client operations |
 | **Attack Surface** | Direct command execution | Proxy to external MCP servers |
 
-**Critical Protection:** Hoot binds to `localhost` only, preventing the "0.0.0.0-day" browser vulnerability that allows external websites to bypass same-origin policy.
+**Critical Protection:** modelman binds to `localhost` only, preventing the "0.0.0.0-day" browser vulnerability that allows external websites to bypass same-origin policy.
 
 ---
 
@@ -44,7 +44,7 @@ app.use(cors({
 **Attack Vector:**
 - Malicious browser extension
 - Compromised localhost service on ports 3000 or 8009
-- CSRF-style attacks if victim has Hoot running
+- CSRF-style attacks if victim has modelman running
 
 ### 2. **Broad CORS Allowlist** 🟡 MEDIUM
 
@@ -55,7 +55,7 @@ app.use(cors({
 ### 3. **OAuth Token Storage Security** 🟡 MEDIUM
 
 **Current State:**
-- Tokens stored in `~/.hoot/hoot-mcp.db` (SQLite)
+- Tokens stored in `~/.modelman/modelman-mcp.db` (SQLite)
 - No encryption at rest
 - File permissions depend on OS defaults
 
@@ -63,7 +63,7 @@ app.use(cors({
 
 ### 4. **Privileged Tool Execution** 🟡 MEDIUM
 
-**Issue:** Once connected, Hoot can execute ANY tool on the MCP server with NO:
+**Issue:** Once connected, modelman can execute ANY tool on the MCP server with NO:
 - Rate limiting
 - Command validation
 - Audit logging (beyond console.log)
@@ -119,7 +119,7 @@ chrome.webRequest.onBeforeRequest.addListener(() => {
 ### Scenario 3: Development Environment Attack Chain
 
 **Scenario:** Developer has multiple tools running:
-- Hoot on port 8008
+- modelman on port 8008
 - Vite dev server on port 8009 with hot reload
 - npm packages with postinstall scripts
 
@@ -127,7 +127,7 @@ chrome.webRequest.onBeforeRequest.addListener(() => {
 1. Attacker publishes malicious npm package
 2. Developer installs package (directly or via dependency)
 3. Postinstall script spawns server on port 3000
-4. Malicious server makes requests to Hoot backend
+4. Malicious server makes requests to modelman backend
 5. Connects to attacker's MCP server to exfiltrate data from legitimate servers
 
 ---
@@ -148,7 +148,7 @@ app.use((req, res, next) => {
   // Allow health check without auth
   if (req.path === '/health') return next();
   
-  const token = req.headers['x-hoot-token'];
+  const token = req.headers['x-modelman-token'];
   if (token !== SESSION_TOKEN) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -158,7 +158,7 @@ app.use((req, res, next) => {
 // Store token in browser localStorage on app start
 // Frontend reads from environment or config file
 console.log(`🔑 Session Token: ${SESSION_TOKEN}`);
-console.log(`   Add to .env: HOOT_SESSION_TOKEN=${SESSION_TOKEN}`);
+console.log(`   Add to .env: modelman_SESSION_TOKEN=${SESSION_TOKEN}`);
 ```
 
 **Alternative:** Use CSRF tokens or require user confirmation for sensitive operations.
@@ -170,7 +170,7 @@ app.use((req, res, next) => {
   const origin = req.headers.origin;
   const referer = req.headers.referer;
   
-  // Validate request came from legitimate Hoot frontend
+  // Validate request came from legitimate modelman frontend
   if (!origin && !referer) {
     return res.status(403).json({ error: 'Missing origin' });
   }
@@ -188,7 +188,7 @@ app.use((req, res, next) => {
 import { createCipheriv, createDecipheriv, randomBytes } from 'crypto';
 
 // Use system keychain or environment variable for encryption key
-const ENCRYPTION_KEY = process.env.HOOT_ENCRYPTION_KEY || generateKey();
+const ENCRYPTION_KEY = process.env.modelman_ENCRYPTION_KEY || generateKey();
 
 function encryptTokens(tokens) {
   const iv = randomBytes(16);
@@ -223,7 +223,7 @@ app.post('/mcp/execute', executeLimiter, async (req, res) => {
 import fs from 'fs';
 import { join } from 'path';
 
-const auditLog = join(hootDir, 'audit.log');
+const auditLog = join(modelmanDir, 'audit.log');
 
 function logAuditEvent(event, details) {
   const entry = {
@@ -304,28 +304,28 @@ async function executeTool(serverId, toolName, args) {
 
 #### 8. Network Segmentation
 
-Run Hoot in isolated network environment when possible:
+Run modelman in isolated network environment when possible:
 
 ```bash
 # Use Docker with network isolation
 docker run --network none \
   -p 127.0.0.1:8008:8008 \
   -p 127.0.0.1:8009:8009 \
-  hoot
+  modelman
 ```
 
 ---
 
 ## Security Best Practices for Users
 
-### For Developers Using Hoot:
+### For Developers Using modelman:
 
-1. **Only run Hoot when actively testing** - don't leave it running in the background
+1. **Only run modelman when actively testing** - don't leave it running in the background
 2. **Review browser extensions** - ensure no malicious extensions have localhost access
 3. **Use dedicated testing environment** - separate from production development
 4. **Monitor port usage** - ensure no unexpected services on ports 3000, 8008, 8009
-5. **Check audit logs regularly** - review `~/.hoot/audit.log` for suspicious activity
-6. **Keep Hoot updated** - watch for security patches
+5. **Check audit logs regularly** - review `~/.modelman/audit.log` for suspicious activity
+6. **Keep modelman updated** - watch for security patches
 
 ### Red Flags to Watch For:
 
@@ -333,15 +333,15 @@ docker run --network none \
 - 🚨 Tool executions you didn't trigger
 - 🚨 OAuth authorization prompts when not connecting
 - 🚨 Unusual network activity on ports 8008-8009
-- 🚨 Modified `~/.hoot/hoot-mcp.db` timestamps
+- 🚨 Modified `~/.modelman/modelman-mcp.db` timestamps
 
 ---
 
-## Comparison: Hoot vs. Docker MCP Gateway
+## Comparison: modelman vs. Docker MCP Gateway
 
-The article recommends Docker MCP Gateway as a secure alternative. Here's how Hoot compares:
+The article recommends Docker MCP Gateway as a secure alternative. Here's how modelman compares:
 
-| Feature | Hoot | Docker MCP Gateway |
+| Feature | modelman | Docker MCP Gateway |
 |---------|------|-------------------|
 | **Network Binding** | localhost only | Configurable (stdio recommended) |
 | **Transport** | HTTP/SSE | stdio (no HTTP exposure) |
@@ -352,13 +352,13 @@ The article recommends Docker MCP Gateway as a secure alternative. Here's how Ho
 | **Resource Limits** | ❌ No | ✅ CPU/Memory limits |
 | **Tool Validation** | ❌ No | ✅ Interceptor scripts |
 
-**Verdict:** Docker MCP Gateway provides significantly better security posture through defense-in-depth, but Hoot is suitable for local development with the mitigations above.
+**Verdict:** Docker MCP Gateway provides significantly better security posture through defense-in-depth, but modelman is suitable for local development with the mitigations above.
 
 ---
 
 ## Conclusion
 
-**Hoot is NOT vulnerable to CVE-2025-49596** because it doesn't bind to 0.0.0.0, but it shares architectural similarities that create related attack surfaces.
+**modelman is NOT vulnerable to CVE-2025-49596** because it doesn't bind to 0.0.0.0, but it shares architectural similarities that create related attack surfaces.
 
 **Recommended Actions:**
 1. ✅ Implement authentication on backend API (critical)
@@ -367,7 +367,7 @@ The article recommends Docker MCP Gateway as a secure alternative. Here's how Ho
 4. ✅ Add user confirmation for sensitive operations (defense in depth)
 5. ✅ Document security best practices for users
 
-**For production MCP deployments**, consider using Docker MCP Gateway for its comprehensive security controls. **For local development and testing**, Hoot is acceptable with the recommended mitigations implemented.
+**For production MCP deployments**, consider using Docker MCP Gateway for its comprehensive security controls. **For local development and testing**, modelman is acceptable with the recommended mitigations implemented.
 
 ---
 

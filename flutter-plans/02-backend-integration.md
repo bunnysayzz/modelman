@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details how to integrate the Flutter app with the existing Hoot Node.js backend. The backend remains unchanged - we only need to create the Flutter client to communicate with it.
+This document details how to integrate the Flutter app with the existing modelman Node.js backend. The backend remains unchanged - we only need to create the Flutter client to communicate with it.
 
 ## Architecture Diagram
 
@@ -604,7 +604,7 @@ final serverProvider = StateNotifierProvider<ServerNotifier, AsyncValue<List<Ser
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
-import 'package:hoot_flutter/core/network/api_service.dart';
+import 'package:modelman_flutter/core/network/api_service.dart';
 
 class MockDio extends Mock implements Dio {}
 

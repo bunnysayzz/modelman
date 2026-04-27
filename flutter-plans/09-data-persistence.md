@@ -403,7 +403,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:io';
 
 class SQLiteService {
-  static const String _databaseName = 'hoot.db';
+  static const String _databaseName = 'modelman.db';
   static const int _databaseVersion = 1;
 
   Database? _database;
@@ -673,7 +673,7 @@ void main() async {
   
   runApp(
     const ProviderScope(
-      child: HootApp(),
+      child: modelmanApp(),
     ),
   );
 }
@@ -721,7 +721,7 @@ class MigrationService {
     await _hive.close();
     await Hive.deleteFromDisk();
     await _sqlite.close();
-    await deleteDatabase(await getDatabasesPath() + '/hoot.db');
+    await deleteDatabase(await getDatabasesPath() + '/modelman.db');
   }
 }
 
@@ -739,8 +739,8 @@ final migrationServiceProvider = Provider<MigrationService>((ref) {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hoot_flutter/core/storage/hive_service.dart';
-import 'package:hoot_flutter/features/servers/data/models/server_model.dart';
+import 'package:modelman_flutter/core/storage/hive_service.dart';
+import 'package:modelman_flutter/features/servers/data/models/server_model.dart';
 
 void main() {
   group('HiveService', () {

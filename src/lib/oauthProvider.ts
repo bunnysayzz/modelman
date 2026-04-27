@@ -2,12 +2,12 @@ import { OAuthClientProvider } from '@modelcontextprotocol/sdk/client/auth.js';
 import { OAuthClientMetadata, OAuthClientInformation, OAuthClientInformationFull, OAuthTokens } from '@modelcontextprotocol/sdk/shared/auth.js';
 
 /**
- * Hoot's OAuth Client Provider implementation
+ * modelman's OAuth Client Provider implementation
  * Handles OAuth 2.1 authorization flow with PKCE, token refresh, and secure storage
  * 
  * Based on the MCP SDK example: https://github.com/modelcontextprotocol/typescript-sdk/blob/main/src/examples/client/simpleOAuthClient.ts
  */
-export class HootOAuthProvider implements OAuthClientProvider {
+export class modelmanOAuthProvider implements OAuthClientProvider {
     private serverId: string;
     private _redirectUrl: string;
 
@@ -22,7 +22,7 @@ export class HootOAuthProvider implements OAuthClientProvider {
 
     get clientMetadata(): OAuthClientMetadata {
         return {
-            client_name: 'Hoot MCP Testing Tool',
+            client_name: 'modelman MCP Testing Tool',
             client_uri: window.location.origin,
             redirect_uris: [this._redirectUrl],
             grant_types: ['authorization_code', 'refresh_token'],
@@ -105,20 +105,20 @@ export class HootOAuthProvider implements OAuthClientProvider {
 
         // Store tokens directly (expires_in is handled by SDK)
         localStorage.setItem(key, JSON.stringify(tokens));
-        console.log(`🔐 Hoot: Saved OAuth tokens for server ${this.serverId}`);
+        console.log(`🔐 modelman: Saved OAuth tokens for server ${this.serverId}`);
     }
 
     /**
      * Redirect user agent to authorization URL
      */
     async redirectToAuthorization(authorizationUrl: URL): Promise<void> {
-        console.log(`🔐 Hoot: Redirecting to authorization: ${authorizationUrl.toString()}`);
+        console.log(`🔐 modelman: Redirecting to authorization: ${authorizationUrl.toString()}`);
 
         // Prevent redirect loops - check if we just came back from a redirect
         const lastRedirect = sessionStorage.getItem('oauth_last_redirect');
         const now = Date.now();
         if (lastRedirect && (now - parseInt(lastRedirect)) < 3000) {
-            console.error('🔐 Hoot: Redirect loop detected! Aborting to prevent infinite redirects.');
+            console.error('🔐 modelman: Redirect loop detected! Aborting to prevent infinite redirects.');
             sessionStorage.removeItem('oauth_last_redirect');
             throw new Error('OAuth redirect loop detected. Please check your OAuth configuration.');
         }
@@ -133,7 +133,7 @@ export class HootOAuthProvider implements OAuthClientProvider {
         await new Promise(resolve => setTimeout(resolve, 100));
 
         // Redirect to authorization URL
-        console.log('🔐 Hoot: Performing redirect now...');
+        console.log('🔐 modelman: Performing redirect now...');
         window.location.href = authorizationUrl.toString();
     }
 
@@ -163,7 +163,7 @@ export class HootOAuthProvider implements OAuthClientProvider {
      * Invalidate stored credentials
      */
     async invalidateCredentials(scope: 'all' | 'client' | 'tokens' | 'verifier'): Promise<void> {
-        console.warn(`🔐 Hoot: Invalidating credentials (${scope}) for server ${this.serverId}`);
+        console.warn(`🔐 modelman: Invalidating credentials (${scope}) for server ${this.serverId}`);
 
         if (scope === 'all' || scope === 'client') {
             localStorage.removeItem(`oauth_client_${this.serverId}`);

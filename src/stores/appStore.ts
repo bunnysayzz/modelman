@@ -242,7 +242,7 @@ export const useAppStore = create<AppStore>()(
                 })),
         }),
         {
-            name: 'hoot-storage',
+            name: 'modelman-storage',
             version: 1,
             storage: customStorage,
             // Persist servers, tools cache, and preferences

@@ -1,6 +1,6 @@
-# Hoot Quick Start Guide
+# modelman Quick Start Guide
 
-Get up and running with Hoot quickly!
+Get up and running with modelman quickly!
 
 ## 🚀 Getting Started
 
@@ -9,18 +9,18 @@ The application runs at: **http://localhost:8009**
 ## Installation
 
 ```bash
-npx -y @portkey-ai/hoot
+npx -y @portkey-ai/modelman
 ```
 
 Or install globally:
 ```bash
-npm install -g @portkey-ai/hoot
-hoot
+npm install -g @portkey-ai/modelman
+modelman
 ```
 
 ## Transport Support
 
-Hoot supports multiple MCP transports:
+modelman supports multiple MCP transports:
 
 - ✅ **HTTP** - Standard REST endpoints (recommended)
 - ✅ **SSE (Server-Sent Events)** - Real-time streaming
@@ -32,12 +32,12 @@ Hoot supports multiple MCP transports:
 
 ### Option 1: Auto-Detection (Recommended)
 
-If you have an MCP server URL, Hoot can auto-detect everything:
+If you have an MCP server URL, modelman can auto-detect everything:
 
 1. Click **"+ Add Server"**
 2. Enter server URL: `https://mcp.example.com`
 3. Click **"Detect & Connect"**
-4. Hoot will automatically:
+4. modelman will automatically:
    - Detect transport type (HTTP or SSE)
    - Get server name and version
    - Detect authentication requirements
@@ -119,7 +119,7 @@ Run:
 node test-server.js
 ```
 
-Then in Hoot:
+Then in modelman:
 - Enter URL: `http://localhost:8080/sse`
 - Click "Detect & Connect"
 - Start testing!
@@ -134,7 +134,7 @@ npm run dev:full
 
 Backend runs on 8008, frontend on 8009.
 
-## 🐛 Troubleshooting
+## 🐛 Troublesmodelmaning
 
 **Server won't connect?**
 - Check the server URL is correct
@@ -154,6 +154,6 @@ Backend runs on 8008, frontend on 8009.
 
 - Read the [Architecture Overview](ARCHITECTURE.md)
 - Learn about [Authentication](AUTHENTICATION.md)
-- Explore [Try in Hoot](TRY_IN_HOOT.md) links
-- Check [Troubleshooting](TROUBLESHOOTING.md) for common issues
+- Explore [Try in modelman](TRY_IN_modelman.md) links
+- Check [Troublesmodelmaning](TROUBLESmodelmanING.md) for common issues
 

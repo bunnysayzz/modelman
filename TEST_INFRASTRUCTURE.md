@@ -1,6 +1,6 @@
-# Hoot Test Infrastructure
+# modelman Test Infrastructure
 
-Production-ready test MCP server with OAuth 2.1 for comprehensive Hoot testing.
+Production-ready test MCP server with OAuth 2.1 for comprehensive modelman testing.
 
 ## Quick Start
 
@@ -68,20 +68,20 @@ describe('My Tests', () => {
 });
 ```
 
-## Manual Testing with Hoot
+## Manual Testing with modelman
 
 ```bash
 # Terminal 1: Test server
 npm run test:server
 
-# Terminal 2: Hoot backend  
+# Terminal 2: modelman backend  
 npm run server
 
-# Terminal 3: Hoot frontend
+# Terminal 3: modelman frontend
 npm run dev
 ```
 
-Connect Hoot to `http://localhost:9000/mcp` with OAuth using custom endpoints.
+Connect modelman to `http://localhost:9000/mcp` with OAuth using custom endpoints.
 
 ## Architecture
 

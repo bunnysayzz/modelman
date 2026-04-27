@@ -1,6 +1,6 @@
-# 🔐 Authentication in Hoot
+# 🔐 Authentication in modelman
 
-Hoot supports multiple authentication methods for connecting to MCP servers, as specified in the MCP protocol.
+modelman supports multiple authentication methods for connecting to MCP servers, as specified in the MCP protocol.
 
 > **For Developers:** See [JWT Authentication](JWT_AUTHENTICATION.md) for the backend authentication architecture.
 
@@ -49,7 +49,7 @@ Header Value: custom-value-123
 ```
 
 **How It Works**:
-- Hoot adds your header to every HTTP request
+- modelman adds your header to every HTTP request
 - Works with both SSE and HTTP transports
 - Headers are stored securely in localStorage (encrypted storage coming in v0.2)
 
@@ -64,10 +64,10 @@ Header Value: custom-value-123
 2. **Option A - Automatic Flow** (Recommended):
    - Leave access token empty
    - Click "Connect"
-   - Hoot will discover OAuth endpoints automatically
+   - modelman will discover OAuth endpoints automatically
    - You'll be redirected to the authorization page
    - Authorize the application
-   - You'll be redirected back to Hoot
+   - You'll be redirected back to modelman
    - Tokens are saved automatically
 
 3. **Option B - Manual Token**:
@@ -94,7 +94,7 @@ Header Value: custom-value-123
 - ✅ Token expiration management
 
 **How It Works**:
-1. Hoot creates an `OAuthClientProvider` for your server
+1. modelman creates an `OAuthClientProvider` for your server
 2. Discovers OAuth endpoints (via `.well-known/oauth-authorization-server`)
    - OR uses your custom endpoints if provided
 3. Generates PKCE code challenge
@@ -131,7 +131,7 @@ Some OAuth providers don't support RFC 8414 auto-discovery or have non-standard 
 ### ⚠️ Important Notes
 - Tokens are stored **locally** in your browser
 - Clearing browser data will **delete** saved tokens
-- Tokens are **not** sent to Hoot servers (Hoot is client-side only)
+- Tokens are **not** sent to modelman servers (modelman is client-side only)
 - For production, consider using OAuth with automatic refresh
 
 ---
@@ -176,7 +176,7 @@ Authentication: OAuth
   Advanced OAuth Options:
     Authorization Endpoint: https://auth.example.com/oauth/authorize
     Token Endpoint: https://auth.example.com/oauth/token
-    Custom Client ID: hoot-client-123 (optional)
+    Custom Client ID: modelman-client-123 (optional)
 ```
 
 This is useful for:
@@ -223,7 +223,7 @@ This is useful for:
 
 ## SDK Integration
 
-Hoot uses the official MCP SDK's auth system:
+modelman uses the official MCP SDK's auth system:
 
 ### Header Auth
 ```typescript
@@ -298,11 +298,11 @@ A: v0.1 requires manual token refresh. Automatic refresh coming in v0.2.
 **Q: Can I use multiple headers?**  
 A: Not in the UI yet, but you can edit the server config in localStorage to add multiple headers.
 
-**Q: Does Hoot send my credentials anywhere?**  
-A: No! Hoot is 100% client-side. Credentials are only sent to **your configured MCP server**.
+**Q: Does modelman send my credentials anywhere?**  
+A: No! modelman is 100% client-side. Credentials are only sent to **your configured MCP server**.
 
 ---
 
-**Authentication makes Hoot production-ready!** 🦉🔐
+**Authentication makes modelman production-ready!** 🦉🔐
 
 

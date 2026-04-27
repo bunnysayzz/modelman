@@ -57,7 +57,7 @@ export class JWTManager {
     } = options;
 
     const token = await new SignJWT({
-      // Hoot backend claims (for MCP operations)
+      // modelman backend claims (for MCP operations)
       sub: userId,
 
       // Portkey claims (for AI completions)

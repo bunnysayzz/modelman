@@ -33,7 +33,7 @@ export function createOAuthProvider(options) {
 
     get clientMetadata() {
       return {
-        client_name: 'Hoot MCP Testing Tool',
+        client_name: 'modelman MCP Testing Tool',
         client_uri: frontendUrl,
         redirect_uris: [callbackUrl],
         grant_types: ['authorization_code', 'refresh_token'],
@@ -149,7 +149,7 @@ export async function autoDetectServer({ url }) {
             params: {
               protocolVersion: '2025-11-25',
               capabilities: {},
-              clientInfo: { name: 'hoot-backend', version: '0.2.0' }
+              clientInfo: { name: 'modelman-backend', version: '0.2.0' }
             }
           })
         });
@@ -252,7 +252,7 @@ export async function autoDetectServer({ url }) {
       // Create a temporary client
       const client = new Client(
         {
-          name: 'hoot-backend',
+          name: 'modelman-backend',
           version: '0.2.0',
         },
         {
@@ -545,7 +545,7 @@ export async function connectToServer(options) {
   // Create MCP client
   const client = new Client(
     {
-      name: 'hoot-backend',
+      name: 'modelman-backend',
       version: '0.2.0',
     },
     {
@@ -682,7 +682,7 @@ export async function fetchFavicon({ serverUrl, oauthLogoUri, db }) {
         method: 'HEAD',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'Hoot-MCP-Client/1.0'
+          'User-Agent': 'modelman-MCP-Client/1.0'
         }
       });
       clearTimeout(timeout);
@@ -703,7 +703,7 @@ export async function fetchFavicon({ serverUrl, oauthLogoUri, db }) {
         method: 'GET',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'Hoot-MCP-Client/1.0'
+          'User-Agent': 'modelman-MCP-Client/1.0'
         }
       });
       clearTimeout(timeout);

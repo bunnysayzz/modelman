@@ -180,7 +180,7 @@ export const useToolStateStore = create<ToolStateStore>()(
             },
         }),
         {
-            name: 'hoot-tool-state',
+            name: 'modelman-tool-state',
             version: 1,
             storage: customStorage,
         }

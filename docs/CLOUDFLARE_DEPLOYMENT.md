@@ -1,20 +1,20 @@
-# Deploying Hoot to Cloudflare
+# Deploying modelman to Cloudflare
 
-Complete guide for deploying Hoot with Cloudflare Pages (frontend) + Workers (server).
+Complete guide for deploying modelman with Cloudflare Pages (frontend) + Workers (server).
 
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Cloudflare Pages                                   │
-│  https://hoot.pages.dev                             │
+│  https://modelman.pages.dev                             │
 │  ├── React Frontend (static)                        │
 │  └── Connects to Workers via VITE_BACKEND_URL       │
 └─────────────────────────────────────────────────────┘
                         ↓
 ┌─────────────────────────────────────────────────────┐
 │  Cloudflare Workers                                 │
-│  https://hoot-server.your-subdomain.workers.dev     │
+│  https://modelman-server.your-subdomain.workers.dev     │
 │  ├── server/server-worker.js                        │
 │  ├── Durable Objects (user data, favicon cache)     │
 │  └── JWT authentication                             │
@@ -81,7 +81,7 @@ wrangler secret put PORTKEY_WORKSPACE_SLUG
 
 ```jsonc
 {
-  "name": "hoot-server",
+  "name": "modelman-server",
   "main": "server/server-worker.js",
   "compatibility_date": "2024-11-04",
   "compatibility_flags": ["nodejs_compat"],
@@ -106,15 +106,15 @@ wrangler secret put PORTKEY_WORKSPACE_SLUG
   ],
   
   "vars": {
-    "FRONTEND_URL": "https://hoot.pages.dev",  // Update with your Pages URL
+    "FRONTEND_URL": "https://modelman.pages.dev",  // Update with your Pages URL
     "CLOUDFLARE_ACCOUNT_ID": "your-account-id-here"  // REQUIRED: Replace with your account ID
   },
   
   "env": {
     "production": {
-      "name": "hoot-server-production",
+      "name": "modelman-server-production",
       "vars": { 
-        "FRONTEND_URL": "https://hoot.yourdomain.com",
+        "FRONTEND_URL": "https://modelman.yourdomain.com",
         "CLOUDFLARE_ACCOUNT_ID": "your-account-id-here"  // REQUIRED: Replace with your account ID
       },
       "ai": {
@@ -135,26 +135,26 @@ wrangler secret put PORTKEY_WORKSPACE_SLUG
 npm run deploy:cloudflare
 ```
 
-**Note the Workers URL** (e.g., `https://hoot-server.your-subdomain.workers.dev`)
+**Note the Workers URL** (e.g., `https://modelman-server.your-subdomain.workers.dev`)
 
 ## Step 2: Deploy the Frontend (Pages)
 
 ### 2.1 Build Frontend
 
-The build script is pre-configured to use the production backend URL (`https://hoot-server-production.portkey-ai.workers.dev`).
+The build script is pre-configured to use the production backend URL (`https://modelman-server-production.portkey-ai.workers.dev`).
 
 To use a custom backend URL, you can either:
 
 **Option A: Override with environment variable**
 ```bash
-VITE_BACKEND_URL=https://hoot-server.your-subdomain.workers.dev npm run build
+VITE_BACKEND_URL=https://modelman-server.your-subdomain.workers.dev npm run build
 ```
 
 **Option B: Create `.env.production` file (optional)**
 ```bash
 # Create .env.production file to permanently override
 cat > .env.production << EOF
-VITE_BACKEND_URL=https://hoot-server.your-subdomain.workers.dev
+VITE_BACKEND_URL=https://modelman-server.your-subdomain.workers.dev
 EOF
 ```
 
@@ -170,7 +170,7 @@ This creates a `dist/` folder with static files.
 #### Option A: Via Wrangler
 
 ```bash
-npx wrangler pages deploy dist --project-name=hoot
+npx wrangler pages deploy dist --project-name=modelman
 ```
 
 #### Option B: Via Dashboard
@@ -183,7 +183,7 @@ npx wrangler pages deploy dist --project-name=hoot
 6. Set **Build output directory**: `dist`
 7. Add environment variable:
    - Key: `VITE_BACKEND_URL`
-   - Value: `https://hoot-server.your-subdomain.workers.dev`
+   - Value: `https://modelman-server.your-subdomain.workers.dev`
 
 #### Option C: Connect GitHub (Recommended)
 
@@ -192,7 +192,7 @@ npx wrangler pages deploy dist --project-name=hoot
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
    - **Environment variables**:
-     - `VITE_BACKEND_URL` = `https://hoot-server.your-subdomain.workers.dev`
+     - `VITE_BACKEND_URL` = `https://modelman-server.your-subdomain.workers.dev`
 3. Cloudflare will auto-deploy on every push!
 
 ## Step 3: Configure CORS
@@ -202,7 +202,7 @@ Update `wrangler.jsonc` to allow your Pages domain:
 ```jsonc
 {
   "vars": {
-    "FRONTEND_URL": "https://hoot.pages.dev"
+    "FRONTEND_URL": "https://modelman.pages.dev"
   }
 }
 ```
@@ -211,7 +211,7 @@ Or set it as a secret:
 
 ```bash
 wrangler secret put FRONTEND_URL
-# Paste: https://hoot.pages.dev
+# Paste: https://modelman.pages.dev
 ```
 
 Redeploy workers:
@@ -225,7 +225,7 @@ npm run deploy:cloudflare
 ### 4.1 Test Workers Health
 
 ```bash
-curl https://hoot-server.your-subdomain.workers.dev/health
+curl https://modelman-server.your-subdomain.workers.dev/health
 ```
 
 Expected:
@@ -239,7 +239,7 @@ Expected:
 
 ### 4.2 Test Frontend
 
-Visit `https://hoot.pages.dev` and:
+Visit `https://modelman.pages.dev` and:
 1. Open DevTools → Network tab
 2. Try connecting to a server
 3. Verify requests go to your Workers URL
@@ -248,14 +248,14 @@ Visit `https://hoot.pages.dev` and:
 
 ### Frontend (.env.production)
 ```bash
-VITE_BACKEND_URL=https://hoot-server.your-subdomain.workers.dev
+VITE_BACKEND_URL=https://modelman-server.your-subdomain.workers.dev
 ```
 
 ### Workers (wrangler.jsonc or secrets)
 ```jsonc
 {
   "vars": {
-    "FRONTEND_URL": "https://hoot.pages.dev"
+    "FRONTEND_URL": "https://modelman.pages.dev"
   }
   // Secrets (set via wrangler secret put):
   // - JWT_PRIVATE_KEY
@@ -289,14 +289,14 @@ VITE_BACKEND_URL=https://api.yourdomain.com
 
 In Cloudflare Dashboard:
 1. Pages → Your Project → **Custom domains**
-2. Add `hoot.yourdomain.com`
+2. Add `modelman.yourdomain.com`
 3. Cloudflare will auto-configure DNS
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### Frontend can't connect to Workers
 
-**Error**: `Cannot connect to Hoot backend`
+**Error**: `Cannot connect to modelman backend`
 
 **Fix**: Check CORS - ensure `FRONTEND_URL` in Workers matches your Pages URL
 
@@ -332,7 +332,7 @@ Should show:
 
 **Explanation**: Cloudflare Workers are **stateless** - each request runs in an isolated context. MCP connections cannot be reused across requests.
 
-**Current Solution**: Hoot creates a new MCP client for each request. This means:
+**Current Solution**: modelman creates a new MCP client for each request. This means:
 - ✅ Works reliably in Workers
 - ⚠️ Slightly slower (reconnects each time)
 - ✅ OAuth tokens are cached in Durable Objects
@@ -341,7 +341,7 @@ Should show:
 
 ### Semantic Tool Filtering with Workers AI ✨
 
-**Good news!** Hoot now supports semantic tool filtering on Cloudflare using Workers AI with OpenAI-compatible endpoints!
+**Good news!** modelman now supports semantic tool filtering on Cloudflare using Workers AI with OpenAI-compatible endpoints!
 
 **How it works:**
 - Automatically detects if Workers AI is available (`env.AI` binding)
@@ -403,11 +403,11 @@ Workers AI provides OpenAI-compatible endpoints at:
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1
 ```
 
-Hoot's tool filter uses the existing OpenAI provider with this base URL, making it work seamlessly with Workers AI models!
+modelman's tool filter uses the existing OpenAI provider with this base URL, making it work seamlessly with Workers AI models!
 
 **Fallback behavior:**
 - If Workers AI is not configured, falls back to Node.js behavior (Transformers.js on Node, all tools on Workers)
-- The feature gracefully degrades, ensuring Hoot works in all environments
+- The feature gracefully degrades, ensuring modelman works in all environments
 
 ### Local Development with Workers AI
 
@@ -521,7 +521,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       
       - name: Deploy Pages
-        run: npx wrangler pages deploy dist --project-name=hoot
+        run: npx wrangler pages deploy dist --project-name=modelman
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```
@@ -532,5 +532,5 @@ Add these secrets to your GitHub repo:
 
 ---
 
-**You're now running Hoot globally on Cloudflare's edge! 🌍**
+**You're now running modelman globally on Cloudflare's edge! 🌍**
 

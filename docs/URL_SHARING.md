@@ -22,17 +22,17 @@ URLs automatically sync with app state. Just copy the browser URL to share your 
 
 **Share server:**
 ```
-https://hoot.app/?s=weather:https://api.weather.com/mcp
+https://modelman.app/?s=weather:https://api.weather.com/mcp
 ```
 
 **Share tool with args:**
 ```
-https://hoot.app/?s=weather:https://api.weather.com/mcp&tool=forecast&args=eyJjaXR5IjoiU0YifQ
+https://modelman.app/?s=weather:https://api.weather.com/mcp&tool=forecast&args=eyJjaXR5IjoiU0YifQ
 ```
 
 **Share in chat mode:**
 ```
-https://hoot.app/chat?s=weather:https://api.weather.com/mcp&view=hybrid
+https://modelman.app/chat?s=weather:https://api.weather.com/mcp&view=hybrid
 ```
 
 ## How It Works
@@ -53,7 +53,7 @@ The URL sync happens in two phases:
 ### Key Files
 
 - `src/hooks/useURLState.ts` - URL read/write utilities and reference encoding/decoding
-- `src/components/TryInHootHandler.tsx` - Handles server references from URLs for new servers
+- `src/components/TryInmodelmanHandler.tsx` - Handles server references from URLs for new servers
 - `src/App.tsx` - Bidirectional state ↔ URL sync (handles both directions)
 - `src/components/ServerSidebar.tsx` - Server selection (only updates state, not URL directly)
 

@@ -1,6 +1,6 @@
-# Publishing Hoot to npm
+# Publishing modelman to npm
 
-This guide will help you publish Hoot to npm so users can run it with `npx -y hoot`.
+This guide will help you publish modelman to npm so users can run it with `npx -y modelman`.
 
 ## Prerequisites
 
@@ -26,12 +26,12 @@ Edit `package.json` and update these fields:
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/hoot.git"
+    "url": "https://github.com/YOUR_USERNAME/modelman.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/hoot/issues"
+    "url": "https://github.com/YOUR_USERNAME/modelman/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/hoot#readme"
+  "homepage": "https://github.com/YOUR_USERNAME/modelman#readme"
 }
 ```
 
@@ -55,14 +55,14 @@ Before publishing, test the package locally:
 npm pack
 
 # Test installation from tarball
-npm install -g ./hoot-0.2.0.tgz
+npm install -g ./modelman-0.2.0.tgz
 
 # Test running it
-hoot
+modelman
 
 # Clean up
-npm uninstall -g hoot
-rm hoot-0.2.0.tgz
+npm uninstall -g modelman
+rm modelman-0.2.0.tgz
 ```
 
 ### 4. Publish to npm
@@ -81,11 +81,11 @@ After publishing:
 
 ```bash
 # Test with npx
-npx -y hoot
+npx -y modelman
 
 # Or install globally and run
-npm install -g hoot
-hoot
+npm install -g modelman
+modelman
 ```
 
 ## Post-publish Steps
@@ -144,10 +144,10 @@ The following are excluded:
 - `examples/` - Example files
 - Development configuration files
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### Package name already taken
-Use an npm scope: Change package name to `@yourusername/hoot`
+Use an npm scope: Change package name to `@yourusername/modelman`
 
 ### Permission denied
 Run `npm login` again to authenticate
@@ -156,7 +156,7 @@ Run `npm login` again to authenticate
 Check that all dependencies are installed: `npm install`
 
 ### Binary not working
-Ensure `bin/hoot.js` has execute permissions: `chmod +x bin/hoot.js`
+Ensure `bin/modelman.js` has execute permissions: `chmod +x bin/modelman.js`
 
 ## Best Practices
 
@@ -168,7 +168,7 @@ Ensure `bin/hoot.js` has execute permissions: `chmod +x bin/hoot.js`
 
 ## Support
 
-- GitHub Issues: https://github.com/yourusername/hoot/issues
-- npm Package: https://www.npmjs.com/package/hoot
+- GitHub Issues: https://github.com/yourusername/modelman/issues
+- npm Package: https://www.npmjs.com/package/modelman
 - Documentation: See `docs/` folder
 

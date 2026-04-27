@@ -40,7 +40,7 @@ export interface ChatCompletionOptions {
 
 // Helper to get the selected model from localStorage
 function getSelectedModel(): string {
-    return localStorage.getItem('hoot-selected-model') || '@openai/gpt-4o-mini';
+    return localStorage.getItem('modelman-selected-model') || '@openai/gpt-4o-mini';
 }
 
 // Helper to display model name (strip prefix before /)

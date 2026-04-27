@@ -6,10 +6,10 @@
 
 ```bash
 # Create new Flutter project
-flutter create hoot_flutter --org com.portkeyai
+flutter create modelman_flutter --org com.portkeyai
 
 # Navigate to project
-cd hoot_flutter
+cd modelman_flutter
 
 # Enable multi-platform support
 flutter config --enable-web
@@ -21,8 +21,8 @@ flutter config --enable-windows-desktop
 ### Step 2: Configure pubspec.yaml
 
 ```yaml
-name: hoot_flutter
-description: Hoot - MCP Testing Tool for Flutter
+name: modelman_flutter
+description: modelman - MCP Testing Tool for Flutter
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -126,13 +126,13 @@ void main() {
   
   runApp(
     const ProviderScope(
-      child: HootApp(),
+      child: modelmanApp(),
     ),
   );
 }
 
-class HootApp extends ConsumerWidget {
-  const HootApp({super.key});
+class modelmanApp extends ConsumerWidget {
+  const modelmanApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -140,7 +140,7 @@ class HootApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp.router(
-      title: 'Hoot',
+      title: 'modelman',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
@@ -167,7 +167,7 @@ class AppConfig {
   );
 
   // App Configuration
-  static const String appName = 'Hoot';
+  static const String appName = 'modelman';
   static const String appVersion = '1.0.0';
   
   // Feature Flags
@@ -213,7 +213,7 @@ class ApiConstants {
   
   // Headers
   static const String contentType = 'application/json';
-  static const String authHeader = 'x-hoot-token';
+  static const String authHeader = 'x-modelman-token';
 }
 ```
 
@@ -593,7 +593,7 @@ android {
     compileSdkVersion 34
     
     defaultConfig {
-        applicationId "com.portkeyai.hoot"
+        applicationId "com.portkeyai.modelman"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
@@ -622,7 +622,7 @@ android {
         <string>Editor</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>hoot</string>
+            <string>modelman</string>
         </array>
     </dict>
 </array>

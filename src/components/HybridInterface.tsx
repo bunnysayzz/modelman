@@ -46,8 +46,8 @@ interface Message {
     apiResponse?: any;
 }
 
-const CHAT_MESSAGES_STORAGE_KEY = 'hoot-chat-messages';
-const CHAT_MENTIONS_STORAGE_KEY = 'hoot-chat-mentions';
+const CHAT_MESSAGES_STORAGE_KEY = 'modelman-chat-messages';
+const CHAT_MENTIONS_STORAGE_KEY = 'modelman-chat-mentions';
 
 // Helper to get initial messages from localStorage or default
 const getInitialMessages = (): Message[] => {
@@ -65,7 +65,7 @@ const getInitialMessages = (): Message[] => {
     }
 
     // Get current model name for welcome message
-    const currentModel = localStorage.getItem('hoot-selected-model') || '@openai/gpt-4o-mini';
+    const currentModel = localStorage.getItem('modelman-selected-model') || '@openai/gpt-4o-mini';
     const modelName = getDisplayModelName(currentModel);
 
     // Return default welcome message
@@ -134,7 +134,7 @@ export function HybridInterface() {
         const handleModelChange = () => {
             // Only update if we're showing just the welcome message
             if (messages.length === 1 && messages[0].role === 'system') {
-                const currentModel = localStorage.getItem('hoot-selected-model') || '@openai/gpt-4o-mini';
+                const currentModel = localStorage.getItem('modelman-selected-model') || '@openai/gpt-4o-mini';
                 const modelName = getDisplayModelName(currentModel);
 
                 setMessages([{
@@ -219,7 +219,7 @@ export function HybridInterface() {
     }, [messages.length]);
 
     const handleClearChat = () => {
-        const currentModel = localStorage.getItem('hoot-selected-model') || '@openai/gpt-4o-mini';
+        const currentModel = localStorage.getItem('modelman-selected-model') || '@openai/gpt-4o-mini';
         const modelName = getDisplayModelName(currentModel);
 
         const welcomeMessage: Message = {
@@ -486,7 +486,7 @@ export function HybridInterface() {
             if (conversationMessages.length === 0) {
                 conversationMessages.unshift({
                     role: 'system',
-                    content: "You are Hoot's AI assistant. Hoot is a web-based MCP (Model Context Protocol) client that connects to multiple servers, giving you access to a wide range of tools and services.\n\nYour available tools are intelligently filtered using semantic similarity to show only the most relevant options for the current conversation. When you need to accomplish a task, use the provided tools effectively.\n\nBe helpful, clear about what actions you're taking, and explain tool results in a natural way.",
+                    content: "You are modelman's AI assistant. modelman is a web-based MCP (Model Context Protocol) client that connects to multiple servers, giving you access to a wide range of tools and services.\n\nYour available tools are intelligently filtered using semantic similarity to show only the most relevant options for the current conversation. When you need to accomplish a task, use the provided tools effectively.\n\nBe helpful, clear about what actions you're taking, and explain tool results in a natural way.",
                 });
             }
 
@@ -994,7 +994,7 @@ export function HybridInterface() {
                                                     // System message with clickable model name
                                                     <div className="message-text-hybrid">
                                                         {(() => {
-                                                            const currentModel = localStorage.getItem('hoot-selected-model') || '@openai/gpt-4o-mini';
+                                                            const currentModel = localStorage.getItem('modelman-selected-model') || '@openai/gpt-4o-mini';
                                                             const modelName = getDisplayModelName(currentModel);
                                                             const parts = message.content.split(modelName);
 

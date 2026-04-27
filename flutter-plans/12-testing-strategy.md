@@ -65,8 +65,8 @@ integration_test/
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hoot_flutter/features/servers/data/repositories/server_repository.dart';
-import 'package:hoot_flutter/core/network/api_service.dart';
+import 'package:modelman_flutter/features/servers/data/repositories/server_repository.dart';
+import 'package:modelman_flutter/core/network/api_service.dart';
 
 class MockApiService extends Mock implements ApiService {}
 
@@ -153,8 +153,8 @@ void main() {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hoot_flutter/core/state/providers.dart';
-import 'package:hoot_flutter/features/servers/data/models/server_model.dart';
+import 'package:modelman_flutter/core/state/providers.dart';
+import 'package:modelman_flutter/features/servers/data/models/server_model.dart';
 
 void main() {
   test('ServersProvider - addServer', () {
@@ -206,7 +206,7 @@ void main() {
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/shared/widgets/json_editor.dart';
+import 'package:modelman_flutter/shared/widgets/json_editor.dart';
 
 void main() {
   testWidgets('JsonEditor renders initial value', (tester) async {
@@ -272,8 +272,8 @@ void main() {
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/features/servers/presentation/widgets/server_tile.dart';
-import 'package:hoot_flutter/features/servers/data/models/server_model.dart';
+import 'package:modelman_flutter/features/servers/presentation/widgets/server_tile.dart';
+import 'package:modelman_flutter/features/servers/data/models/server_model.dart';
 
 void main() {
   testWidgets('ServerTile displays server name', (tester) async {
@@ -361,7 +361,7 @@ void main() {
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/core/network/api_service.dart';
+import 'package:modelman_flutter/core/network/api_service.dart';
 
 void main() {
   test('API Service - health check', () async {
@@ -379,8 +379,8 @@ void main() {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hoot_flutter/core/storage/hive_service.dart';
-import 'package:hoot_flutter/features/servers/data/models/server_model.dart';
+import 'package:modelman_flutter/core/storage/hive_service.dart';
+import 'package:modelman_flutter/features/servers/data/models/server_model.dart';
 
 void main() {
   group('HiveService Integration', () {
@@ -434,13 +434,13 @@ void main() {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hoot_flutter/main.dart';
+import 'package:modelman_flutter/main.dart';
 
 void main() {
   testWidgets('App flow - add server and connect', (tester) async {
     await tester.pumpWidget(
       const ProviderScope(
-        child: HootApp(),
+        child: modelmanApp(),
       ),
     );
 
@@ -468,7 +468,7 @@ void main() {
   testWidgets('App flow - execute tool', (tester) async {
     await tester.pumpWidget(
       const ProviderScope(
-        child: HootApp(),
+        child: modelmanApp(),
       ),
     );
 
@@ -487,13 +487,13 @@ void main() {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hoot_flutter/main.dart';
+import 'package:modelman_flutter/main.dart';
 
 void main() {
   testWidgets('OAuth flow - initiate and complete', (tester) async {
     await tester.pumpWidget(
       const ProviderScope(
-        child: HootApp(),
+        child: modelmanApp(),
       ),
     );
 
@@ -518,8 +518,8 @@ void main() {
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hoot_flutter/main.dart';
-import 'package:hoot_flutter/core/theme/app_theme.dart';
+import 'package:modelman_flutter/main.dart';
+import 'package:modelman_flutter/core/theme/app_theme.dart';
 
 void main() {
   testWidgets('Golden test - light theme', (tester) async {
@@ -573,7 +573,7 @@ void main() {
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
-import 'package:hoot_flutter/core/network/api_service.dart';
+import 'package:modelman_flutter/core/network/api_service.dart';
 
 @GenerateMocks([ApiService, Dio])
 import 'mocks.mocks.dart';

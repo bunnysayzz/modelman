@@ -187,7 +187,7 @@ Total checks: 4
 3. Implement missing OAuth specifications
 4. Re-test to verify improvements
 
-### For Hoot
+### For modelman
 1. Run full test on all 87 servers
 2. Analyze results to understand ecosystem
 3. Create blog post with findings

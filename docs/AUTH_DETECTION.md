@@ -1,8 +1,8 @@
-# Authentication Detection in Hoot 🦉
+# Authentication Detection in modelman 🦉
 
 ## Overview
 
-Hoot supports multiple authentication methods for MCP servers. This document explains what can be auto-detected, what requires manual configuration, and how to handle advanced scenarios.
+modelman supports multiple authentication methods for MCP servers. This document explains what can be auto-detected, what requires manual configuration, and how to handle advanced scenarios.
 
 > **Note:** See also [Auto-Detection](AUTO_DETECTION.md) for the complete server detection system.
 
@@ -14,7 +14,7 @@ Hoot supports multiple authentication methods for MCP servers. This document exp
 - Server returns HTTP 401 with OAuth authorization URL, OR
 - Server provides RFC 9728 OAuth Protected Resource Metadata at `/.well-known/oauth-protected-resource`, OR  
 - Server returns `WWW-Authenticate: Bearer` header with resource metadata
-- Hoot auto-detects and shows "Authorize →" button
+- modelman auto-detects and shows "Authorize →" button
 - User is redirected through OAuth flow
 - Tokens are securely stored and automatically refreshed
 
@@ -31,7 +31,7 @@ Hoot supports multiple authentication methods for MCP servers. This document exp
 
 **User Experience:**
 1. User provides server URL
-2. Hoot detects OAuth requirement automatically
+2. modelman detects OAuth requirement automatically
 3. Modal shows "🔐 Login needed" 
 4. Button changes to "Authorize →"
 5. Smooth OAuth redirect and callback
@@ -40,7 +40,7 @@ Hoot supports multiple authentication methods for MCP servers. This document exp
 
 **How it works:**
 - Server advertises in metadata: `"authMethods": ["client_credentials"]`
-- Hoot detects during auto-detection
+- modelman detects during auto-detection
 - Shows form for client ID and secret
 - Exchanges credentials for token automatically
 
@@ -66,7 +66,7 @@ Hoot supports multiple authentication methods for MCP servers. This document exp
 
 **Solutions:**
 
-#### Option A: "Try in Hoot" Links (Recommended)
+#### Option A: "Try in modelman" Links (Recommended)
 Server authors can pre-configure auth in shareable links:
 
 ```json
@@ -165,10 +165,10 @@ The MCP protocol may add new auth methods:
 - HMAC signatures
 - SAML/SSO integration
 
-**Hoot's Approach:**
+**modelman's Approach:**
 - ✅ Backend is flexible - passes auth config to SDK
 - ✅ Frontend types support extensible auth types
-- ✅ "Try in Hoot" can include any auth config
+- ✅ "Try in modelman" can include any auth config
 - ⚠️  Auto-detection limited to what protocol supports
 
 ## Implementation Details
@@ -257,7 +257,7 @@ When auth is required but can't be auto-detected:
 **Make it easy for users:**
 
 1. **Prefer OAuth** for production servers
-   - Auto-detected by Hoot
+   - Auto-detected by modelman
    - Secure, no credential sharing
    - Best user experience
 
@@ -271,13 +271,13 @@ When auth is required but can't be auto-detected:
    ```
 
 3. **For API key auth:**
-   - Provide "Try in Hoot" link with placeholder key
+   - Provide "Try in modelman" link with placeholder key
    - Document how to get real API keys
    - Consider adding OAuth support
 
 4. **Document clearly:**
    ```markdown
-   [![Try in Hoot](badge)](link)
+   [![Try in modelman](badge)](link)
    
    **Authentication:** This server requires an API key. 
    After adding:
@@ -291,7 +291,7 @@ When auth is required but can't be auto-detected:
 **Auto-detection flow:**
 1. Paste server URL
 2. Click "Connect"
-3. Hoot tries to connect
+3. modelman tries to connect
 4. If auth needed:
    - OAuth → "Authorize →" button appears
    - Client credentials → Form for ID/secret
@@ -300,7 +300,7 @@ When auth is required but can't be auto-detected:
 
 **If auto-detection doesn't work:**
 1. Check server documentation
-2. Look for "Try in Hoot" links (may include auth)
+2. Look for "Try in modelman" links (may include auth)
 3. Add server, then edit to add auth manually
 4. Contact server author about auth metadata
 
@@ -404,7 +404,7 @@ Server uses OAuth but with custom endpoints:
     "customMetadata": {
       "authorization_endpoint": "https://auth.company.com/oauth/authorize",
       "token_endpoint": "https://auth.company.com/oauth/token",
-      "client_id": "hoot-client",
+      "client_id": "modelman-client",
       "response_types_supported": ["code"],
       "grant_types_supported": ["authorization_code", "refresh_token"]
     }
@@ -414,7 +414,7 @@ Server uses OAuth but with custom endpoints:
 
 ## Summary
 
-| Auth Type | Auto-Detect | Try in Hoot | Manual Config | Fallback UI |
+| Auth Type | Auto-Detect | Try in modelman | Manual Config | Fallback UI |
 |-----------|-------------|-------------|---------------|-------------|
 | OAuth 2.1 | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Client Creds | ⚠️  Metadata | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -427,6 +427,6 @@ Server uses OAuth but with custom endpoints:
 1. Use OAuth 2.1 for best UX
 2. Advertise auth methods in server metadata
 3. Provide clear documentation
-4. Include "Try in Hoot" links with auth pre-configured
+4. Include "Try in modelman" links with auth pre-configured
 
 

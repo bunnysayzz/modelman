@@ -1,14 +1,14 @@
-# Hoot → Flutter: Overview & Architecture
+# modelman → Flutter: Overview & Architecture
 
 ## Executive Summary
 
-This document outlines the comprehensive plan to port Hoot (React/TypeScript web app) to Flutter multi-platform application.
+This document outlines the comprehensive plan to port modelman (React/TypeScript web app) to Flutter multi-platform application.
 
 ## Current Architecture (React)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     Hoot Web Architecture                     │
+│                     modelman Web Architecture                     │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────┐      ┌──────────────┐      ┌────────────┐ │
@@ -32,7 +32,7 @@ This document outlines the comprehensive plan to port Hoot (React/TypeScript web
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   Hoot Flutter Architecture                   │
+│                   modelman Flutter Architecture                   │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────┐      ┌──────────────┐      ┌────────────┐ │
@@ -141,7 +141,7 @@ class Tools extends _$Tools {
 ## Directory Structure
 
 ```
-hoot_flutter/
+modelman_flutter/
 ├── lib/
 │   ├── main.dart
 │   ├── core/

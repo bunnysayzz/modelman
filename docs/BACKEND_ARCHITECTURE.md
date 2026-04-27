@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Hoot MCP client has been redesigned to eliminate CORS issues by using a **Node.js backend relay architecture**. Instead of the browser connecting directly to MCP servers, it now communicates with a local Node.js backend that acts as the MCP client.
+The modelman MCP client has been redesigned to eliminate CORS issues by using a **Node.js backend relay architecture**. Instead of the browser connecting directly to MCP servers, it now communicates with a local Node.js backend that acts as the MCP client.
 
 ## Architecture Diagram
 
@@ -247,7 +247,7 @@ npm run dev
 
 None! The API remains the same from the component perspective.
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### Backend not running
 
@@ -315,7 +315,7 @@ Expected response:
 ```json
 {
   "status": "ok",
-  "message": "Hoot Backend Server is running",
+  "message": "modelman Backend Server is running",
   "port": 8008,
   "activeConnections": 0
 }

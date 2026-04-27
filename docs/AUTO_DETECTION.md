@@ -1,6 +1,6 @@
 # Auto-Detection Feature
 
-Hoot simplifies adding MCP servers by automatically detecting server configuration from just a URL.
+modelman simplifies adding MCP servers by automatically detecting server configuration from just a URL.
 
 ## Overview
 
@@ -38,12 +38,12 @@ Everything Else Detected Automatically:
 
 ### 1. Transport Detection
 
-Hoot tries to connect using different transports in order:
+modelman tries to connect using different transports in order:
 
 ```javascript
 // 1. Try HTTP transport first (faster, more common)
 try {
-  const client = new Client({ name: 'hoot', version: '1.0.0' });
+  const client = new Client({ name: 'modelman', version: '1.0.0' });
   const transport = new StreamableHTTPClientTransport(url);
   await client.connect(transport);
   return { transport: 'http', serverInfo, requiresOAuth: false };
@@ -53,7 +53,7 @@ try {
 
 // 2. Try SSE transport
 try {
-  const client = new Client({ name: 'hoot', version: '1.0.0' });
+  const client = new Client({ name: 'modelman', version: '1.0.0' });
   const transport = new SSEClientTransport(url);
   await client.connect(transport);
   return { transport: 'sse', serverInfo, requiresOAuth: false };
@@ -66,7 +66,7 @@ try {
 
 **Method A: From MCP Initialization (Preferred)**
 
-When connection succeeds, Hoot gets server info from MCP protocol:
+When connection succeeds, modelman gets server info from MCP protocol:
 
 ```javascript
 const serverInfo = await client.getServerVersion();
@@ -75,7 +75,7 @@ const serverInfo = await client.getServerVersion();
 
 **Method B: From URL (Fallback)**
 
-When OAuth blocks initialization, Hoot extracts the name from the URL:
+When OAuth blocks initialization, modelman extracts the name from the URL:
 
 ```javascript
 // Example: https://mcp.notion.com → "Notion"
@@ -91,7 +91,7 @@ This ensures users see meaningful names like "Notion" instead of "Unknown Server
 
 ### 3. OAuth Detection
 
-Hoot automatically detects OAuth by catching authentication errors:
+modelman automatically detects OAuth by catching authentication errors:
 
 ```javascript
 try {
@@ -109,7 +109,7 @@ try {
 
 ### 4. Authentication Method Detection
 
-Hoot checks server metadata for advertised authentication methods:
+modelman checks server metadata for advertised authentication methods:
 
 ```javascript
 const metadata = await client.getServerVersion();
@@ -178,7 +178,7 @@ export async function autoDetectServer(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-hoot-token': token,
+      'x-modelman-token': token,
     },
     body: JSON.stringify({ url }),
   });
@@ -278,7 +278,7 @@ Expected output:
 ## Related Documentation
 
 - [Authentication Detection](AUTH_DETECTION.md) - Detailed auth detection
-- [Try in Hoot](TRY_IN_HOOT.md) - Pre-configured server links
+- [Try in modelman](TRY_IN_modelman.md) - Pre-configured server links
 - [Backend Architecture](../server/README.md) - Server implementation
 
 ---

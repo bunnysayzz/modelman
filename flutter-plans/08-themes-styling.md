@@ -733,14 +733,14 @@ class ThemeSelector extends ConsumerWidget {
 import 'package:flutter/material.dart';
 
 @immutable
-class HootThemeExtension extends ThemeExtension<HootThemeExtension> {
+class modelmanThemeExtension extends ThemeExtension<modelmanThemeExtension> {
   final Color serverConnected;
   final Color serverDisconnected;
   final Color toolExecuting;
   final Color success;
   final Color warning;
 
-  const HootThemeExtension({
+  const modelmanThemeExtension({
     required this.serverConnected,
     required this.serverDisconnected,
     required this.toolExecuting,
@@ -748,7 +748,7 @@ class HootThemeExtension extends ThemeExtension<HootThemeExtension> {
     required this.warning,
   });
 
-  static const light = HootThemeExtension(
+  static const light = modelmanThemeExtension(
     serverConnected: Color(0xFF4CAF50),
     serverDisconnected: Color(0xFF9E9E9E),
     toolExecuting: Color(0xFF2196F3),
@@ -756,7 +756,7 @@ class HootThemeExtension extends ThemeExtension<HootThemeExtension> {
     warning: Color(0xFFFF9800),
   );
 
-  static const dark = HootThemeExtension(
+  static const dark = modelmanThemeExtension(
     serverConnected: Color(0xFF81C784),
     serverDisconnected: Color(0xFF616161),
     toolExecuting: Color(0xFF64B5F6),
@@ -765,14 +765,14 @@ class HootThemeExtension extends ThemeExtension<HootThemeExtension> {
   );
 
   @override
-  HootThemeExtension copyWith({
+  modelmanThemeExtension copyWith({
     Color? serverConnected,
     Color? serverDisconnected,
     Color? toolExecuting,
     Color? success,
     Color? warning,
   }) {
-    return HootThemeExtension(
+    return modelmanThemeExtension(
       serverConnected: serverConnected ?? this.serverConnected,
       serverDisconnected: serverDisconnected ?? this.serverDisconnected,
       toolExecuting: toolExecuting ?? this.toolExecuting,
@@ -782,12 +782,12 @@ class HootThemeExtension extends ThemeExtension<HootThemeExtension> {
   }
 
   @override
-  HootThemeExtension lerp(ThemeExtension<HootThemeExtension>? other, double t) {
-    if (other is! HootThemeExtension) {
+  modelmanThemeExtension lerp(ThemeExtension<modelmanThemeExtension>? other, double t) {
+    if (other is! modelmanThemeExtension) {
       return this;
     }
 
-    return HootThemeExtension(
+    return modelmanThemeExtension(
       serverConnected: Color.lerp(serverConnected, other.serverConnected, t)!,
       serverDisconnected: Color.lerp(serverDisconnected, other.serverDisconnected, t)!,
       toolExecuting: Color.lerp(toolExecuting, other.toolExecuting, t)!,
@@ -815,13 +815,13 @@ void main() {
   
   runApp(
     const ProviderScope(
-      child: HootApp(),
+      child: modelmanApp(),
     ),
   );
 }
 
-class HootApp extends ConsumerWidget {
-  const HootApp({super.key});
+class modelmanApp extends ConsumerWidget {
+  const modelmanApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -830,16 +830,16 @@ class HootApp extends ConsumerWidget {
     final themeData = AppThemeData.getThemeData(selectedTheme);
 
     return MaterialApp.router(
-      title: 'Hoot',
+      title: 'modelman',
       debugShowCheckedModeBanner: false,
       theme: themeData.copyWith(
         extensions: [
-          HootThemeExtension.light,
+          modelmanThemeExtension.light,
         ],
       ),
       darkTheme: themeData.copyWith(
         extensions: [
-          HootThemeExtension.dark,
+          modelmanThemeExtension.dark,
         ],
       ),
       themeMode: themeMode,
@@ -868,7 +868,7 @@ class ServerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = Theme.of(context).extension<HootThemeExtension>();
+    final themeExtension = Theme.of(context).extension<modelmanThemeExtension>();
 
     return Container(
       decoration: BoxDecoration(
@@ -896,8 +896,8 @@ class ServerTile extends StatelessWidget {
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/core/theme/app_theme.dart';
-import 'package:hoot_flutter/core/theme/theme_data.dart';
+import 'package:modelman_flutter/core/theme/app_theme.dart';
+import 'package:modelman_flutter/core/theme/theme_data.dart';
 
 void main() {
   group('ThemeData', () {

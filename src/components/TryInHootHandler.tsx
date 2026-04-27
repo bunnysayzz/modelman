@@ -18,7 +18,7 @@ interface ServerConfigImport {
 }
 
 /**
- * Parses a "Try in Hoot" URL and extracts server configuration
+ * Parses a "Try in modelman" URL and extracts server configuration
  * 
  * URL Formats:
  * 1. Hash-based: #/try?config=<base64-encoded-json>
@@ -38,7 +38,7 @@ interface ServerConfigImport {
  *   }
  * }
  */
-function parseTryInHootURL(): ServerConfigImport | null {
+function parseTryInmodelmanURL(): ServerConfigImport | null {
     try {
         // Check hash-based URL first (#/try?config=...)
         const hash = window.location.hash;
@@ -96,8 +96,8 @@ function parseTryInHootURL(): ServerConfigImport | null {
 
         return null;
     } catch (error) {
-        console.error('Failed to parse Try in Hoot URL:', error);
-        toast.error('Invalid Link', 'The "Try in Hoot" link is malformed or invalid');
+        console.error('Failed to parse Try in modelman URL:', error);
+        toast.error('Invalid Link', 'The "Try in modelman" link is malformed or invalid');
         return null;
     }
 }
@@ -110,7 +110,7 @@ function validateServerConfig(config: any): ServerConfigImport | null {
         throw new Error('Config must be an object');
     }
 
-    // Simple mode: just URL (let Hoot auto-detect everything)
+    // Simple mode: just URL (let modelman auto-detect everything)
     if (config.url && !config.name && !config.transport) {
         return {
             name: '', // Will be auto-detected
@@ -183,7 +183,7 @@ function ConfirmAddServer({ config, onConfirm, onCancel, isConnecting, isFirstTi
                             filter: 'drop-shadow(0 2px 8px rgba(92, 207, 230, 0.3))'
                         }}>🦉</span>
                         <h2 style={{ margin: 0 }}>
-                            {isFirstTime ? 'Welcome to Hoot!' : 'Add MCP Server'}
+                            {isFirstTime ? 'Welcome to modelman!' : 'Add MCP Server'}
                         </h2>
                     </div>
                     <p style={{
@@ -196,7 +196,7 @@ function ConfirmAddServer({ config, onConfirm, onCancel, isConnecting, isFirstTi
                         lineHeight: '1.5'
                     }}>
                         {isFirstTime 
-                            ? 'Hoot lets you test and explore MCP servers. Let\'s add your first one!'
+                            ? 'modelman lets you test and explore MCP servers. Let\'s add your first one!'
                             : 'Connect to this server to use its tools'
                         }
                     </p>
@@ -341,11 +341,11 @@ function ServerDetail({ label, value, icon, mono, badge, isLast }: ServerDetailP
 }
 
 /**
- * Component that handles "Try in Hoot" URLs
- * Automatically detects when a user clicks a "Try in Hoot" link
+ * Component that handles "Try in modelman" URLs
+ * Automatically detects when a user clicks a "Try in modelman" link
  * and shows a confirmation dialog before adding the server
  */
-export function TryInHootHandler() {
+export function TryInmodelmanHandler() {
     const [pendingConfig, setPendingConfig] = useState<ServerConfigImport | null>(null);
     const [isConnecting, setIsConnecting] = useState(false);
     const addServer = useAppStore((state) => state.addServer);
@@ -358,7 +358,7 @@ export function TryInHootHandler() {
 
     useEffect(() => {
         // Check if URL contains "try" parameter or server reference
-        const config = parseTryInHootURL();
+        const config = parseTryInmodelmanURL();
         if (config) {
             setPendingConfig(config);
             // Note: We don't clear URL params here anymore - they're used for state restoration
@@ -427,7 +427,7 @@ export function TryInHootHandler() {
             if (success) {
                 // Mark as welcomed if this was their first time
                 if (isFirstTime) {
-                    localStorage.setItem('hoot-has-seen-welcome', 'true');
+                    localStorage.setItem('modelman-has-seen-welcome', 'true');
                 }
                 
                 toast.success('Server Added', `Successfully connected to ${configToAdd.name}`);

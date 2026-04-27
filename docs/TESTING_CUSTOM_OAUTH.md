@@ -86,13 +86,13 @@ app.listen(PORT, () => {
 # Terminal 1: Start mock OAuth server
 node tests/mock-oauth-server.js
 
-# Terminal 2: Start Hoot backend
+# Terminal 2: Start modelman backend
 npm run backend
 
-# Terminal 3: Start Hoot frontend
+# Terminal 3: Start modelman frontend
 npm run dev
 
-# Configure in Hoot UI:
+# Configure in modelman UI:
 # URL: http://localhost:8765/mcp
 # Auth: OAuth
 # Custom Authorization Endpoint: http://localhost:8765/oauth/authorize
@@ -112,21 +112,21 @@ services:
     environment:
       - SERVER_PORT=8765
   
-  hoot-backend:
+  modelman-backend:
     build: .
     ports:
       - "8008:8008"
     depends_on:
       - oauth-server
   
-  hoot-frontend:
+  modelman-frontend:
     build:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
       - "5173:5173"
     depends_on:
-      - hoot-backend
+      - modelman-backend
 ```
 
 #### Option 3: Manual Testing Checklist
@@ -186,7 +186,7 @@ async function testCustomOAuthEndpoints() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-hoot-token': token
+      'x-modelman-token': token
     },
     body: JSON.stringify({
       serverId: 'test-oauth-server',
@@ -242,7 +242,7 @@ testCustomOAuthEndpoints().then(success => {
 import { test, expect } from '@playwright/test';
 
 test('Custom OAuth endpoints flow', async ({ page }) => {
-  // Navigate to Hoot
+  // Navigate to modelman
   await page.goto('http://localhost:5173');
   
   // Add server
@@ -294,6 +294,6 @@ You're right! We should support full OAuth client credentials. Let me check and 
 
 <function_calls>
 <invoke name="read_file">
-<parameter name="target_file">/Users/ra/workspace/hoot/src/types/index.ts
+<parameter name="target_file">/Users/ra/workspace/modelman/src/types/index.ts
 
 

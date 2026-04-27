@@ -1,16 +1,16 @@
-# Hoot Themes
+# modelman Themes
 
-Hoot supports multiple beautiful themes with carefully crafted color palettes and dynamically generated hills that adapt to theme colors.
+modelman supports multiple beautiful themes with carefully crafted color palettes and dynamically generated hills that adapt to theme colors.
 
 ## Quick Start
 
-**For Users:** Click the palette icon (🎨) in the header to switch themes. Choose from 8 beautiful themes or let Hoot match your system preferences.
+**For Users:** Click the palette icon (🎨) in the header to switch themes. Choose from 8 beautiful themes or let modelman match your system preferences.
 
 **For Developers:** See the [Theme System Architecture](#theme-system-architecture) section for technical details.
 
 ## System Theme Support
 
-By default, Hoot automatically follows your system's appearance preference:
+By default, modelman automatically follows your system's appearance preference:
 - **Dark mode:** Uses Arctic Night theme  
 - **Light mode:** Uses Nordic Snow theme  
 - **Automatic switching:** Updates when you change system appearance
@@ -94,7 +94,7 @@ function switchTheme(themeName) {
   link.href = `/src/themes/${themeName}.css`;
   
   // Store preference
-  localStorage.setItem('hoot-theme', themeName);
+  localStorage.setItem('modelman-theme', themeName);
   
   // Regenerate hills with new theme colors
   if (window.initializeHills) {
@@ -165,7 +165,7 @@ Follow these steps to create a new theme and add it to the theme switcher:
 
 ```css
 /**
- * Hoot Theme: Sunset Glow
+ * modelman Theme: Sunset Glow
  * Warm sunset colors with orange and pink accents
  */
 

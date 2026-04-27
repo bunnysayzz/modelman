@@ -1,8 +1,8 @@
-# Hoot Architecture
+# modelman Architecture
 
 ## Overview
 
-Hoot is an MCP (Model Context Protocol) testing tool with a clean separation between frontend (React) and backend (Node.js/Cloudflare Workers).
+modelman is an MCP (Model Context Protocol) testing tool with a clean separation between frontend (React) and backend (Node.js/Cloudflare Workers).
 
 ## High-Level Architecture
 

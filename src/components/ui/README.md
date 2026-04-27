@@ -1,6 +1,6 @@
 # UI Components
 
-Reusable, styled UI components for Hoot following modern design principles inspired by shadcn/ui.
+Reusable, styled UI components for modelman following modern design principles inspired by shadcn/ui.
 
 ## Components
 

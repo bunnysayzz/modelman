@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Test script for "Try in Hoot" link generation and parsing
+ * Test script for "Try in Modelman" link generation and parsing
  */
 
-import { generateTryInHootLink, decodeTryInHootLink } from '../src/lib/tryInHootLinks.js';
+import { generateTryInModelmanLink, decodeTryInModelmanLink } from '../src/lib/tryInModelmanLinks.js';
 
-console.log('🧪 Testing "Try in Hoot" Link Generation\n');
+console.log('🧪 Testing "Try in Modelman" Link Generation\n');
 
 // Test 1: Simple HTTP server
 console.log('Test 1: Simple HTTP Server');
@@ -15,9 +15,9 @@ const test1Config = {
     transport: 'http',
     url: 'http://localhost:3000'
 };
-const link1 = generateTryInHootLink(test1Config, 'https://hoot.app');
+const link1 = generateTryInModelmanLink(test1Config, 'https://modelman.app');
 console.log('Generated link:', link1);
-const decoded1 = decodeTryInHootLink(link1);
+const decoded1 = decodeTryInModelmanLink(link1);
 console.log('Decoded config:', JSON.stringify(decoded1, null, 2));
 console.log('✅ Test 1 passed\n');
 
@@ -34,9 +34,9 @@ const test2Config = {
         }
     }
 };
-const link2 = generateTryInHootLink(test2Config, 'https://hoot.app');
+const link2 = generateTryInModelmanLink(test2Config, 'https://modelman.app');
 console.log('Generated link:', link2);
-const decoded2 = decodeTryInHootLink(link2);
+const decoded2 = decodeTryInModelmanLink(link2);
 console.log('Decoded config:', JSON.stringify(decoded2, null, 2));
 console.log('✅ Test 2 passed\n');
 
@@ -50,9 +50,9 @@ const test3Config = {
         type: 'oauth'
     }
 };
-const link3 = generateTryInHootLink(test3Config, 'https://hoot.app');
+const link3 = generateTryInModelmanLink(test3Config, 'https://modelman.app');
 console.log('Generated link:', link3);
-const decoded3 = decodeTryInHootLink(link3);
+const decoded3 = decodeTryInModelmanLink(link3);
 console.log('Decoded config:', JSON.stringify(decoded3, null, 2));
 console.log('✅ Test 3 passed\n');
 
@@ -63,9 +63,9 @@ const test4Config = {
     transport: 'sse',
     url: 'https://notifications-mcp.example.com/events'
 };
-const link4 = generateTryInHootLink(test4Config, 'https://hoot.app');
+const link4 = generateTryInModelmanLink(test4Config, 'https://modelman.app');
 console.log('Generated link:', link4);
-const decoded4 = decodeTryInHootLink(link4);
+const decoded4 = decodeTryInModelmanLink(link4);
 console.log('Decoded config:', JSON.stringify(decoded4, null, 2));
 console.log('✅ Test 4 passed\n');
 

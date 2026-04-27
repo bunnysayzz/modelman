@@ -1,6 +1,6 @@
 {
-    "name": "Hoot — MCP Testing Tool",
-    "short_name": "Hoot",
+    "name": "Modelman — MCP Testing Tool",
+    "short_name": "Modelman",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0D1117",

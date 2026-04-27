@@ -98,7 +98,7 @@ class DevelopmentLogger {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `hoot-logs-${Date.now()}.txt`;
+        a.download = `modelman-logs-${Date.now()}.txt`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -128,7 +128,7 @@ class DevelopmentLogger {
     exposeToWindow() {
         if (!this.isEnabled) return;
 
-        (window as any).hootLogger = {
+        (window as any).modelmanLogger = {
             download: () => this.downloadLogs(),
             clear: () => this.clearLogs(),
             get: () => this.getLogs(),
@@ -137,10 +137,10 @@ class DevelopmentLogger {
 
         console.log(
             '🐛 Logger controls available:\n' +
-            '  - hootLogger.download() - Download logs to file\n' +
-            '  - hootLogger.clear() - Clear all logs\n' +
-            '  - hootLogger.get() - Get logs as string\n' +
-            '  - hootLogger.count() - Get log count'
+            '  - modelmanLogger.download() - Download logs to file\n' +
+            '  - modelmanLogger.clear() - Clear all logs\n' +
+            '  - modelmanLogger.get() - Get logs as string\n' +
+            '  - modelmanLogger.count() - Get log count'
         );
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Hoot MCP Backend Server - Cloudflare Workers Entry Point
+ * modelman MCP Backend Server - Cloudflare Workers Entry Point
  * 
  * Cloudflare deployment using Workers + Durable Objects
  */
@@ -127,7 +127,7 @@ function corsHeaders(origin, env) {
     return {
       'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, x-hoot-token',
+      'Access-Control-Allow-Headers': 'Content-Type, x-modelman-token',
       'Access-Control-Allow-Credentials': 'true',
     };
   }
@@ -160,7 +160,7 @@ async function authenticateRequest(request, auditLogger) {
     return { success: true };
   }
 
-  const token = request.headers.get('x-hoot-token');
+  const token = request.headers.get('x-modelman-token');
   if (!token) {
     await auditLogger.log('auth_failed', {
       path: pathname,
@@ -392,7 +392,7 @@ async function handleRequest(request, env) {
           authorizationCode,
           userId,
           db,
-          frontendUrl: env.FRONTEND_URL || 'https://hoot.yourdomain.com',
+          frontendUrl: env.FRONTEND_URL || 'https://modelman.yourdomain.com',
           clientManager
         });
 
@@ -563,7 +563,7 @@ async function handleRequest(request, env) {
       const response = await fetch(faviconUrl, {
         signal: controller.signal,
         headers: {
-          'User-Agent': 'Hoot-MCP-Client/1.0'
+          'User-Agent': 'modelman-MCP-Client/1.0'
         }
       });
       clearTimeout(timeout);
@@ -593,7 +593,7 @@ async function handleRequest(request, env) {
           userId,
           db,
           connectionPool,
-          frontendUrl: env.FRONTEND_URL || 'https://hoot.yourdomain.com',
+          frontendUrl: env.FRONTEND_URL || 'https://modelman.yourdomain.com',
           timer
         });
       } catch (reconnectError) {
@@ -647,7 +647,7 @@ async function handleRequest(request, env) {
           userId,
           db,
           connectionPool,
-          frontendUrl: env.FRONTEND_URL || 'https://hoot.yourdomain.com',
+          frontendUrl: env.FRONTEND_URL || 'https://modelman.yourdomain.com',
           timer
         });
       } catch (reconnectError) {

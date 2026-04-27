@@ -49,7 +49,7 @@ function getDefaultTheme(): string {
 }
 
 // Load saved theme or default to system preference
-const savedTheme = localStorage.getItem('hoot-theme');
+const savedTheme = localStorage.getItem('modelman-theme');
 const themeToApply = savedTheme || getDefaultTheme();
 applyTheme(themeToApply);
 
@@ -57,7 +57,7 @@ applyTheme(themeToApply);
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 mediaQuery.addEventListener('change', (e) => {
   // Only auto-switch if user hasn't explicitly selected a theme
-  if (!localStorage.getItem('hoot-theme')) {
+  if (!localStorage.getItem('modelman-theme')) {
     const newTheme = e.matches ? 'arctic-night' : 'nordic-snow';
     applyTheme(newTheme);
     

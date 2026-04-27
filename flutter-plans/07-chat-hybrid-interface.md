@@ -869,7 +869,7 @@ class MentionInput extends ConsumerWidget {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hoot_flutter/features/chat/data/services/chat_service.dart';
+import 'package:modelman_flutter/features/chat/data/services/chat_service.dart';
 
 class MockPortkeyClient extends Mock implements PortkeyClient {}
 

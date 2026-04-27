@@ -1,7 +1,7 @@
 # Database files
-.hoot-mcp.db
-.hoot-mcp.db-shm
-.hoot-mcp.db-wal
+.modelman-mcp.db
+.modelman-mcp.db-shm
+.modelman-mcp.db-wal
 
 # Dependencies
 node_modules/

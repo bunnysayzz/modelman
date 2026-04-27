@@ -152,7 +152,7 @@ export function testLocalStoragePersistence() {
     console.log('✓ Saved data to store');
 
     // Check localStorage
-    const stored = localStorage.getItem('hoot-tool-state');
+    const stored = localStorage.getItem('modelman-tool-state');
     console.log('✓ localStorage content exists:', stored !== null);
 
     if (stored) {

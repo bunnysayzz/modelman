@@ -2,8 +2,8 @@
 
 ## Overview
 
-Hoot uses a **unified JWT** approach where ONE token authenticates with both:
-1. **Hoot Backend** - For MCP server operations
+modelman uses a **unified JWT** approach where ONE token authenticates with both:
+1. **modelman Backend** - For MCP server operations
 2. **Portkey API** - For AI chat completions
 
 This eliminates API key exposure in the browser while enabling secure, stateless authentication.
@@ -21,10 +21,10 @@ This eliminates API key exposure in the browser while enabling secure, stateless
 │                 │            │                          │
 └─────────────────┼────────────┼──────────────────────────┘
                   │            │
-      x-hoot-token│            │x-portkey-api-key
+      x-modelman-token│            │x-portkey-api-key
                   ↓            ↓
          ┌──────────────┐  ┌──────────┐
-         │ Hoot Backend │  │ Portkey  │
+         │ modelman Backend │  │ Portkey  │
          │ (validates)  │  │   API    │
          └──────────────┘  └──────────┘
 ```
@@ -33,9 +33,9 @@ This eliminates API key exposure in the browser while enabling secure, stateless
 
 ```json
 {
-  // For Hoot Backend (user scoping)
+  // For modelman Backend (user scoping)
   "sub": "user-12345",
-  "email_id": "user@hoot.local",
+  "email_id": "user@modelman.local",
   
   // For Portkey (org/workspace routing)
   "portkey_oid": "your-org-id",
@@ -85,9 +85,9 @@ let jwtPrivateKey, jwtKid, jwtPublicKeys;
 app.get('/auth/token', async (req, res) => {
     if (jwtPrivateKey && jwtKid) {
         const token = await new SignJWT({
-            // Hoot claims
+            // modelman claims
             sub: 'user-' + Date.now(),
-            email_id: 'user@hoot.local',
+            email_id: 'user@modelman.local',
             
             // Portkey claims
             portkey_oid: process.env.PORTKEY_ORG_ID,
@@ -109,7 +109,7 @@ app.get('/auth/token', async (req, res) => {
 **Validate JWT in middleware:**
 ```javascript
 function authenticateRequest(req, res, next) {
-    const token = req.headers['x-hoot-token'];
+    const token = req.headers['x-modelman-token'];
     
     try {
         const decoded = jwt.decode(token, { complete: true });
@@ -263,7 +263,7 @@ curl http://localhost:8008/auth/token
 # Returns: {"success":true,"token":"eyJ...","tokenType":"jwt"}
 
 # 3. Decode JWT at https://jwt.io
-# Verify it contains both Hoot and Portkey claims
+# Verify it contains both modelman and Portkey claims
 
 # 4. Test in browser
 npm run dev
@@ -273,7 +273,7 @@ npm run dev
 # Token used for both backend and Portkey calls
 ```
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### "JWT keys not found"
 - Ensure `jwks.json` and `private-key.json` exist in project root

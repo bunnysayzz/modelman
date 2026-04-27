@@ -7,7 +7,7 @@ import { AddServerModal } from './components/AddServerModal';
 import { EditServerModal } from './components/EditServerModal';
 import { OAuthCallback } from './components/OAuthCallback';
 import { OAuthComplianceResults } from './components/OAuthComplianceResults';
-import { TryInHootHandler } from './components/TryInHootHandler';
+import { TryInmodelmanHandler } from './components/TryInmodelmanHandler';
 import { ToastContainer } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
@@ -81,7 +81,7 @@ function App() {
   // Welcome modal for first-time users
   const { showWelcome, setShowWelcome } = useWelcomeModal();
 
-  // Don't show welcome modal if coming from a server link (Try in Hoot)
+  // Don't show welcome modal if coming from a server link (Try in modelman)
   const urlParams = new URLSearchParams(window.location.search);
   const hasServerParam = urlParams.has('s') || urlParams.has('server') || urlParams.has('try');
   const shouldShowWelcome = showWelcome && servers.length === 0 && !hasServerParam;
@@ -482,7 +482,7 @@ function App() {
           <div className="app-header-left">
             <div className="app-branding">
               <span className="logo-icon">🦉</span>
-              <h1 className="app-title">Hoot</h1>
+              <h1 className="app-title">modelman</h1>
             </div>
 
             {ENABLE_HYBRID_MODE && (
@@ -517,7 +517,7 @@ function App() {
               <Keyboard size={18} />
             </button>
             <a
-              href="https://portkey.ai/docs/hoot"
+              href="https://portkey.ai/docs/modelman"
               target="_blank"
               rel="noopener noreferrer"
               className="header-link"
@@ -535,7 +535,7 @@ function App() {
               <MessageCircle size={18} />
             </a>
             <a
-              href="https://github.com/portkey-ai/hoot"
+              href="https://github.com/portkey-ai/modelman"
               target="_blank"
               rel="noopener noreferrer"
               className="version-badge"
@@ -593,7 +593,7 @@ function App() {
             onClose={() => setShowShortcutsModal(false)}
           />
         )}
-        <TryInHootHandler />
+        <TryInmodelmanHandler />
         <ToastContainer toasts={toasts} onDismiss={removeToast} />
       </div>
     </ErrorBoundary>

@@ -4,7 +4,7 @@ import { Button, Checkbox } from './ui';
 import { Wrench, Sparkles, Keyboard, Zap } from 'lucide-react';
 import './WelcomeModal.css';
 
-const WELCOME_SEEN_KEY = 'hoot-has-seen-welcome';
+const WELCOME_SEEN_KEY = 'modelman-has-seen-welcome';
 
 interface WelcomeModalProps {
     onClose: () => void;
@@ -51,7 +51,7 @@ export function WelcomeModal({ onClose, onGetStarted }: WelcomeModalProps) {
             <div className="welcome-modal">
                 <div className="welcome-header">
                     <span className="welcome-logo">🦉</span>
-                    <h2 className="welcome-title">Welcome to Hoot!</h2>
+                    <h2 className="welcome-title">Welcome to modelman!</h2>
                     <p className="welcome-subtitle">
                         A beautiful tool to test and explore MCP (Model Context Protocol) servers
                     </p>

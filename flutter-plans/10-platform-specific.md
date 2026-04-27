@@ -95,7 +95,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 class IOSService {
-  static const MethodChannel _channel = MethodChannel('hoot/ios');
+  static const MethodChannel _channel = MethodChannel('modelman/ios');
 
   // Request notification permissions
   Future<bool> requestNotificationPermissions() async {
@@ -109,7 +109,7 @@ class IOSService {
 
   // Check app store URL
   Future<void> openAppStore() async {
-    const url = 'https://apps.apple.com/app/hoot';
+    const url = 'https://apps.apple.com/app/modelman';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     }
@@ -142,7 +142,7 @@ class IOSService {
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>Hoot</string>
+    <string>modelman</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -150,7 +150,7 @@ class IOSService {
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>hoot</string>
+    <string>modelman</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
@@ -186,10 +186,10 @@ class IOSService {
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>com.portkeyai.hoot</string>
+            <string>com.portkeyai.modelman</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>hoot</string>
+                <string>modelman</string>
             </array>
         </dict>
     </array>
@@ -223,7 +223,7 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     let controller = window?.rootViewController as! FlutterViewController
-    let iosChannel = FlutterMethodChannel(name: "hoot/ios",
+    let iosChannel = FlutterMethodChannel(name: "modelman/ios",
                                            binaryMessenger: controller.binaryMessenger)
     
     iosChannel.setMethodCallHandler { [weak self] (call, result) in
@@ -269,7 +269,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 class AndroidService {
-  static const MethodChannel _channel = MethodChannel('hoot/android');
+  static const MethodChannel _channel = MethodChannel('modelman/android');
 
   // Request permissions
   Future<bool> requestPermissions() async {
@@ -283,7 +283,7 @@ class AndroidService {
 
   // Open Play Store
   Future<void> openPlayStore() async {
-    const url = 'https://play.google.com/store/apps/details?id=com.portkeyai.hoot';
+    const url = 'https://play.google.com/store/apps/details?id=com.portkeyai.modelman';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     }
@@ -306,7 +306,7 @@ class AndroidService {
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.portkeyai.hoot">
+    package="com.portkeyai.modelman">
     
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -315,7 +315,7 @@ class AndroidService {
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
     <application
-        android:label="Hoot"
+        android:label="modelman"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -335,7 +335,7 @@ class AndroidService {
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="hoot"
+                    android:scheme="modelman"
                     android:host="oauth"
                     android:path="/callback" />
             </intent-filter>
@@ -349,10 +349,10 @@ class AndroidService {
 </manifest>
 ```
 
-### android/app/src/main/kotlin/com/portkeyai/hoot/MainActivity.kt
+### android/app/src/main/kotlin/com/portkeyai/modelman/MainActivity.kt
 
 ```kotlin
-package com.portkeyai.hoot
+package com.portkeyai.modelman
 
 import android.content.Intent
 import android.os.Bundle
@@ -364,7 +364,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity: FlutterActivity() {
-    private val CHANNEL = "hoot/android"
+    private val CHANNEL = "modelman/android"
     
     private val PERMISSIONS = arrayOf(
         android.Manifest.permission.CAMERA,
@@ -481,13 +481,13 @@ class WebService {
     <base href="$FLUTTER_BASE_HREF">
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="Hoot - MCP Testing Tool">
+    <meta name="description" content="modelman - MCP Testing Tool">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hoot">
+    <meta name="apple-mobile-web-app-title" content="modelman">
     <link rel="apple-touch-icon" href="icons/Icon-192.png">
     <link rel="icon" type="image/png" href="favicon.png"/>
-    <title>Hoot</title>
+    <title>modelman</title>
     <link rel="manifest" href="manifest.json">
     <style>
         body {
@@ -507,7 +507,7 @@ class WebService {
     </style>
 </head>
 <body>
-    <div id="loading">Loading Hoot...</div>
+    <div id="loading">Loading modelman...</div>
     <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
@@ -517,13 +517,13 @@ class WebService {
 
 ```json
 {
-    "name": "Hoot",
-    "short_name": "Hoot",
+    "name": "modelman",
+    "short_name": "modelman",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#1a1a1a",
     "theme_color": "#5CCFE6",
-    "description": "Hoot - MCP Testing Tool",
+    "description": "modelman - MCP Testing Tool",
     "icons": [
         {
             "src": "icons/Icon-192.png",
@@ -627,7 +627,7 @@ final desktopServiceProvider = Provider<DesktopService>((ref) {
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>hoot</string>
+    <string>modelman</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
@@ -644,10 +644,10 @@ final desktopServiceProvider = Provider<DesktopService>((ref) {
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>com.portkeyai.hoot</string>
+            <string>com.portkeyai.modelman</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>hoot</string>
+                <string>modelman</string>
             </array>
         </dict>
     </array>
@@ -726,7 +726,7 @@ static void my_application_activate(GApplication* application) {
     MyApplication* self = MY_APPLICATION(application);
     
     GtkWindow* window = GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
-    gtk_window_set_title(window, "Hoot");
+    gtk_window_set_title(window, "modelman");
     gtk_window_set_default_size(window, 1200, 800);
     gtk_widget_show(GTK_WIDGET(window));
     
@@ -740,7 +740,7 @@ static void my_application_class_init(MyApplicationClass* klass) {
 static void my_application_init(MyApplication* self) {}
 
 MyApplication* my_application_new() {
-    return MY_APPLICATION(g_object_new(my_application_get_type(), "application-id", "com.portkeyai.hoot", nullptr));
+    return MY_APPLICATION(g_object_new(my_application_get_type(), "application-id", "com.portkeyai.modelman", nullptr));
 }
 ```
 

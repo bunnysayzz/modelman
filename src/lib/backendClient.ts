@@ -16,7 +16,7 @@ let tokenInitPromise: Promise<string> | null = null;
 
 /**
  * Retrieve and cache the session token from backend
- * This token is used for both Hoot backend and Portkey authentication
+ * This token is used for both modelman backend and Portkey authentication
  * This happens automatically on first request - completely transparent to users
  */
 export async function getSessionToken(): Promise<string> {
@@ -59,7 +59,7 @@ export async function getSessionToken(): Promise<string> {
             console.error('Failed to get session token:', error);
             tokenInitPromise = null; // Reset so we can retry
             // Provide a user-friendly error message
-            throw new Error('Cannot connect to Hoot backend. Make sure it\'s running on port 8008.');
+            throw new Error('Cannot connect to modelman backend. Make sure it\'s running on port 8008.');
         } finally {
             // Clear the promise once completed (success or failure)
             // Keep sessionToken cached if successful
@@ -96,7 +96,7 @@ async function authenticatedFetch(url: string, options: RequestInit = {}, retry 
         const token = await getSessionToken();
 
         const headers = new Headers(options.headers);
-        headers.set('x-hoot-token', token);
+        headers.set('x-modelman-token', token);
         headers.set('Content-Type', 'application/json');
 
         const response = await fetch(url, {

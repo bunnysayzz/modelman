@@ -1,10 +1,10 @@
 # URL & State Management Strategy
 
-This document defines how Hoot handles URLs, state persistence, and deep linking across the application.
+This document defines how modelman handles URLs, state persistence, and deep linking across the application.
 
 ## Overview
 
-Hoot uses a three-tier state management strategy:
+modelman uses a three-tier state management strategy:
 1. **URL Paths** - Core navigation and view modes
 2. **URL Search Params** - Shareable, linkable state
 3. **LocalStorage** - User preferences and settings
@@ -29,7 +29,7 @@ http://localhost:8009/oauth/callback      → OAuth callback (special route)
 | `search` | string | Search/filter query | `?search=api` |
 | `params` | base64 | Pre-filled tool parameters | `?params=eyJ1c2VySWQiOiIxMjMifQ==` |
 | `execution` | string | Execution history ID | `?execution=def-456` |
-| `try` | base64 | Try in Hoot config | `?try=eyJuYW1lIjoiV2Vh...` |
+| `try` | base64 | Try in modelman config | `?try=eyJuYW1lIjoiV2Vh...` |
 
 ### Example URLs
 
@@ -52,7 +52,7 @@ http://localhost:8009/test?server=github-mcp&search=issue
 # Pre-filled tool execution
 http://localhost:8009/test?server=api&tool=fetch&params=eyJ1c2VySWQiOiIxMjMifQ==
 
-# Try in Hoot (existing feature)
+# Try in modelman (existing feature)
 http://localhost:8009/?try=eyJuYW1lIjoiV2VhdGhlciJ9
 
 # OAuth callback (existing feature)
@@ -69,7 +69,7 @@ http://localhost:8009/oauth/callback?code=xyz&state=abc
 | **Search Query** | URL Param | Shareable for documentation |
 | **Tool Parameters** | URL Param (optional) | Share pre-filled executions |
 | **Execution History** | URL Param | Share specific results |
-| **Try in Hoot** | URL Param | Existing feature |
+| **Try in modelman** | URL Param | Existing feature |
 | **OAuth Callback** | URL Path | OAuth spec requirement |
 | **Input Mode** | LocalStorage | User preference |
 | **Theme** | LocalStorage | User preference |
@@ -152,14 +152,14 @@ Standard localStorage keys used throughout the app:
 
 ```typescript
 // Zustand persistence (existing)
-'hoot-storage'              // Server configs, cached tools, history
+'modelman-storage'              // Server configs, cached tools, history
 
 // User preferences (new)
-'hoot-input-mode'           // 'form' | 'json'
-'hoot-sidebar-collapsed'    // boolean
-'hoot-auto-reconnect'       // boolean (may already exist)
-'hoot-history-filter'       // 'all' | 'success' | 'error'
-'hoot-server-sort'          // 'recent' | 'alphabetical' | 'manual'
+'modelman-input-mode'           // 'form' | 'json'
+'modelman-sidebar-collapsed'    // boolean
+'modelman-auto-reconnect'       // boolean (may already exist)
+'modelman-history-filter'       // 'all' | 'success' | 'error'
+'modelman-server-sort'          // 'recent' | 'alphabetical' | 'manual'
 ```
 
 Access via utility functions:
@@ -376,7 +376,7 @@ Potential future URL features:
 - **Workspace Sharing** - Share entire server configurations
 - **Execution Replay** - Re-run past executions from link
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### URL params not working?
 1. Check if `useURLState` hook is imported
@@ -401,7 +401,7 @@ Potential future URL features:
 
 ## Related Documentation
 
-- [Try in Hoot](./TRY_IN_HOOT.md) - Deep linking server configurations
+- [Try in modelman](./TRY_IN_modelman.md) - Deep linking server configurations
 - [Authentication](./AUTHENTICATION.md) - OAuth flow details
 - [Storage](./STORAGE.md) - LocalStorage and data persistence
 - [Architecture](./ARCHITECTURE.md) - Overall app structure

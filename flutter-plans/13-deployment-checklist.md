@@ -47,7 +47,7 @@ open ios/Runner.xcworkspace
 
 # Update bundle identifier
 # Change to your organization's bundle ID
-# e.g., com.yourcompany.hoot
+# e.g., com.yourcompany.modelman
 ```
 
 ### Build Configuration
@@ -58,7 +58,7 @@ open ios/Runner.xcworkspace
 # Ensure these settings are correct:
 - Deployment Target: iOS 12.0 or higher
 - Swift Compiler - Language Version: Swift 5
-- Bundle Identifier: com.portkeyai.hoot
+- Bundle Identifier: com.portkeyai.modelman
 - Signing: Automatic signing or your developer certificate
 ```
 
@@ -127,7 +127,7 @@ versionCode: 1  # Increment this
 versionName: "1.0.0"  # Update this
 
 # Update package name if needed
-# Change com.portkeyai.hoot to your package
+# Change com.portkeyai.modelman to your package
 ```
 
 ### Build Configuration
@@ -139,7 +139,7 @@ android {
     compileSdkVersion 34
     
     defaultConfig {
-        applicationId "com.portkeyai.hoot"
+        applicationId "com.portkeyai.modelman"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
@@ -260,7 +260,7 @@ flutter build apk --release
 flutter build web --release
 
 # Build with custom base URL
-flutter build web --release --base-href /hoot/
+flutter build web --release --base-href /modelman/
 
 # Build for specific renderer
 flutter build web --release --web-renderer canvaskit
@@ -288,7 +288,7 @@ firebase deploy --only hosting
 
 ```bash
 # Build web app
-flutter build web --release --base-href /hoot/
+flutter build web --release --base-href /modelman/
 
 # Copy to docs folder
 cp -r build/web docs/
@@ -342,7 +342,7 @@ flutter build windows --release
 # Or use electron-builder wrapper
 
 # Sign executable
-signtool sign /f certificate.pfx /t timestamp-server-url build/windows/runner/Release/hoot.exe
+signtool sign /f certificate.pfx /t timestamp-server-url build/windows/runner/Release/modelman.exe
 ```
 
 ### macOS
@@ -355,9 +355,9 @@ flutter build macos --release
 # Use dmgbuild or similar tool
 
 # Sign and notarize
-codesign --force --deep --sign "Developer ID Application: Your Name" build/macos/Build/Products/Release/hoot.app
-xcrun notarytool submit build/macos/Build/Products/Release/hoot.app --apple-id "your@email.com" --password "app-specific-password" --wait
-xcrun stapler staple build/macos/Build/Products/Release/hoot.app
+codesign --force --deep --sign "Developer ID Application: Your Name" build/macos/Build/Products/Release/modelman.app
+xcrun notarytool submit build/macos/Build/Products/Release/modelman.app --apple-id "your@email.com" --password "app-specific-password" --wait
+xcrun stapler staple build/macos/Build/Products/Release/modelman.app
 ```
 
 ### Linux
@@ -427,7 +427,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.portkeyai.hoot
+          packageName: com.portkeyai.modelman
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: internal
           status: completed

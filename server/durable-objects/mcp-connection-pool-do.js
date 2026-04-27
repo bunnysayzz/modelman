@@ -310,7 +310,7 @@ export class MCPConnectionPoolDO {
     // Create MCP client
     const client = new Client(
       {
-        name: 'hoot-backend',
+        name: 'modelman-backend',
         version: '0.2.0',
       },
       {
@@ -346,7 +346,7 @@ export class MCPConnectionPoolDO {
 
       get clientMetadata() {
         return {
-          client_name: 'Hoot MCP Testing Tool',
+          client_name: 'modelman MCP Testing Tool',
           client_uri: frontendUrl,
           redirect_uris: [callbackUrl],
           grant_types: ['authorization_code', 'refresh_token'],

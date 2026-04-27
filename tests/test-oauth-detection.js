@@ -36,7 +36,7 @@ async function testAutoDetect(url, expectedName, expectOAuth) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-hoot-token': token,
+                'x-modelman-token': token,
             },
             body: JSON.stringify({ url }),
         });

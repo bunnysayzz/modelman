@@ -112,7 +112,7 @@ Expandable table rows reveal:
 
 ## Integration
 
-The OAuth compliance viewer is integrated into the main Hoot app at `/oauth-compliance`. It's a standalone page that doesn't require connecting to any MCP servers - it simply loads and visualizes the JSON results file.
+The OAuth compliance viewer is integrated into the main modelman app at `/oauth-compliance`. It's a standalone page that doesn't require connecting to any MCP servers - it simply loads and visualizes the JSON results file.
 
 ## Tips
 

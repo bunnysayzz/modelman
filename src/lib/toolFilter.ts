@@ -8,7 +8,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8008';
 async function backendFetch(url: string, options: RequestInit = {}) {
     const token = await getSessionToken();
     const headers = new Headers(options.headers);
-    headers.set('x-hoot-token', token);
+    headers.set('x-modelman-token', token);
     headers.set('Content-Type', 'application/json');
 
     return fetch(url, {

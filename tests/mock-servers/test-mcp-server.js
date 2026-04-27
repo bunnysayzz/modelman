@@ -13,7 +13,7 @@
  * - Rate limiting
  * - Comprehensive logging
  * 
- * This server acts as a real-world MCP server for testing all Hoot features.
+ * This server acts as a real-world MCP server for testing all modelman features.
  */
 
 import express from 'express';

@@ -86,7 +86,7 @@ export function OAuthCallback() {
                 serverId = sessionStorage.getItem('oauth_server_id') || sessionStorage.getItem('oauth_pending_server');
             }
             if (!serverId) {
-                throw new Error('OAuth session expired. Please return to Hoot and try connecting again.');
+                throw new Error('OAuth session expired. Please return to modelman and try connecting again.');
             }
 
             console.log(`🔐 OAuth callback: Looking for server ID: ${serverId}`);
@@ -218,12 +218,12 @@ export function OAuthCallback() {
                         variant="primary"
                         onClick={() => window.location.href = '/'}
                     >
-                        Return to Hoot
+                        Return to modelman
                     </Button>
                 )}
 
                 {status === 'success' && (
-                    <p className="oauth-redirect">Redirecting you back to Hoot...</p>
+                    <p className="oauth-redirect">Redirecting you back to modelman...</p>
                 )}
             </div>
         </div>

@@ -1,26 +1,26 @@
 {
-  "name": "@portkey-ai/hoot",
+  "name": "@portkey-ai/modelman",
   "version": "0.15.0",
   "description": "Postman for MCP Servers - A fast, lightweight testing tool with full OAuth 2.1 support",
   "type": "module",
   "bin": {
-    "hoot": "bin/hoot.js"
+    "modelman": "bin/modelman.js"
   },
   "exports": {
     ".": "./dist/index.html",
-    "./lib/tryInHootLinks": "./dist/lib/tryInHootLinks.js"
+    "./lib/tryInModelmanLinks": "./dist/lib/tryInModelmanLinks.js"
   },
   "scripts": {
-    "start": "node bin/hoot.js",
+    "start": "node bin/modelman.js",
     "dev": "vite",
     "server": "node server/server-node.js",
     "server:worker": "source .env 2>/dev/null || true && wrangler dev",
     "dev:full": "concurrently \"npm run server\" \"npm run dev\"",
     "dev:worker": "concurrently \"npm run server:worker\" \"npm run dev\"",
     "build": "tsc && vite build",
-    "build:cloudflare": "export VITE_BACKEND_URL=https://hoot-server-production.portkey-ai.workers.dev && tsc && vite build",
+    "build:cloudflare": "export VITE_BACKEND_URL=https://modelman-server-production.portkey-ai.workers.dev && tsc && vite build",
     "deploy:cloudflare": "source .env 2>/dev/null || true && wrangler deploy --env production",
-    "deploy:pages": "npm run build:cloudflare && wrangler pages deploy --project-name=hoot",
+    "deploy:pages": "npm run build:cloudflare && wrangler pages deploy --project-name=modelman",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
@@ -35,18 +35,18 @@
     "oauth",
     "postman",
     "api-testing",
-    "try-in-hoot"
+    "try-in-modelman"
   ],
-  "author": "Hoot Contributors",
+  "author": "Modelman Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/portkey-ai/hoot.git"
+    "url": "git+https://github.com/portkey-ai/modelman.git"
   },
   "bugs": {
-    "url": "https://github.com/portkey-ai/hoot/issues"
+    "url": "https://github.com/portkey-ai/modelman/issues"
   },
-  "homepage": "https://github.com/portkey-ai/hoot#readme",
+  "homepage": "https://github.com/portkey-ai/modelman#readme",
   "engines": {
     "node": ">=18.0.0"
   },

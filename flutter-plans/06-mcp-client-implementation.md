@@ -763,7 +763,7 @@ final autoReconnectServiceProvider = Provider<AutoReconnectService>((ref) {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hoot_flutter/features/mcp/data/services/mcp_client_service.dart';
+import 'package:modelman_flutter/features/mcp/data/services/mcp_client_service.dart';
 
 class MockApiService extends Mock implements ApiService {}
 

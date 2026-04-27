@@ -360,7 +360,7 @@ export const mcpMessages = {
             protocolVersion: '2025-11-25',
             capabilities: {},
             clientInfo: {
-                name: 'Hoot Test Client',
+                name: 'modelman Test Client',
                 version: '1.0.0'
             }
         },

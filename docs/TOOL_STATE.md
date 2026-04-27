@@ -2,13 +2,13 @@
 
 ## Overview
 
-Hoot now maintains persistent state for tools and their parameters, all securely stored in browser localStorage and scoped to each server. This enhances the user experience by remembering your work across sessions.
+modelman now maintains persistent state for tools and their parameters, all securely stored in browser localStorage and scoped to each server. This enhances the user experience by remembering your work across sessions.
 
 ## Features
 
 ### 1. Tool Execution State
 
-Every time a tool is successfully executed, Hoot records:
+Every time a tool is successfully executed, modelman records:
 - **Last Execution Time**: When the tool was last run
 - **Execution Count**: How many times the tool has been executed
 
@@ -16,7 +16,7 @@ This information is stored per server, so the same tool on different servers has
 
 ### 2. Parameter Persistence
 
-When you enter parameters for a tool, Hoot automatically saves them (with a 500ms debounce). The next time you select that tool:
+When you enter parameters for a tool, modelman automatically saves them (with a 500ms debounce). The next time you select that tool:
 - Previously entered values are automatically restored
 - Parameters are merged with schema defaults to handle schema changes gracefully
 - Empty default values (empty strings, false booleans, empty arrays/objects) are not saved
@@ -37,7 +37,7 @@ All data is scoped by server ID, ensuring:
 ## Storage Details
 
 - **Storage Type**: Browser localStorage
-- **Storage Key**: `hoot-tool-state`
+- **Storage Key**: `modelman-tool-state`
 - **Data Structure**:
   ```typescript
   {

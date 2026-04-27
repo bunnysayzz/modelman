@@ -107,7 +107,7 @@ async function runTests() {
 Note: Some tests are expected to fail (e.g., tools from non-existent servers).
 The important thing is that the server responds correctly.
 
-To test with a real MCP server, use the Hoot UI:
+To test with a real MCP server, use the modelman UI:
   npm run dev:full
 `);
 }

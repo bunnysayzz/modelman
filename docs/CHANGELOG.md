@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Hoot will be documented in this file.
+All notable changes to modelman will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -47,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Automated testing of authorization code flow, token exchange, and refresh flows
   - Detailed compliance reports with pass/fail status for each requirement
   - Visual results viewer for analyzing compliance test outcomes
-  - Integrated with the "Try in Hoot" feature for easy testing
+  - Integrated with the "Try in modelman" feature for easy testing
 
 ## [0.12.0] - 2025-11-17
 
@@ -172,7 +172,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enhanced server metadata and state management
 
 ### Fixed
-- Try in Hoot modal now respects current theme selection
+- Try in modelman modal now respects current theme selection
 - Server tools now appear immediately after adding a server (no refresh needed)
 
 ### Documentation
@@ -225,7 +225,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed npm/npx installation error by migrating `@portkey-ai/mcp-tool-filter` dependency from local file reference to published npm package (v1.0.0)
-- Resolved `ERR_MODULE_NOT_FOUND` error that occurred when installing Hoot via `npx -y @portkey-ai/hoot`
+- Resolved `ERR_MODULE_NOT_FOUND` error that occurred when installing modelman via `npx -y @portkey-ai/modelman`
 
 ## [0.8.0] - 2025-11-02
 
@@ -454,8 +454,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - New `LLMSettingsModal.css` for LLM settings interface
   
 - **Example Updates**: Updated demo files
-  - Improved `try-in-hoot-demo.html` with better examples
-  - Enhanced `try-in-hoot-generator.html` with updated UI
+  - Improved `try-in-modelman-demo.html` with better examples
+  - Enhanced `try-in-modelman-generator.html` with updated UI
 
 ### Removed
 - **CollapsibleJson Component**: Removed unused component
@@ -502,8 +502,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `SERVER_NAME_DETECTION.md` - Server name detection guide
 
 ### Changed
-- Enhanced `TryInHootHandler` with better OAuth support
-- Updated Try In Hoot examples with new auth patterns
+- Enhanced `TryInmodelmanHandler` with better OAuth support
+- Updated Try In modelman examples with new auth patterns
 - Improved OAuth callback UI with better loading states
 - Better error messages throughout the application
 - Enhanced server sidebar with re-auth capabilities
@@ -550,31 +550,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.0] - 2025-10-25
 
 ### Added
-- **"Try in Hoot" Feature**: One-click server integration via shareable links
-  - URL parsing for "Try in Hoot" links (hash-based and query-based formats)
-  - New `TryInHootHandler.tsx` component for handling link-based server additions
+- **"Try in modelman" Feature**: One-click server integration via shareable links
+  - URL parsing for "Try in modelman" links (hash-based and query-based formats)
+  - New `TryInmodelmanHandler.tsx` component for handling link-based server additions
   - Automatic OAuth discovery and token handling
   - Session token management in backend
-  - Link generation and parsing utilities in `lib/tryInHootLinks.ts`
+  - Link generation and parsing utilities in `lib/tryInModelmanLinks.ts`
   - Comprehensive documentation:
-    - `TRY_IN_HOOT.md` - Complete feature documentation
-    - `TRY_IN_HOOT_QUICKSTART.md` - Quick start guide
+    - `TRY_IN_modelman.md` - Complete feature documentation
+    - `TRY_IN_modelman_QUICKSTART.md` - Quick start guide
     - `DESIGN_GUIDE.md` - Design guidelines
     - `SECURITY.md` - Security documentation
     - `SECURITY_ASSESSMENT.md` - Security assessment
   - Demo pages:
-    - `try-in-hoot-demo.html` - Interactive demo
-    - `try-in-hoot-generator.html` - Link generator tool
+    - `try-in-modelman-demo.html` - Interactive demo
+    - `try-in-modelman-generator.html` - Link generator tool
   - Tests for link generation and parsing
 
 ### Changed
 - Enhanced Add Server modal to support automatic OAuth discovery
 - Improved backend authentication flow
 - Updated backend client for better session token management
-- Updated package.json keywords to include "try-in-hoot"
+- Updated package.json keywords to include "try-in-modelman"
 
 ### Documentation
-- Updated README.md with "Try in Hoot" feature information
+- Updated README.md with "Try in modelman" feature information
 
 ## [0.3.0] - 2025-10-24
 
@@ -598,7 +598,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Clearer feedback during OAuth redirects
   - Better distinction between connection failures and OAuth flows
 - Improved modal styling and user experience
-- Updated database persistence to use home directory (`~/.hoot/hoot-mcp.db`)
+- Updated database persistence to use home directory (`~/.modelman/modelman-mcp.db`)
   - Better cross-session persistence
   - Cleaner workspace directory
 
@@ -631,7 +631,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   
 - **Persistent OAuth 2.1 Token Storage**: OAuth tokens and client information now persist across application restarts
   - Integrated `better-sqlite3` for secure, persistent storage
-  - SQLite database (`.hoot-mcp.db`) stores OAuth tokens, client info, and verifiers
+  - SQLite database (`.modelman-mcp.db`) stores OAuth tokens, client info, and verifiers
   - WAL (Write-Ahead Logging) mode enabled for better concurrency and data integrity
   - OAuth credentials preserved across disconnect/reconnect cycles
   - Automatic client ID reuse for each server
@@ -674,7 +674,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `MIGRATION_GUIDE.md` - Guide for transitioning to new architecture
 - Added `BACKEND_RELAY_COMPLETE.md` - Implementation summary
 - Updated `README.md` with new quick start instructions and backend information
-- Added `.hoot-mcp.db` to `.gitignore`
+- Added `.modelman-mcp.db` to `.gitignore`
 
 ### Dependencies
 - Added `better-sqlite3` for persistent OAuth storage
@@ -708,7 +708,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **0.5.0** - OAuth auto-detection, auth selection modal, enhanced modal system, and backend credential management
 - **0.4.2** - Favicon assets, package metadata updates, and configuration improvements
 - **0.4.1** - Tool state management with persistent execution history
-- **0.4.0** - "Try in Hoot" feature for one-click server integration
+- **0.4.0** - "Try in modelman" feature for one-click server integration
 - **0.3.0** - UI enhancements, JSON components, and architectural cleanup
 - **0.2.1** - Initial release with backend relay architecture and persistent OAuth storage
 

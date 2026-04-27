@@ -146,7 +146,7 @@ class OAuthRepository {
     // Configure authorization request
     final authorizationRequest = AuthorizationRequest(
       clientId: clientId,
-      redirectUrl: redirectUrl ?? 'hoot://oauth/callback',
+      redirectUrl: redirectUrl ?? 'modelman://oauth/callback',
       discoveryUrl: '',
       scopes: scopes ?? ['openid', 'profile'],
       additionalParameters: {
@@ -181,7 +181,7 @@ class OAuthRepository {
 
     final tokenRequest = TokenRequest(
       clientId: clientId,
-      redirectUrl: redirectUrl ?? 'hoot://oauth/callback',
+      redirectUrl: redirectUrl ?? 'modelman://oauth/callback',
       authorizationCode: authorizationCode,
       codeVerifier: verifier,
       discoveryUrl: '',
@@ -208,7 +208,7 @@ class OAuthRepository {
   }) async {
     final tokenRequest = TokenRequest(
       clientId: clientId,
-      redirectUrl: 'hoot://oauth/callback',
+      redirectUrl: 'modelman://oauth/callback',
       refreshToken: refreshToken,
       discoveryUrl: '',
       scopes: ['openid', 'profile'],
@@ -434,7 +434,7 @@ class _OAuthCallbackPageState extends ConsumerState<OAuthCallbackPage> {
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <data
-            android:scheme="hoot"
+            android:scheme="modelman"
             android:host="oauth"
             android:path="/callback" />
     </intent-filter>
@@ -452,10 +452,10 @@ class _OAuthCallbackPageState extends ConsumerState<OAuthCallbackPage> {
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>com.portkeyai.hoot</string>
+        <string>com.portkeyai.modelman</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>hoot</string>
+            <string>modelman</string>
         </array>
     </dict>
 </array>
@@ -784,7 +784,7 @@ class AuthInterceptor extends Interceptor {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hoot_flutter/features/auth/data/repositories/oauth_repository.dart';
+import 'package:modelman_flutter/features/auth/data/repositories/oauth_repository.dart';
 
 class MockFlutterAppAuth extends Mock implements FlutterAppAuth {}
 class MockFlutterSecureStorage extends Mock implements FlutterSecureStorage {}

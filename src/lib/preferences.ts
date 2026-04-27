@@ -3,7 +3,7 @@
  * Provides type-safe access to user preferences
  */
 
-const PREFERENCE_PREFIX = 'hoot-';
+const PREFERENCE_PREFIX = 'modelman-';
 
 export type PreferenceKey =
     | 'input-mode'

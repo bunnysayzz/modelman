@@ -1,6 +1,6 @@
 # Cross-Runtime Server Development Guidelines
 
-Hoot's server runs on **both Node.js and Cloudflare Workers**. Follow these guidelines to maintain compatibility.
+modelman's server runs on **both Node.js and Cloudflare Workers**. Follow these guidelines to maintain compatibility.
 
 ---
 

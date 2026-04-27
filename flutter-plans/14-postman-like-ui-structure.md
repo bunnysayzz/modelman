@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details the Postman-inspired UI structure for Hoot, ensuring a professional, properly structured interface with navigation, workspaces, and organized layout.
+This document details the Postman-inspired UI structure for modelman, ensuring a professional, properly structured interface with navigation, workspaces, and organized layout.
 
 ## Postman UI Architecture
 
@@ -150,7 +150,7 @@ class HeaderBar extends ConsumerWidget {
                 const Icon(Icons.dns, size: 24),
                 const SizedBox(width: 8),
                 Text(
-                  'Hoot',
+                  'modelman',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],

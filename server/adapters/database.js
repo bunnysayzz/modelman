@@ -1,7 +1,7 @@
 /**
  * Database Adapter Interface
  * 
- * Abstract base class that defines the database operations needed by Hoot.
+ * Abstract base class that defines the database operations needed by modelman.
  * Implementations:
  * - SQLiteAdapter: For self-hosted Node.js deployments
  * - DurableObjectsAdapter: For Cloudflare Workers deployments

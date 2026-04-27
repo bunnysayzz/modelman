@@ -1,15 +1,15 @@
-# Try in Hoot 🦉
+# Try in Modelman 🦉
 
-The "Try in Hoot" feature allows users to add MCP servers with a single click. Perfect for sharing servers, quick-start examples, or building galleries of available MCP servers.
+The "Try in Modelman" feature allows users to add MCP servers with a single click. Perfect for sharing servers, quick-start examples, or building galleries of available MCP servers.
 
 ## Quick Start
 
 ### For Users
 
-Click any "Try in Hoot" link to instantly add an MCP server:
+Click any "Try in Modelman" link to instantly add an MCP server:
 
-1. Click a "Try in Hoot" button/link
-2. See the friendly Hoot owl 🦉 and server details
+1. Click a "Try in Modelman" button/link
+2. See the friendly Modelman owl 🦉 and server details
 3. Watch auto-detection work its magic (if just a URL was provided)
 4. Click "Add & Connect" or "Authorize →" for OAuth servers
 5. Start using the server!
@@ -23,7 +23,7 @@ http://localhost:8009/?try=eyJ1cmwiOiJodHRwczovL21jcC5kZWVwd2lraS5jb20vc3NlIn0=
 
 **The Easiest Way: Just Share Your URL**
 
-The simplest "Try in Hoot" link:
+The simplest "Try in Modelman" link:
 
 ```bash
 # Just your server URL
@@ -33,34 +33,34 @@ config='{"url":"https://mcp.yourserver.com"}'
 encoded=$(echo -n "$config" | base64)
 
 # Create URL
-echo "https://hoot.app/?try=$encoded"
+echo "https://modelman.app/?try=$encoded"
 ```
 
-Hoot will auto-detect:
+Modelman will auto-detect:
 - ✅ Transport type (HTTP or SSE)
 - ✅ Server name and version
 - ✅ OAuth requirements
 
 ## How It Works
 
-When a user clicks a "Try in Hoot" link:
+When a user clicks a "Try in Modelman" link:
 
-1. Hoot opens and parses the server configuration from the URL
-2. A friendly confirmation modal shows the server details (with Hoot branding! 🦉)
-3. User confirms and Hoot adds and connects to the server automatically
+1. Modelman opens and parses the server configuration from the URL
+2. A friendly confirmation modal shows the server details (with Modelman branding! 🦉)
+3. User confirms and Modelman adds and connects to the server automatically
 4. If OAuth is required, the user is redirected to authorize
 
-You can also provide just a URL and Hoot will auto-detect everything:
+You can also provide just a URL and Modelman will auto-detect everything:
 - Transport type (HTTP or SSE)
 - Server name and version
 - OAuth requirements
 
 ## URL Format
 
-"Try in Hoot" links use a simple URL parameter containing base64-encoded JSON configuration:
+"Try in Modelman" links use a simple URL parameter containing base64-encoded JSON configuration:
 
 ```
-https://hoot.app/?try=<base64-encoded-config>
+https://modelman.app/?try=<base64-encoded-config>
 ```
 
 ### Configuration Format
@@ -75,7 +75,7 @@ The JSON configuration can be **simple** (just a URL) or **detailed**:
 }
 ```
 
-Hoot will automatically detect:
+Modelman will automatically detect:
 - Transport type (tries HTTP, then SSE)
 - Server name and version
 - OAuth requirements
@@ -113,7 +113,7 @@ Hoot will automatically detect:
 ### Option A: Interactive Generator (Easiest)
 
 ```bash
-open examples/try-in-hoot-generator.html
+open examples/try-in-modelman-generator.html
 ```
 
 Fill in your server details and copy the generated link.
@@ -121,9 +121,9 @@ Fill in your server details and copy the generated link.
 ### Option B: Use Code
 
 ```javascript
-import { generateTryInHootLink } from '@portkey-ai/hoot/lib/tryInHootLinks';
+import { generateTryInModelmanLink } from '@portkey-ai/modelman/lib/tryInModelmanLinks';
 
-const link = generateTryInHootLink({
+const link = generateTryInModelmanLink({
   name: "My MCP Server",
   transport: "http",
   url: "https://my-server.com/mcp"
@@ -142,7 +142,7 @@ config='{"name":"My Server","transport":"http","url":"http://localhost:3000"}'
 encoded=$(echo -n "$config" | base64)
 
 # Create URL
-echo "https://hoot.app/?try=$encoded"
+echo "https://modelman.app/?try=$encoded"
 ```
 
 ## Adding Buttons to Your Documentation
@@ -150,7 +150,7 @@ echo "https://hoot.app/?try=$encoded"
 ### Markdown (Recommended)
 
 ```markdown
-[![Try in Hoot](https://img.shields.io/badge/Try%20in-Hoot-6366f1)](YOUR_GENERATED_LINK)
+[![Try in Modelman](https://img.shields.io/badge/Try%20in-Modelman-6366f1)](YOUR_GENERATED_LINK)
 ```
 
 ### HTML
@@ -161,7 +161,7 @@ echo "https://hoot.app/?try=$encoded"
           background: #6366f1; color: white; text-decoration: none; border-radius: 6px; 
           font-weight: 600;">
   <span>🚀</span>
-  <span>Try in Hoot</span>
+  <span>Try in Modelman</span>
 </a>
 ```
 
@@ -172,7 +172,7 @@ echo "https://hoot.app/?try=$encoded"
 
 A powerful MCP server for doing X, Y, and Z.
 
-[![Try in Hoot](https://img.shields.io/badge/Try%20in-Hoot-6366f1)](YOUR_LINK_HERE)
+[![Try in Modelman](https://img.shields.io/badge/Try%20in-Modelman-6366f1)](YOUR_LINK_HERE)
 
 ## Features
 ...
@@ -188,7 +188,7 @@ A powerful MCP server for doing X, Y, and Z.
 }
 ```
 
-Let Hoot handle the rest with auto-detection!
+Let Modelman handle the rest with auto-detection!
 
 ### Full Config: HTTP Server
 
@@ -224,7 +224,7 @@ Let Hoot handle the rest with auto-detection!
 }
 ```
 
-Hoot auto-detects OAuth and shows "Authorize →" button!
+Modelman auto-detects OAuth and shows "Authorize →" button!
 
 Or with explicit config:
 
@@ -259,13 +259,13 @@ Or with explicit config:
 }
 ```
 
-**Note:** stdio transport requires the Hoot desktop app and won't work in the browser.
+**Note:** stdio transport requires the Modelman desktop app and won't work in the browser.
 
 ## Security Considerations
 
 ### For Users
 
-⚠️ **Only use "Try in Hoot" links from trusted sources!**
+⚠️ **Only use "Try in Modelman" links from trusted sources!**
 
 MCP servers can:
 - Execute arbitrary code
@@ -273,7 +273,7 @@ MCP servers can:
 - Make network requests
 - Interact with APIs on your behalf
 
-Hoot shows a friendly confirmation modal (with our owl mascot 🦉) before adding any server, displaying:
+Modelman shows a friendly confirmation modal (with our owl mascot 🦉) before adding any server, displaying:
 - Server name (auto-detected or provided)
 - Transport type
 - URL/command
@@ -284,10 +284,10 @@ Always review this information carefully before confirming.
 
 ### For Server Authors
 
-When creating "Try in Hoot" links:
+When creating "Try in Modelman" links:
 
 #### ✅ DO:
-- Keep it simple: just share the URL and let Hoot auto-detect
+- Keep it simple: just share the URL and let Modelman auto-detect
 - Use descriptive server names (if providing full config)
 - Test links before sharing
 - Use OAuth for production servers
@@ -302,9 +302,9 @@ When creating "Try in Hoot" links:
 
 ## What Users Will See
 
-When someone clicks your "Try in Hoot" link:
+When someone clicks your "Try in Modelman" link:
 
-1. **Friendly Welcome**: Hoot owl 🦉 greets them with "Try in Hoot - Add this server to get started"
+1. **Friendly Welcome**: Modelman owl 🦉 greets them with "Try in Modelman - Add this server to get started"
 2. **Auto-Detection Magic** (if URL-only):
    - Finding your server ✓
    - Checking how to connect ✓
@@ -316,49 +316,49 @@ When someone clicks your "Try in Hoot" link:
 
 ## API Reference
 
-### `generateTryInHootLink(config, baseUrl?)`
+### `generateTryInModelmanLink(config, baseUrl?)`
 
-Generates a "Try in Hoot" URL.
+Generates a "Try in Modelman" URL.
 
 **Parameters:**
-- `config: TryInHootConfig` - Server configuration
+- `config: TryInModelmanConfig` - Server configuration
 - `baseUrl?: string` - Base URL (default: current origin)
 
 **Returns:** `string` - Shareable URL
 
 **Example:**
 ```typescript
-const link = generateTryInHootLink({
+const link = generateTryInModelmanLink({
   name: "My Server",
   transport: "http",
   url: "http://localhost:3000"
 });
 ```
 
-### `generateTryInHootButton(config, baseUrl?)`
+### `generateTryInModelmanButton(config, baseUrl?)`
 
 Generates HTML for a styled button.
 
 **Returns:** `string` - HTML string
 
-### `generateTryInHootMarkdown(config, baseUrl?)`
+### `generateTryInModelmanMarkdown(config, baseUrl?)`
 
 Generates a Markdown badge with link.
 
 **Returns:** `string` - Markdown string
 
-### `decodeTryInHootLink(url)`
+### `decodeTryInModelmanLink(url)`
 
-Decodes a "Try in Hoot" link (useful for testing).
+Decodes a "Try in Modelman" link (useful for testing).
 
 **Parameters:**
 - `url: string` - Full URL or encoded parameter
 
-**Returns:** `TryInHootConfig` - Decoded configuration
+**Returns:** `TryInModelmanConfig` - Decoded configuration
 
 **Example:**
 ```typescript
-const config = decodeTryInHootLink('https://hoot.app/?try=eyJuYW1l...');
+const config = decodeTryInModelmanLink('https://modelman.app/?try=eyJuYW1l...');
 console.log(config.name); // "My Server"
 ```
 
@@ -369,7 +369,7 @@ console.log(config.name); // "My Server"
 3. Open in browser and verify the configuration appears correctly
 4. Confirm and test the connection
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### "Invalid Link" Error
 
@@ -391,25 +391,25 @@ console.log(config.name); // "My Server"
 
 ## Best Practices
 
-1. **Keep it simple**: Just provide the URL and let Hoot auto-detect the rest
+1. **Keep it simple**: Just provide the URL and let Modelman auto-detect the rest
 2. **Test your links** before sharing them
 3. **Use descriptive names** if providing full configuration
 4. **Document prerequisites** (API keys, permissions, etc.)
 5. **Keep links updated** if your server configuration changes
-6. **Consider hosting a landing page** with server information and the "Try in Hoot" button
+6. **Consider hosting a landing page** with server information and the "Try in Modelman" button
 
 ## Try the Demo
 
 Open the demo gallery to see the feature in action:
 ```bash
-open examples/try-in-hoot-demo.html
+open examples/try-in-modelman-demo.html
 ```
 
 ## Need Help?
 
-- Open an [issue](https://github.com/Portkey-AI/hoot/issues)
+- Open an [issue](https://github.com/Portkey-AI/modelman/issues)
 - See [examples](../examples/)
 
 ---
 
-**Made with 🦉 by Hoot**
+**Made with 🦉 by Modelman**

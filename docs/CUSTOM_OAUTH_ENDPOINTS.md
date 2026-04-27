@@ -1,8 +1,8 @@
-# Custom OAuth Endpoints in Hoot 🔧
+# Custom OAuth Endpoints in modelman 🔧
 
 ## Overview
 
-Hoot supports **custom OAuth endpoints** for OAuth 2.1 authentication. This feature allows you to manually specify authorization and token endpoints instead of relying on automatic discovery (RFC 8414).
+modelman supports **custom OAuth endpoints** for OAuth 2.1 authentication. This feature allows you to manually specify authorization and token endpoints instead of relying on automatic discovery (RFC 8414).
 
 ## When to Use Custom Endpoints
 
@@ -28,20 +28,20 @@ Use custom OAuth endpoints when:
    - **Token Endpoint** (required): Full URL where tokens are exchanged
      - Example: `https://auth.example.com/oauth/token`
    - **Custom Client ID** (optional): Pre-registered client ID if required
-     - Example: `hoot-client-123`
+     - Example: `modelman-client-123`
 
 3. **Connect**:
    - Click "Connect"
-   - Hoot will use your custom endpoints instead of auto-discovery
+   - modelman will use your custom endpoints instead of auto-discovery
    - You'll be redirected to your custom authorization endpoint
    - Complete the OAuth flow normally
 
-### Via Try in Hoot Link
+### Via Try in modelman Link
 
-You can also pre-configure custom OAuth endpoints in shareable Try in Hoot links:
+You can also pre-configure custom OAuth endpoints in shareable Try in modelman links:
 
 ```html
-<a href="https://hoot.dev?server={
+<a href="https://modelman.dev?server={
   \"url\": \"https://api.example.com/mcp\",
   \"name\": \"Custom OAuth Server\",
   \"transport\": \"http\",
@@ -50,11 +50,11 @@ You can also pre-configure custom OAuth endpoints in shareable Try in Hoot links
     \"customOAuthMetadata\": {
       \"authorization_endpoint\": \"https://auth.example.com/oauth/authorize\",
       \"token_endpoint\": \"https://auth.example.com/oauth/token\",
-      \"client_id\": \"hoot-client-123\"
+      \"client_id\": \"modelman-client-123\"
     }
   }
 }">
-  Try in Hoot
+  Try in modelman
 </a>
 ```
 
@@ -158,7 +158,7 @@ All supported fields:
   "issuer": "https://auth.example.com",
   "authorization_endpoint": "https://auth.example.com/oauth/authorize",
   "token_endpoint": "https://auth.example.com/oauth/token",
-  "client_id": "hoot-client-123",
+  "client_id": "modelman-client-123",
   "response_types_supported": ["code"],
   "grant_types_supported": ["authorization_code", "refresh_token"],
   "token_endpoint_auth_method": "none"
@@ -231,7 +231,7 @@ All supported fields:
 
 ## Validation
 
-Hoot validates custom OAuth endpoints:
+modelman validates custom OAuth endpoints:
 
 - ✅ Both authorization and token endpoints must be provided
 - ✅ Endpoints must be valid HTTP/HTTPS URLs
@@ -268,9 +268,9 @@ When metadata discovery is intercepted:
 
 - MCP SDK version 0.5.0 or higher
 - Both authorization and token endpoints must support OAuth 2.1
-- PKCE is required (Hoot uses PKCE for all OAuth flows)
+- PKCE is required (modelman uses PKCE for all OAuth flows)
 
-## Troubleshooting
+## Troublesmodelmaning
 
 ### Issue: Custom endpoints not being used
 
@@ -299,7 +299,7 @@ When metadata discovery is intercepted:
 **Solutions**:
 1. Verify token endpoint URL is correct
 2. Check that token endpoint accepts PKCE
-3. Ensure redirect URI matches Hoot's callback URL
+3. Ensure redirect URI matches modelman's callback URL
 4. Check OAuth server logs for error details
 
 ## Testing
@@ -324,8 +324,8 @@ Expected output:
 ## Security Considerations
 
 1. **HTTPS Required**: Custom endpoints should use HTTPS in production
-2. **Endpoint Validation**: Hoot doesn't validate endpoint authenticity - ensure you trust the OAuth server
-3. **CORS**: OAuth endpoints must allow CORS requests from Hoot's origin
+2. **Endpoint Validation**: modelman doesn't validate endpoint authenticity - ensure you trust the OAuth server
+3. **CORS**: OAuth endpoints must allow CORS requests from modelman's origin
 4. **Credential Storage**: OAuth tokens are stored securely in the backend database
 
 ## Implementation Details
@@ -367,7 +367,7 @@ interface AuthConfig {
 
 ## Standards Compliance
 
-While custom endpoints bypass auto-discovery, Hoot still follows OAuth 2.1 standards:
+While custom endpoints bypass auto-discovery, modelman still follows OAuth 2.1 standards:
 
 - ✅ **RFC 6749**: OAuth 2.0 Authorization Framework
 - ✅ **RFC 7636**: PKCE (Proof Key for Code Exchange)
@@ -386,7 +386,7 @@ Future enhancements:
 
 ---
 
-**Custom OAuth endpoints make Hoot compatible with any OAuth provider!** 🔧🔐
+**Custom OAuth endpoints make modelman compatible with any OAuth provider!** 🔧🔐
 
 
 

@@ -15,7 +15,7 @@ const packageJson = JSON.parse(
 );
 
 console.log(`
-🦉 Starting Hoot v${packageJson.version}
+🦉 Starting modelman v${packageJson.version}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Postman for MCP Servers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -26,7 +26,7 @@ const processes = [];
 
 // Function to kill all child processes
 function cleanup() {
-    console.log('\n🦉 Shutting down Hoot...');
+    console.log('\n🦉 Shutting down modelman...');
     processes.forEach(proc => {
         try {
             proc.kill('SIGTERM');
@@ -157,7 +157,7 @@ setTimeout(async () => {
     setTimeout(() => {
         console.log(`
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Hoot is running!
+✅ modelman is running!
    
    Server:   http://localhost:8008
    Frontend: http://localhost:${frontendPort}

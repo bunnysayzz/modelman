@@ -3,7 +3,7 @@
  * Handles anonymous user session persistence using localStorage
  */
 
-const STORAGE_KEY = 'hoot_user_id';
+const STORAGE_KEY = 'modelman_user_id';
 
 /**
  * Get or create a persistent user ID

@@ -542,7 +542,7 @@ class ServersPage extends ConsumerWidget {
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hoot_flutter/core/state/providers.dart';
+import 'package:modelman_flutter/core/state/providers.dart';
 
 void main() {
   test('ServersProvider - addServer', () {

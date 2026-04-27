@@ -466,7 +466,7 @@ export const EditServerModal = memo(function EditServerModal({
                             borderRadius: 'var(--radius-sm)'
                         }}>
                             <div className="info-message" style={{ fontSize: '13px', opacity: 0.8 }}>
-                                Hoot will automatically handle the OAuth flow with PKCE when you connect.
+                                modelman will automatically handle the OAuth flow with PKCE when you connect.
                             </div>
 
                             {/* Advanced OAuth Settings */}

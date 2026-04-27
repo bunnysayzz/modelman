@@ -27,7 +27,7 @@ describe('MCP Connection Lifecycle (Example)', () => {
 
         await testServer.start();
 
-        // Get session token from Hoot backend
+        // Get session token from modelman backend
         const tokenResponse = await fetch(`${BACKEND_URL}/auth/token`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -76,7 +76,7 @@ describe('MCP Connection Lifecycle (Example)', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-hoot-token': sessionToken
+                    'x-modelman-token': sessionToken
                 },
                 body: JSON.stringify({
                     url: testServer.mcpUrl
@@ -106,7 +106,7 @@ describe('MCP Connection Lifecycle (Example)', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-hoot-token': sessionToken
+                    'x-modelman-token': sessionToken
                 },
                 body: JSON.stringify(config)
             });
@@ -151,7 +151,7 @@ describe('MCP Connection Lifecycle (Example)', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-hoot-token': sessionToken
+                    'x-modelman-token': sessionToken
                 },
                 body: JSON.stringify(config)
             });
@@ -220,7 +220,7 @@ describe('MCP Connection Lifecycle (Example)', () => {
                         protocolVersion: '2025-11-25',
                         capabilities: {},
                         clientInfo: {
-                            name: 'Hoot Test Client',
+                            name: 'modelman Test Client',
                             version: '1.0.0'
                         }
                     },

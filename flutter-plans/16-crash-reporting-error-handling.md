@@ -72,7 +72,7 @@ void main() async {
       observers: [
         ProviderLogger(),
       ],
-      child: HootApp(analytics: analytics),
+      child: modelmanApp(analytics: analytics),
     ),
   );
 }
@@ -1038,7 +1038,7 @@ final recoveryServiceProvider = Provider<RecoveryService>((ref) {
 ```dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hoot_flutter/core/error/error_handler.dart';
+import 'package:modelman_flutter/core/error/error_handler.dart';
 
 class MockCrashlytics extends Mock implements FirebaseCrashlytics {}
 
@@ -1112,7 +1112,7 @@ void main() {
 
 ## Summary
 
-All 16 markdown files have been created in the `flutter-plans` folder, providing a comprehensive A-Z implementation plan for porting Hoot from React/TypeScript to Flutter multi-platform:
+All 16 markdown files have been created in the `flutter-plans` folder, providing a comprehensive A-Z implementation plan for porting modelman from React/TypeScript to Flutter multi-platform:
 
 1. **00-overview-architecture.md** - High-level architecture and technology mapping
 2. **01-project-setup-structure.md** - Project initialization and configuration

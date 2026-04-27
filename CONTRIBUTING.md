@@ -1,14 +1,14 @@
-# Contributing to Hoot
+# Contributing to modelman
 
-Thank you for your interest in contributing to Hoot! We welcome contributions from the community.
+Thank you for your interest in contributing to modelman! We welcome contributions from the community.
 
 ## Getting Started
 
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/hoot.git
-   cd hoot
+   git clone https://github.com/yourusername/modelman.git
+   cd modelman
    ```
 3. Install dependencies:
    ```bash

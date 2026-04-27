@@ -1,6 +1,6 @@
 # Keyboard Shortcuts
 
-Hoot provides comprehensive keyboard shortcuts to make your workflow faster and more efficient. Press `?` or `Shift+?` anytime to view all available shortcuts.
+modelman provides comprehensive keyboard shortcuts to make your workflow faster and more efficient. Press `?` or `Shift+?` anytime to view all available shortcuts.
 
 **Note**: All shortcuts use simple keys without modifiers (except Cmd+Enter for execute) to avoid conflicts with browser shortcuts!
 

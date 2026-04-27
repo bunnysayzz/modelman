@@ -1,5 +1,5 @@
 /**
- * Centralized Logger for Hoot Backend
+ * Centralized Logger for modelman Backend
  * 
  * Provides consistent logging interface across Node.js and Workers environments.
  * Supports DEBUG mode via environment variable.

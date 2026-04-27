@@ -1,5 +1,5 @@
 /**
- * Hoot MCP Backend Server - Node.js Entry Point
+ * modelman MCP Backend Server - Node.js Entry Point
  * 
  * Self-hosted deployment using Express + SQLite
  */
@@ -39,19 +39,19 @@ const PORT = process.env.PORT || 8008;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:8009';
 
 // Generate session token for authentication (fallback for non-JWT mode)
-const SESSION_TOKEN = process.env.HOOT_SESSION_TOKEN || randomBytes(32).toString('hex');
+const SESSION_TOKEN = process.env.modelman_SESSION_TOKEN || randomBytes(32).toString('hex');
 
 // Initialize JWT manager
 const jwtManager = new JWTManager();
 
 // Initialize SQLite database
-const hootDir = join(homedir(), '.hoot');
-if (!existsSync(hootDir)) {
-  mkdirSync(hootDir, { recursive: true });
+const modelmanDir = join(homedir(), '.modelman');
+if (!existsSync(modelmanDir)) {
+  mkdirSync(modelmanDir, { recursive: true });
 }
 
-const dbPath = join(hootDir, 'hoot-mcp.db');
-const auditLogPath = join(hootDir, 'audit.log');
+const dbPath = join(modelmanDir, 'modelman-mcp.db');
+const auditLogPath = join(modelmanDir, 'audit.log');
 
 logger.info(`📁 Database location: ${dbPath}`);
 logger.info(`📝 Audit log: ${auditLogPath}`);
@@ -141,7 +141,7 @@ async function authenticateRequest(req, res, next) {
     return next();
   }
 
-  const token = req.headers['x-hoot-token'];
+  const token = req.headers['x-modelman-token'];
   if (!token) {
     await auditLogger.log('auth_failed', {
       path: req.path,
@@ -658,7 +658,7 @@ app.get('/mcp/favicon-proxy', async (req, res) => {
     const response = await fetch(url, {
       signal: controller.signal,
       headers: {
-        'User-Agent': 'Hoot-MCP-Client/1.0'
+        'User-Agent': 'modelman-MCP-Client/1.0'
       }
     });
     clearTimeout(timeout);
@@ -918,7 +918,7 @@ app.use((err, req, res, next) => {
 // Start server
 const server = app.listen(PORT, () => {
   logger.info(`
-🦉 Hoot MCP Backend Server (Node.js + SQLite)
+🦉 modelman MCP Backend Server (Node.js + SQLite)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✓ Running on: http://localhost:${PORT}
 ✓ Health check: http://localhost:${PORT}/health
