@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../features/auth/presentation/pages/oauth_callback_page.dart';
+import '../../features/auth/presentation/providers/oauth_providers.dart';
 import '../../features/servers/presentation/pages/servers_page.dart';
 import '../../features/tools/presentation/pages/tools_page.dart';
 import '../../features/chat/presentation/pages/chat_page.dart';
-import '../../features/auth/presentation/pages/oauth_callback_page.dart';
-import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../features/history/presentation/pages/history_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../layout/main_layout.dart';
 
 /// Provides the application's [GoRouter] configuration.
@@ -94,5 +96,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
     ),
+    // Handle deep links for OAuth callback
+    redirect: (context, state) {
+      final uri = state.uri;
+      if (uri.scheme == 'modelman' && uri.path == '/oauth/callback') {
+        return Uri(path: '/oauth/callback', queryParameters: uri.queryParameters);
+      }
+      return null;
+    },
   );
 });

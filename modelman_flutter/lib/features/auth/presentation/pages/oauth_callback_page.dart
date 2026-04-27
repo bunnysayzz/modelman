@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../data/services/auth_service.dart';
 
 /// OAuth callback handler page.
 ///
 /// This page is loaded when the app receives an OAuth redirect
 /// (via deep link `modelman://oauth/callback`). It extracts the
 /// authorization code and completes the flow.
-class OAuthCallbackPage extends StatefulWidget {
+class OAuthCallbackPage extends ConsumerStatefulWidget {
   final Map<String, String> params;
 
   const OAuthCallbackPage({super.key, required this.params});
 
   @override
-  State<OAuthCallbackPage> createState() => _OAuthCallbackPageState();
+  ConsumerState<OAuthCallbackPage> createState() => _OAuthCallbackPageState();
 }
 
-class _OAuthCallbackPageState extends State<OAuthCallbackPage> {
+class _OAuthCallbackPageState extends ConsumerState<OAuthCallbackPage> {
   String _status = 'Processing OAuth callback...';
   bool _isError = false;
+  String? _serverId;
 
   @override
   void initState() {
@@ -27,7 +31,8 @@ class _OAuthCallbackPageState extends State<OAuthCallbackPage> {
   Future<void> _handleCallback() async {
     final code = widget.params['code'];
     final error = widget.params['error'];
-    final _ = widget.params['state']; // Reserved for CSRF validation
+    final state = widget.params['state'];
+    final serverId = widget.params['server_id'];
 
     if (error != null) {
       setState(() {
@@ -45,14 +50,47 @@ class _OAuthCallbackPageState extends State<OAuthCallbackPage> {
       return;
     }
 
+    if (serverId == null) {
+      setState(() {
+        _status = 'Missing server ID';
+        _isError = true;
+      });
+      return;
+    }
+
+    _serverId = serverId;
+
     setState(() {
-      _status = 'Authorization successful! Redirecting...';
+      _status = 'Exchanging authorization code for token...';
     });
 
-    // TODO: Exchange code for token and navigate back
-    await Future.delayed(const Duration(seconds: 2));
-    if (mounted) {
-      Navigator.of(context).popUntil((route) => route.isFirst);
+    try {
+      final auth = ref.read(authServiceProvider);
+      final result = await auth.exchangeCode(
+        serverId: serverId,
+        authorizationCode: code,
+      );
+
+      if (result['success'] == true) {
+        setState(() {
+          _status = 'Authorization successful! Redirecting...';
+        });
+
+        await Future.delayed(const Duration(seconds: 1));
+        if (mounted) {
+          context.go('/servers');
+        }
+      } else {
+        setState(() {
+          _status = 'Failed to exchange code: ${result['error'] ?? 'Unknown error'}';
+          _isError = true;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _status = 'Error during token exchange: ${e.toString()}';
+        _isError = true;
+      });
     }
   }
 
@@ -80,8 +118,8 @@ class _OAuthCallbackPageState extends State<OAuthCallbackPage> {
             if (_isError) ...[
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('Go Back'),
+                onPressed: () => context.go('/servers'),
+                child: const Text('Go to Servers'),
               ),
             ],
           ],
