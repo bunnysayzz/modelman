@@ -1,4 +1,4 @@
-# 🦉 Modelman
+# Modelman
 
 <img src="modelman.png" alt="Modelman Logo" width="100" height="100">
 
@@ -246,4 +246,4 @@ MIT License — see [LICENSE](./LICENSE) for details.
 
 **Built by [bunnysayzz](https://github.com/bunnysayzz)** — Making AI development easier, one tool at a time.
 
-Made this because we were tired of curl-ing MCP servers. Hope it helps! 🦉
+Made this because we were tired of curl-ing MCP servers. Hope it helps!
