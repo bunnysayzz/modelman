@@ -46,6 +46,9 @@
   height: 32px;
   object-fit: contain;
   flex-shrink: 0;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  padding: 4px;
 }
 
 .app-title {
