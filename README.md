@@ -1,4 +1,4 @@
-# 🦉 modelman
+# 🦉 Modelman
 
 [![npm version](https://img.shields.io/npm/v/@portkey-ai/modelman?color=5ccfe6&label=version)](https://www.npmjs.com/package/@portkey-ai/modelman)
 [![npm downloads](https://img.shields.io/npm/dm/@portkey-ai/modelman?color=5ccfe6)](https://www.npmjs.com/package/@portkey-ai/modelman)
@@ -9,9 +9,7 @@
 
 Test, debug, and explore MCP servers with a beautiful interface. No AI chat needed.
 
-https://github.com/user-attachments/assets/e3add38e-9636-4f40-99d8-f4a2b8f0f056
-
-> **⚠️ Beta Software** — modelman is in active development. Found a bug? [Open an issue](https://github.com/Portkey-AI/modelman/issues). Want to contribute? [PRs welcome](./CONTRIBUTING.md)!
+> **⚠️ Beta Software** — Modelman is in active development. Found a bug? [Open an issue](https://github.com/bunnysayzz/modelman/issues). Want to contribute? [PRs welcome](./CONTRIBUTING.md)!
 
 ## Quick Start
 
@@ -26,8 +24,6 @@ npx -y @portkey-ai/modelman
 ```
 
 Opens on `localhost:8009`. One command, zero config.
-
-![npx-modelman](https://github.com/user-attachments/assets/3c8c80e2-6ad3-439e-80eb-e2f6c4d22d8e)
 
 
 ## Features
@@ -51,15 +47,47 @@ Opens on `localhost:8009`. One command, zero config.
 - **8 beautiful themes** — Light & dark modes for every preference ([docs](./docs/THEMES.md))
 
 ### Sharing & Collaboration
-- **🦉 "Try in modelman" links** — Share servers with a single URL ([docs](./docs/TRY_IN_modelman.md))
+- **🦉 "Try in Modelman" links** — Share servers with a single URL ([docs](./docs/TRY_IN_HOOT.md))
 - **Persistent state** — Your servers and tools stay configured between sessions
 
-## How It Works
+## Architecture
 
-modelman runs a Node.js backend that acts as the MCP client, eliminating CORS issues when connecting to MCP servers from your browser.
+Modelman runs a Node.js backend that acts as the MCP client, eliminating CORS issues when connecting to MCP servers from your browser.
 
 ```
-Browser (React) → Backend (Node.js/Express) → MCP Servers
+┌─────────────────────────────────────────────────────────────────┐
+│                         Browser (React)                         │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │   Servers    │  │    Tools     │  │     Chat     │          │
+│  │   Page       │  │   Page       │  │  Interface   │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘          │
+│         │                 │                 │                   │
+│         └─────────────────┴─────────────────┘                   │
+│                           │                                     │
+│                    HTTP/WebSocket                                │
+└───────────────────────────┼─────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    Backend (Node.js/Express)                      │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │   MCP        │  │   OAuth      │  │    JWT       │          │
+│  │   Client     │  │   Handler    │  │  Auth        │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘          │
+│         │                 │                 │                   │
+│         └─────────────────┴─────────────────┘                   │
+│                           │                                     │
+│                    HTTP/SSE/stdio                                 │
+└───────────────────────────┼─────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                        MCP Servers                                 │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │   Server 1   │  │   Server 2   │  │   Server N   │          │
+│  │  (HTTP/SSE)  │  │  (HTTP/SSE)  │  │  (HTTP/SSE)  │          │
+│  └──────────────┘  └──────────────┘  └──────────────┘          │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 **Architecture highlights:**
@@ -87,7 +115,7 @@ Your servers stay configured between sessions!
 **Run from source:**
 
 ```bash
-git clone https://github.com/Portkey-AI/modelman
+git clone https://github.com/bunnysayzz/modelman
 cd modelman
 npm install
 npm run dev:full
@@ -105,7 +133,7 @@ npm run dev:full
 
 ### Debugging
 
-modelman includes a client-side logger accessible from the browser console:
+Modelman includes a client-side logger accessible from the browser console:
 
 ```javascript
 modelmanLogger.download()  // Download logs as JSON
@@ -117,63 +145,63 @@ Backend logs are written to `backend.log`. See [logging docs](./docs/LOGGING.md)
 ## Documentation
 
 - **[Quick Start Guide](./docs/QUICKSTART.md)** — Get up and running in 5 minutes
-- **[Try in modelman](./docs/TRY_IN_modelman.md)** — Share servers with one-click links
+- **[Try in Modelman](./docs/TRY_IN_HOOT.md)** — Share servers with one-click links
 - **[Authentication](./docs/AUTHENTICATION.md)** — OAuth 2.1 and API key setup
 - **[Themes](./docs/THEMES.md)** — Customize your interface
 - **[Keyboard Shortcuts](./docs/KEYBOARD_SHORTCUTS.md)** — Work faster
-- **[Architecture](./docs/ARCHITECTURE.md)** — How modelman is built
+- **[Architecture](./docs/ARCHITECTURE.md)** — How Modelman is built
 - **[Security](./docs/SECURITY.md)** — Security features and best practices
 - **[Cloudflare Deployment](./docs/CLOUDFLARE_DEPLOYMENT.md)** — Deploy to the edge
 
 [📚 Full Documentation](./docs/)
 
-## Why modelman?
+## Why Modelman?
 
-| Feature | modelman | Manual curl/testing |
-|---------|------|---------------------|
+| Feature | Modelman | Manual curl/testing |
+|---------|----------|---------------------|
 | **OAuth 2.1 support** | ✅ Automatic discovery & flow | ❌ Manual token management |
 | **Transport auto-detection** | ✅ HTTP/SSE auto-detected | ❌ Manual configuration |
 | **Visual interface** | ✅ Beautiful UI | ❌ Terminal only |
 | **Tool filtering** | ✅ AI-powered context-aware | ❌ None |
 | **Session persistence** | ✅ Configs & tokens saved | ❌ Reauth every time |
-| **Share configurations** | ✅ One-click "Try in modelman" links | ❌ Copy-paste configs |
+| **Share configurations** | ✅ One-click "Try in Modelman" links | ❌ Copy-paste configs |
 
 ## FAQ
 
 <details>
-<summary><strong>Does modelman work with all MCP servers?</strong></summary>
+<summary><strong>Does Modelman work with all MCP servers?</strong></summary>
 
-Yes! modelman supports both HTTP and SSE transports, OAuth 2.1, and API key authentication. We auto-detect server configurations to make connection as seamless as possible.
+Yes! Modelman supports both HTTP and SSE transports, OAuth 2.1, and API key authentication. We auto-detect server configurations to make connection as seamless as possible.
 </details>
 
 <details>
 <summary><strong>Is my data secure?</strong></summary>
 
-Yes. modelman runs entirely on your local machine. OAuth tokens are stored in a local SQLite database (`~/.modelman/modelman-mcp.db`), and all communication happens over localhost. No data is sent to external servers.
+Yes. Modelman runs entirely on your local machine. OAuth tokens are stored in a local SQLite database (`~/.modelman/modelman-mcp.db`), and all communication happens over localhost. No data is sent to external servers.
 </details>
 
 <details>
-<summary><strong>Can I use modelman in production?</strong></summary>
+<summary><strong>Can I use Modelman in production?</strong></summary>
 
-modelman is designed for development and testing. For production deployments, you can deploy modelman to Cloudflare Workers for your team. See our [deployment guide](./docs/CLOUDFLARE_DEPLOYMENT.md).
+Modelman is designed for development and testing. For production deployments, you can deploy Modelman to Cloudflare Workers for your team. See our [deployment guide](./docs/CLOUDFLARE_DEPLOYMENT.md).
 </details>
 
 <details>
 <summary><strong>How do I test servers that require OAuth?</strong></summary>
 
-Just add the server URL. modelman automatically detects OAuth requirements and guides you through the authorization flow. Tokens are stored securely and refreshed automatically.
+Just add the server URL. Modelman automatically detects OAuth requirements and guides you through the authorization flow. Tokens are stored securely and refreshed automatically.
 </details>
 
 <details>
 <summary><strong>Can I test multiple servers at once?</strong></summary>
 
-Absolutely! Connect to as many servers as you need. modelman manages all connections simultaneously and lets you switch between them instantly.
+Absolutely! Connect to as many servers as you need. Modelman manages all connections simultaneously and lets you switch between them instantly.
 </details>
 
 <details>
-<summary><strong>Does modelman support resources and prompts?</strong></summary>
+<summary><strong>Does Modelman support resources and prompts?</strong></summary>
 
-Not yet, but they're coming soon! Currently, modelman focuses on tool testing. Resources and prompts are on our roadmap.
+Not yet, but they're coming soon! Currently, Modelman focuses on tool testing. Resources and prompts are on our roadmap.
 </details>
 
 ## Roadmap
@@ -185,7 +213,7 @@ We're working towards full MCP specification support. Coming soon:
 - **Electron desktop app** — Native app with stdio transport support
 - **Collaborative workspaces** — Share server configs with teams
 
-Want to contribute? Check out [CONTRIBUTING.md](./CONTRIBUTING.md) or [open an issue](https://github.com/Portkey-AI/modelman/issues) with feature requests!
+Want to contribute? Check out [CONTRIBUTING.md](./CONTRIBUTING.md) or [open an issue](https://github.com/bunnysayzz/modelman/issues) with feature requests!
 
 ## Technology Stack
 
@@ -211,6 +239,6 @@ MIT License — see [LICENSE](./LICENSE) for details.
 
 ---
 
-**Built by [Portkey](https://portkey.ai)** — Making AI development easier, one tool at a time.
+**Built by [bunnysayzz](https://github.com/bunnysayzz)** — Making AI development easier, one tool at a time.
 
 Made this because we were tired of curl-ing MCP servers. Hope it helps! 🦉
