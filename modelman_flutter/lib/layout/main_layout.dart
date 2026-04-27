@@ -151,19 +151,23 @@ class _MobileLayout extends ConsumerWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 28,
-                    height: 28,
+                    width: 32,
+                    height: 32,
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
+                      color: theme.colorScheme.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: theme.colorScheme.primary.withOpacity(0.3),
+                        width: 1,
+                      ),
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
                       child: Image.asset(
                         'assets/images/modelman_logo.png',
                         fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
-                          return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 22);
+                          return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 24);
                         },
                       ),
                     ),
@@ -260,19 +264,23 @@ class _HeaderBar extends StatelessWidget {
         children: [
           // Logo
           Container(
-            width: 32,
-            height: 32,
+            width: 36,
+            height: 36,
             decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
+              color: theme.colorScheme.primary.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: theme.colorScheme.primary.withOpacity(0.3),
+                width: 1,
+              ),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.all(4),
               child: Image.asset(
                 'assets/images/modelman_logo.png',
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 26);
+                  return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 28);
                 },
               ),
             ),
