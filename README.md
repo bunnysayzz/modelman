@@ -54,40 +54,43 @@ Opens on `localhost:8009`. One command, zero config.
 
 Modelman runs a Node.js backend that acts as the MCP client, eliminating CORS issues when connecting to MCP servers from your browser.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         Browser (React)                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   Servers    │  │    Tools     │  │     Chat     │          │
-│  │   Page       │  │   Page       │  │  Interface   │          │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘          │
-│         │                 │                 │                   │
-│         └─────────────────┴─────────────────┘                   │
-│                           │                                     │
-│                    HTTP/WebSocket                                │
-└───────────────────────────┼─────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Backend (Node.js/Express)                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   MCP        │  │   OAuth      │  │    JWT       │          │
-│  │   Client     │  │   Handler    │  │  Auth        │          │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘          │
-│         │                 │                 │                   │
-│         └─────────────────┴─────────────────┘                   │
-│                           │                                     │
-│                    HTTP/SSE/stdio                                 │
-└───────────────────────────┼─────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                        MCP Servers                                 │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   Server 1   │  │   Server 2   │  │   Server N   │          │
-│  │  (HTTP/SSE)  │  │  (HTTP/SSE)  │  │  (HTTP/SSE)  │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Browser["Browser React"]
+        A[Servers Page]
+        B[Tools Page]
+        C[Chat Interface]
+    end
+    
+    subgraph Backend["Backend Node.js/Express"]
+        D[MCP Client]
+        E[OAuth Handler]
+        F[JWT Auth]
+    end
+    
+    subgraph MCPServers["MCP Servers"]
+        G[Server 1<br/>HTTP/SSE]
+        H[Server 2<br/>HTTP/SSE]
+        I[Server N<br/>HTTP/SSE]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> G
+    D --> H
+    D --> I
+    E --> D
+    F --> D
+    D --> E
+    F -->|HTTP/WebSocket| D
+    D -->|HTTP/SSE/stdio| G
+    D -->|HTTP/SSE/stdio| H
+    D -->|HTTP/SSE/stdio| I
+    
+    style Browser fill:#e3f2fd
+    style Backend fill:#fff3e0
+    style MCPServers fill:#f3e5f5
 ```
 
 **Architecture highlights:**
