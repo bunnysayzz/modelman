@@ -32,11 +32,25 @@ jobs:
       - name: Build macOS app
         run: flutter build macos --release
 
+      - name: Find macOS build output
+        run: |
+          echo "Build directory contents:"
+          find build/macos -name "*.app" -type d || echo "No .app found"
+          echo "Build directory structure:"
+          ls -la build/macos/Build/Products/ || echo "Products directory not found"
+
       - name: Create DMG
         run: |
+          # Find the .app file
+          APP_PATH=$(find build/macos -name "modelman.app" -type d | head -1)
+          echo "Found app at: $APP_PATH"
+          if [ -z "$APP_PATH" ]; then
+            echo "Error: modelman.app not found"
+            exit 1
+          fi
           # Create a temporary directory for the DMG
           mkdir -p dmg_temp
-          cp -R build/macos/Build/Products/Release/modelman.app dmg_temp/
+          cp -R "$APP_PATH" dmg_temp/
           hdiutil create -volname "Modelman" -srcfolder dmg_temp -ov -format UDZO modelman-macos.dmg
 
       - name: Upload macOS artifact
