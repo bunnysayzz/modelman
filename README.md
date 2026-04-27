@@ -1,6 +1,4 @@
-# Modelman
-
-<img src="modelman.png" alt="Modelman Logo" width="100" height="100">
+# <img src="modelman.png" alt="Modelman Logo" width="40" height="40" style="vertical-align: middle; margin-right: 10px;"> Modelman
 
 [![npm version](https://img.shields.io/npm/v/@portkey-ai/modelman?color=5ccfe6&label=version)](https://www.npmjs.com/package/@portkey-ai/modelman)
 [![npm downloads](https://img.shields.io/npm/dm/@portkey-ai/modelman?color=5ccfe6)](https://www.npmjs.com/package/@portkey-ai/modelman)

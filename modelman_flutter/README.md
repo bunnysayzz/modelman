@@ -1,6 +1,4 @@
-# Modelman Flutter
-
-<img src="../modelman.png" alt="Modelman Logo" width="100" height="100">
+# <img src="../modelman.png" alt="Modelman Logo" width="40" height="40" style="vertical-align: middle; margin-right: 10px;"> Modelman Flutter
 
 Modelman - MCP Testing Tool for Flutter
 
