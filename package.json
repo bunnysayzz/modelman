@@ -1,0 +1,93 @@
+{
+  "name": "@portkey-ai/hoot",
+  "version": "0.15.0",
+  "description": "Postman for MCP Servers - A fast, lightweight testing tool with full OAuth 2.1 support",
+  "type": "module",
+  "bin": {
+    "hoot": "bin/hoot.js"
+  },
+  "exports": {
+    ".": "./dist/index.html",
+    "./lib/tryInHootLinks": "./dist/lib/tryInHootLinks.js"
+  },
+  "scripts": {
+    "start": "node bin/hoot.js",
+    "dev": "vite",
+    "server": "node server/server-node.js",
+    "server:worker": "source .env 2>/dev/null || true && wrangler dev",
+    "dev:full": "concurrently \"npm run server\" \"npm run dev\"",
+    "dev:worker": "concurrently \"npm run server:worker\" \"npm run dev\"",
+    "build": "tsc && vite build",
+    "build:cloudflare": "export VITE_BACKEND_URL=https://hoot-server-production.portkey-ai.workers.dev && tsc && vite build",
+    "deploy:cloudflare": "source .env 2>/dev/null || true && wrangler deploy --env production",
+    "deploy:pages": "npm run build:cloudflare && wrangler pages deploy --project-name=hoot",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:oauth-compliance": "node tests/test-oauth-compliance.js"
+  },
+  "keywords": [
+    "mcp",
+    "testing",
+    "developer-tools",
+    "model-context-protocol",
+    "oauth",
+    "postman",
+    "api-testing",
+    "try-in-hoot"
+  ],
+  "author": "Hoot Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/portkey-ai/hoot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/portkey-ai/hoot/issues"
+  },
+  "homepage": "https://github.com/portkey-ai/hoot#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
+    "@storybook/addon-a11y": "^10.0.2",
+    "@storybook/addon-docs": "^10.0.2",
+    "@storybook/addon-onboarding": "^10.0.2",
+    "@storybook/addon-vitest": "^10.0.2",
+    "@storybook/react-vite": "^10.0.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vitejs/plugin-react": "^5.0.4",
+    "@vitest/browser-playwright": "^4.0.6",
+    "@vitest/coverage-v8": "^4.0.6",
+    "concurrently": "^9.2.1",
+    "playwright": "^1.56.1",
+    "storybook": "^10.0.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vitest": "^4.0.6",
+    "wrangler": "^4.64.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.1",
+    "@portkey-ai/mcp-tool-filter": "^1.0.0",
+    "better-sqlite3": "^12.4.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jose": "^6.1.0",
+    "lucide-react": "^0.546.0",
+    "portkey-ai": "^3.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.9.4",
+    "rehype-highlight": "^7.0.2",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "zustand": "^5.0.8"
+  }
+}

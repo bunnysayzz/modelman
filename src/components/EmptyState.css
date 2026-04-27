@@ -1,0 +1,174 @@
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+    text-align: center;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle rolling ice hills at the bottom - Nord style - Randomized */
+.empty-state::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background-image: var(--hills-empty-state);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+/* Don't show hills in empty state if parent already has them */
+.tools-sidebar .empty-state::after,
+.server-sidebar .empty-state::after {
+    display: none;
+}
+
+/* Ensure content is above the mountains */
+.empty-state>* {
+    position: relative;
+    z-index: 1;
+}
+
+.empty-state-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    color: var(--text-tertiary);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.empty-state-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.3px;
+}
+
+.empty-state-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    max-width: 400px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.empty-state .btn {
+    margin-top: var(--spacing-md);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* No servers state container */
+.no-servers-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Quick servers section - sleek and simple */
+.quick-servers-section {
+    padding: var(--spacing-lg);
+    margin: 0 var(--spacing-lg) var(--spacing-lg);
+    text-align: center;
+}
+
+.quick-servers-text {
+    font-size: 13px;
+    color: var(--theme-text-secondary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-weight: 500;
+}
+
+.quick-servers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-server-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--theme-bg-secondary);
+    border: 1px solid var(--theme-border-color);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--theme-text-primary);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.quick-server-pill:hover {
+    background: var(--theme-bg-tertiary);
+    border-color: var(--theme-accent-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quick-server-pill:active {
+    transform: translateY(0);
+}
+
+.quick-server-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.quick-server-icon-fallback {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quick-servers-section {
+        margin: 0 var(--spacing-md) var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .quick-servers-list {
+        gap: var(--spacing-xs);
+    }
+
+    .quick-server-pill {
+        font-size: 12px;
+        padding: 6px var(--spacing-sm);
+    }
+}

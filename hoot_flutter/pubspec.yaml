@@ -1,0 +1,61 @@
+name: hoot_flutter
+description: Hoot - MCP Testing Tool for Flutter
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+
+  # Network
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.0
+  connectivity_plus: ^5.0.2
+
+  # Storage
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.1
+
+  # Authentication
+  url_launcher: ^6.2.2
+  flutter_secure_storage: ^9.0.0
+
+  # JSON & Serialization
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+
+  # UI Components
+  flutter_markdown: ^0.6.14
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+
+  # Utilities
+  uuid: ^4.3.3
+  intl: ^0.18.1
+  logger: ^2.0.2
+  collection: ^1.18.0
+
+  # Routing
+  go_router: ^13.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  mockito: ^5.4.4
+  build_runner: ^2.4.8
+  freezed: ^2.5.8
+  json_serializable: ^6.9.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/

@@ -1,0 +1,92 @@
+.json-viewer {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.6;
+    color: var(--text-primary);
+    user-select: text;
+}
+
+/* Nord Arctic Ice syntax highlighting colors */
+.json-key {
+    color: var(--theme-accent-primary);
+    /* Pure ice for keys */
+    font-weight: 500;
+}
+
+.json-string {
+    color: var(--theme-success);
+    /* Aurora green for string values */
+}
+
+.json-number {
+    color: var(--theme-special);
+    /* Aurora purple for numbers */
+}
+
+.json-boolean {
+    color: var(--theme-accent-tertiary);
+    /* Arctic waters for booleans */
+    font-weight: 600;
+}
+
+.json-null {
+    color: var(--theme-accent-tertiary);
+    /* Arctic waters for null */
+    font-weight: 600;
+    font-style: italic;
+}
+
+.json-bracket {
+    color: var(--theme-text-tertiary);
+    /* Snow storm for brackets */
+    font-weight: 600;
+}
+
+.json-punctuation {
+    color: var(--theme-bg-active);
+    /* Subtle polar night for punctuation */
+}
+
+/* Collapse/expand toggle */
+.json-collapse-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    cursor: pointer;
+    color: var(--text-tertiary);
+    transition: color var(--transition-fast);
+    vertical-align: middle;
+    user-select: none;
+}
+
+.json-collapse-toggle:hover {
+    color: var(--theme-accent-primary);
+}
+
+.json-collapse-toggle svg {
+    flex-shrink: 0;
+}
+
+.json-ellipsis {
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin: 0 4px;
+}
+
+/* Selection styling for JSON viewer */
+.json-viewer::selection,
+.json-viewer *::selection {
+    background: var(--theme-accent-primary);
+    color: var(--theme-bg-primary);
+}

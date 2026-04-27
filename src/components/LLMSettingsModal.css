@@ -1,0 +1,119 @@
+.llm-settings-modal {
+    max-width: 600px;
+}
+
+/* Tab Content Structure */
+.tab-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Legacy - keeping for backward compatibility */
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-box {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+}
+
+.info-box.security-note {
+    background: color-mix(in srgb, var(--green-500) 8%, transparent);
+    border-color: color-mix(in srgb, var(--green-500) 30%, transparent);
+}
+
+.info-box-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--theme-accent-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-box p {
+    margin: 0.5rem 0;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.info-box p:first-of-type {
+    margin-top: 0;
+}
+
+.info-box p:last-of-type {
+    margin-bottom: 0;
+}
+
+.info-link {
+    color: var(--theme-accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info-link:hover {
+    text-decoration: underline;
+}
+
+.settings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.info-item {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.info-item strong {
+    color: var(--text-primary);
+    min-width: 80px;
+}
+
+/* Warning box specific styling */
+.warning-box {
+    background: color-mix(in srgb, var(--theme-warning) 8%, transparent);
+    border-color: color-mix(in srgb, var(--theme-warning) 30%, transparent);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
