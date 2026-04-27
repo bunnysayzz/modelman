@@ -1,6 +1,6 @@
 # Modelman Flutter
 
-![Modelman Logo](../modelman.png)
+<img src="../modelman.png" alt="Modelman Logo" width="100" height="100">
 
 Modelman - MCP Testing Tool for Flutter
 
