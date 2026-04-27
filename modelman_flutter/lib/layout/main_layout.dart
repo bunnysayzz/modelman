@@ -150,7 +150,23 @@ class _MobileLayout extends ConsumerWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 22),
+                  Container(
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.asset(
+                        'assets/images/modelman_logo.png',
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 22);
+                        },
+                      ),
+                    ),
+                  ),
                   const SizedBox(width: 8),
                   Text(
                     'Modelman',
@@ -242,8 +258,24 @@ class _HeaderBar extends StatelessWidget {
       child: Row(
         children: [
           // Logo
-          Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 26),
-          const SizedBox(width: 10),
+          Container(
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/images/modelman_logo.png',
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.dns_rounded, color: theme.colorScheme.primary, size: 26);
+                },
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
           Text(
             'Modelman',
             style: theme.textTheme.titleLarge?.copyWith(

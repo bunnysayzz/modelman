@@ -1,5 +1,7 @@
 # 🦉 Modelman
 
+![Modelman Logo](modelman.png)
+
 [![npm version](https://img.shields.io/npm/v/@portkey-ai/modelman?color=5ccfe6&label=version)](https://www.npmjs.com/package/@portkey-ai/modelman)
 [![npm downloads](https://img.shields.io/npm/dm/@portkey-ai/modelman?color=5ccfe6)](https://www.npmjs.com/package/@portkey-ai/modelman)
 [![License: MIT](https://img.shields.io/badge/License-MIT-5ccfe6.svg)](https://opensource.org/licenses/MIT)
