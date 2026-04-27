@@ -100,7 +100,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final uri = state.uri;
       if (uri.scheme == 'modelman' && uri.path == '/oauth/callback') {
-        return Uri(path: '/oauth/callback', queryParameters: uri.queryParameters);
+        return '/oauth/callback?${uri.query}';
       }
       return null;
     },

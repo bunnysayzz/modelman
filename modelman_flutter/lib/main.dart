@@ -11,26 +11,26 @@ import 'core/error/error_handler.dart';
 import 'core/theme/app_theme.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // ── Global Error Handling ──────────────────────────────
-  // Initialize error handler with console reporting (in production, use Sentry/Crashlytics)
-  final errorHandler = ErrorHandler();
-  final reportingService = kDebugMode
-      ? ConsoleErrorReportingService()
-      : null; // Add Sentry/Crashlytics in production
-  errorHandler.initialize(reportingService: reportingService);
-
-  // Initialize SharedPreferences before the app starts
-  final prefs = await SharedPreferences.getInstance();
-  final storageService = LocalStorageService(prefs);
-
-  // Restore the saved theme (if any)
-  final savedThemeName = await storageService.getThemeName();
-
   // Wrap in error zone for full async error coverage
   runZonedGuarded(
-    () {
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      // ── Global Error Handling ──────────────────────────────
+      // Initialize error handler with console reporting (in production, use Sentry/Crashlytics)
+      final errorHandler = ErrorHandler();
+      final reportingService = kDebugMode
+          ? ConsoleErrorReportingService()
+          : null; // Add Sentry/Crashlytics in production
+      errorHandler.initialize(reportingService: reportingService);
+
+      // Initialize SharedPreferences before the app starts
+      final prefs = await SharedPreferences.getInstance();
+      final storageService = LocalStorageService(prefs);
+
+      // Restore the saved theme (if any)
+      final savedThemeName = await storageService.getThemeName();
+
       runApp(
         ProviderScope(
           overrides: [
@@ -41,6 +41,7 @@ void main() async {
       );
     },
     (error, stack) {
+      final errorHandler = ErrorHandler();
       errorHandler.error('Zone error caught', error: error, stackTrace: stack);
     },
   );

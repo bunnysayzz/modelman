@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../data/models/oauth_config.dart';
-import '../presentation/providers/oauth_providers.dart';
+import '../models/oauth_config.dart';
+import '../../presentation/providers/oauth_providers.dart';
 
 /// Service to handle OAuth flow initiation and URL launching.
 class OAuthLauncherService {

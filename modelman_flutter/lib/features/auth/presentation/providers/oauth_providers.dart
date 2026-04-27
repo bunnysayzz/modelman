@@ -49,10 +49,10 @@ class OAuthNotifier extends StateNotifier<OAuthState> {
       // Generate PKCE code verifier and challenge
       final verifier = _auth.generateCodeVerifier();
       final challenge = _auth.generateCodeChallenge(verifier);
-      final state = _auth.generateCodeVerifier();
+      final oauthState = _auth.generateCodeVerifier();
 
       // Update config with state
-      final updatedConfig = config.copyWith(state: state);
+      final updatedConfig = config.copyWith(state: oauthState);
 
       // Build authorization URL
       final authUrl = _auth.buildAuthorizationUrl(
@@ -60,7 +60,7 @@ class OAuthNotifier extends StateNotifier<OAuthState> {
         clientId: updatedConfig.clientId,
         redirectUri: updatedConfig.redirectUri,
         codeChallenge: challenge,
-        state: state,
+        state: oauthState,
         scope: updatedConfig.scope,
       );
 
