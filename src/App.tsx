@@ -481,7 +481,7 @@ function App() {
         <header className="app-header">
           <div className="app-header-left">
             <div className="app-branding">
-              <img src="/modelman.png" alt="Modelman" className="logo-image" />
+              <img src="/modelman.jpg" alt="Modelman" className="logo-image" />
               <h1 className="app-title">modelman</h1>
             </div>
 
