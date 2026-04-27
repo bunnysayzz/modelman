@@ -12,6 +12,9 @@ on:
 jobs:
   build-macos:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./modelman_flutter
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -40,11 +43,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: modelman-macos-dmg
-          path: modelman-macos.dmg
+          path: modelman_flutter/modelman-macos.dmg
           retention-days: 30
 
   build-windows:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./modelman_flutter
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -70,11 +76,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: modelman-windows-exe
-          path: modelman-windows.zip
+          path: modelman_flutter/modelman-windows.zip
           retention-days: 30
 
   build-android:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./modelman_flutter
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -96,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: modelman-android-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: modelman_flutter/build/app/outputs/flutter-apk/app-release.apk
           retention-days: 30
 
       - name: Build App Bundle
@@ -106,11 +115,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: modelman-android-aab
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: modelman_flutter/build/app/outputs/bundle/release/app-release.aab
           retention-days: 30
 
   build-linux:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./modelman_flutter
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -140,7 +152,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: modelman-linux
-          path: modelman-linux.tar.gz
+          path: modelman_flutter/modelman-linux.tar.gz
           retention-days: 30
 
   create-release:
