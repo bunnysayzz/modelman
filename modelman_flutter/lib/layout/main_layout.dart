@@ -154,6 +154,7 @@ class _MobileLayout extends ConsumerWidget {
                     width: 28,
                     height: 28,
                     decoration: BoxDecoration(
+                      color: theme.colorScheme.surface,
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: ClipRRect(
@@ -262,6 +263,7 @@ class _HeaderBar extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(8),
             ),
             child: ClipRRect(
