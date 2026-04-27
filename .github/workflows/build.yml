@@ -158,7 +158,7 @@ jobs:
   create-release:
     needs: [build-macos, build-windows, build-android, build-linux]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: write
     steps:
@@ -167,9 +167,17 @@ jobs:
         with:
           path: artifacts
 
+      - name: Generate version number
+        id: version
+        run: |
+          VERSION=$(date +'%Y.%m.%d.%H%M')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Release ${{ steps.version.outputs.version }}
           files: |
             artifacts/modelman-macos-dmg/modelman-macos.dmg
             artifacts/modelman-windows-exe/modelman-windows.zip
@@ -179,5 +187,6 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: true
+          body: Automated release from ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
