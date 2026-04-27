@@ -32,20 +32,23 @@ jobs:
       - name: Build macOS app
         run: flutter build macos --release
 
-      - name: Find macOS build output
+      - name: Check build output
         run: |
-          echo "Build directory contents:"
-          find build/macos -name "*.app" -type d || echo "No .app found"
           echo "Build directory structure:"
-          ls -la build/macos/Build/Products/ || echo "Products directory not found"
+          ls -la build/ || echo "build directory not found"
+          echo "macOS build directory:"
+          ls -la build/macos/ || echo "macOS build directory not found"
+          echo "Recursive search for .app files:"
+          find build -name "*.app" -type d 2>/dev/null || echo "No .app files found"
 
       - name: Create DMG
         run: |
           # Find the .app file
-          APP_PATH=$(find build/macos -name "modelman.app" -type d | head -1)
+          APP_PATH=$(find build/macos -name "modelman.app" -type d 2>/dev/null | head -1)
           echo "Found app at: $APP_PATH"
           if [ -z "$APP_PATH" ]; then
             echo "Error: modelman.app not found"
+            echo "Build may have failed. Checking for errors..."
             exit 1
           fi
           # Create a temporary directory for the DMG
