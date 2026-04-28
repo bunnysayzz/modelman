@@ -9,7 +9,7 @@ class AppConfig {
   // API Configuration
   static const String backendUrl = String.fromEnvironment(
     'BACKEND_URL',
-    defaultValue: 'http://localhost:8008',
+    defaultValue: 'https://memoryloom-6g1x.onrender.com',
   );
 
   static const String frontendUrl = String.fromEnvironment(
