@@ -31,7 +31,7 @@ jobs:
 
       - name: Build macOS app
         run: |
-          flutter build macos --release --verbose 2>&1 | tee build_output.log
+          flutter build macos --release --verbose > build_output.log 2>&1
           BUILD_EXIT_CODE=$?
           echo "Flutter build exited with code: $BUILD_EXIT_CODE"
           if [ $BUILD_EXIT_CODE -ne 0 ]; then
@@ -39,6 +39,8 @@ jobs:
             tail -50 build_output.log
             exit $BUILD_EXIT_CODE
           fi
+          echo "Build succeeded. Last 5 lines:"
+          tail -5 build_output.log
 
       - name: Check build output
         run: |
@@ -53,11 +55,11 @@ jobs:
 
       - name: Create DMG
         run: |
-          # Find the .app file
-          APP_PATH=$(find build/macos -name "modelman.app" -type d 2>/dev/null | head -1)
+          # Find the .app file - Flutter uses project directory name
+          APP_PATH=$(find build/macos -name "*.app" -type d 2>/dev/null | head -1)
           echo "Found app at: $APP_PATH"
           if [ -z "$APP_PATH" ]; then
-            echo "Error: modelman.app not found"
+            echo "Error: No .app file found"
             echo "Checking if build actually succeeded..."
             cat build_output.log | tail -100
             exit 1
