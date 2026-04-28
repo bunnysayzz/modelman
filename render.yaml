@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: modelman-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server/server-node.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8008
+      - key: FRONTEND_URL
+        value: https://modelman-web.onrender.com
+    autoDeploy: true
+    branch: main
+    rootDir: .
