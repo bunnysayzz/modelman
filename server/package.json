@@ -5,7 +5,8 @@
   "type": "module",
   "main": "server-node.js",
   "scripts": {
-    "start": "node server-node.js"
+    "start": "node server-node.js",
+    "build": "echo 'No build step required'"
   },
   "engines": {
     "node": ">=18.0.0"
