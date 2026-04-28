@@ -30,16 +30,26 @@ jobs:
         run: flutter pub get
 
       - name: Build macOS app
-        run: flutter build macos --release --no-codesign
+        run: |
+          flutter build macos --release --verbose 2>&1 | tee build_output.log
+          BUILD_EXIT_CODE=$?
+          echo "Flutter build exited with code: $BUILD_EXIT_CODE"
+          if [ $BUILD_EXIT_CODE -ne 0 ]; then
+            echo "Build failed. Last 50 lines of output:"
+            tail -50 build_output.log
+            exit $BUILD_EXIT_CODE
+          fi
 
       - name: Check build output
         run: |
-          echo "Build directory structure:"
+          echo "=== Build directory structure ==="
           ls -la build/ || echo "build directory not found"
-          echo "macOS build directory:"
-          ls -la build/macos/ || echo "macOS build directory not found"
-          echo "Recursive search for .app files:"
+          echo "=== macOS build directory ==="
+          ls -la build/macos/ 2>/dev/null || echo "macOS build directory not found"
+          echo "=== Recursive search for .app files ==="
           find build -name "*.app" -type d 2>/dev/null || echo "No .app files found"
+          echo "=== Full directory tree of build/macos ==="
+          find build/macos -type d 2>/dev/null | head -50 || echo "Could not list directories"
 
       - name: Create DMG
         run: |
@@ -48,7 +58,8 @@ jobs:
           echo "Found app at: $APP_PATH"
           if [ -z "$APP_PATH" ]; then
             echo "Error: modelman.app not found"
-            echo "Build may have failed. Checking for errors..."
+            echo "Checking if build actually succeeded..."
+            cat build_output.log | tail -100
             exit 1
           fi
           # Create a temporary directory for the DMG
