@@ -31,7 +31,7 @@ jobs:
 
       - name: Build macOS app
         run: |
-          flutter build macos --release --verbose > build_output.log 2>&1
+          flutter build macos --release --dart-define=BACKEND_URL=https://modelman.onrender.com --verbose > build_output.log 2>&1
           BUILD_EXIT_CODE=$?
           echo "Flutter build exited with code: $BUILD_EXIT_CODE"
           if [ $BUILD_EXIT_CODE -ne 0 ]; then
@@ -96,7 +96,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Windows app
-        run: flutter build windows --release
+        run: flutter build windows --release --dart-define=BACKEND_URL=https://modelman.onrender.com
 
       - name: Create ZIP
         run: |
@@ -129,7 +129,7 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --dart-define=BACKEND_URL=https://modelman.onrender.com
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
@@ -139,7 +139,7 @@ jobs:
           retention-days: 30
 
       - name: Build App Bundle
-        run: flutter build appbundle --release
+        run: flutter build appbundle --release --dart-define=BACKEND_URL=https://modelman.onrender.com
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
@@ -173,7 +173,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Linux app
-        run: flutter build linux --release
+        run: flutter build linux --release --dart-define=BACKEND_URL=https://modelman.onrender.com
 
       - name: Create TAR
         run: tar -czf modelman-linux.tar.gz -C build/linux/x64/release/bundle .
